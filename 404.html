@@ -129,7 +129,8 @@
         }
 
         const [, requestedVersion, pagePath] = pathMatch;
-        console.log(`📍 Requested: ${requestedVersion}/${pagePath}`);
+        const hashFragment = window.location.hash; // Preserve anchor/fragment
+        console.log(`📍 Requested: ${requestedVersion}/${pagePath}${hashFragment}`);
 
         // Normalize HTML-based URLs to directory-based URLs
         // e.g., "compatibility.html" -> "compatibility/"
@@ -179,12 +180,13 @@
         }
 
         // Construct the target URL with the latest version and normalized path
-        const targetUrl = `${METRO_CONFIG.latestUrl}/${normalizedPagePath}`;
-        console.log(`🔍 Checking if page exists: ${targetUrl}`);
+        const baseTargetUrl = `${METRO_CONFIG.latestUrl}/${normalizedPagePath}`;
+        const targetUrlWithFragment = `${baseTargetUrl}${hashFragment}`;
+        console.log(`🔍 Checking if page exists: ${baseTargetUrl}${hashFragment ? ` (with fragment: ${hashFragment})` : ''}`);
 
-        // Check if the page exists in the latest version
+        // Check if the page exists in the latest version (without fragment for HEAD request)
         const pageCheckStart = performance.now();
-        const pageCheckResponse = await fetch(targetUrl, { method: 'HEAD' });
+        const pageCheckResponse = await fetch(baseTargetUrl, { method: 'HEAD' });
         const pageCheckEnd = performance.now();
 
         console.log(`📊 Page check completed in ${(pageCheckEnd - pageCheckStart).toFixed(2)}ms (Status: ${pageCheckResponse.status})`);
@@ -192,18 +194,19 @@
         if (pageCheckResponse.ok) {
           // Page exists in latest version, redirect there
           const totalTime = performance.now() - startTime;
-          console.log(`✅ Redirecting from ${currentPath} to ${targetUrl}`);
+          console.log(`✅ Redirecting from ${currentPath}${hashFragment} to ${targetUrlWithFragment}`);
           console.log(`⏱️ Total redirect process took ${totalTime.toFixed(2)}ms`);
           
           // Show appropriate message based on whether we normalized the URL
           const targetPageName = normalizedPagePath ? 
             (normalizedPagePath === pagePath ? normalizedPagePath.split('/').filter(p => p).pop() : `${normalizedPagePath.split('/').filter(p => p).pop()} (updated URL format)`) : 
             'home page';
-          updateMessage(`Found page in latest version. Redirecting to ${targetPageName}...`);
+          const fragmentMessage = hashFragment ? ` with anchor ${hashFragment}` : '';
+          updateMessage(`Found page in latest version. Redirecting to ${targetPageName}${fragmentMessage}...`);
           
           setTimeout(() => {
             hideLoading();
-            window.location.replace(targetUrl);
+            window.location.replace(targetUrlWithFragment);
           }, 500);
         } else {
           // Page doesn't exist in latest version, fallback to home
@@ -255,7 +258,9 @@
 
     // Update message after a short delay to show we're working
     setTimeout(() => {
-      updateMessage('Analyzing URL and checking latest version...');
+      const hasFragment = window.location.hash;
+      const fragmentText = hasFragment ? ' (preserving anchor)' : '';
+      updateMessage(`Analyzing URL and checking latest version${fragmentText}...`);
     }, 500);
   </script>
 
@@ -487,6 +492,11 @@
               #loading-indicator {
                 font-size: 0.9em;
                 color: var(--md-default-fg-color--light);
+              }
+
+              /* Hide mike version dropdown on 404 page */
+              .md-version {
+                display: none !important;
               }
             </style>
 
