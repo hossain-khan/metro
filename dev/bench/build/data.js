@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772316888192,
+  "lastUpdate": 1772431035226,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -7952,6 +7952,62 @@ window.BENCHMARK_DATA = {
             "value": 30829.71,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: -1.86%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "f6766a41~1",
+          "message": "[before] Include similar bindings when reporting suspicious",
+          "timestamp": "2026-03-02T05:17:20Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/f6766a412f25cab11d7fea7998c2659268d09706"
+        },
+        "date": 1772431035226,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 31715.341999999997,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "f6766a412f25cab11d7fea7998c2659268d09706",
+          "message": "[after] Include similar bindings when reporting suspicious",
+          "timestamp": "2026-03-02T05:17:20Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/f6766a412f25cab11d7fea7998c2659268d09706"
+        },
+        "date": 1772431035227,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 31880.738,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: +0.52%"
           }
         ]
       }
