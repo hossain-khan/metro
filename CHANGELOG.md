@@ -4,6 +4,11 @@ Changelog
 **Unreleased**
 --------------
 
+0.11.2
+------
+
+_2026-03-02_
+
 ### New
 
 #### **`Class`/`KClass` map key interop**
@@ -39,8 +44,6 @@ This is disabled by default (even if other framework interops like `includeDagge
 ### Fixes
 
 - **[IR]**: Fix a code gen bug where `@Provides` graph parameters wouldn't correctly be used by scoped bindings directly held in that graph.
-
-### Changes
 
 ### Contributors
 
