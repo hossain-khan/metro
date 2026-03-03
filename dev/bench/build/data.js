@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772431035226,
+  "lastUpdate": 1772569671513,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -8008,6 +8008,62 @@ window.BENCHMARK_DATA = {
             "value": 31880.738,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: +0.52%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "10ae92dd~1",
+          "message": "[before] Add graph extensions hint to suspicious multibindi",
+          "timestamp": "2026-03-03T19:43:42Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/10ae92dd3f3eb13d0263e0300556c1e0de428a75"
+        },
+        "date": 1772569671513,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 33928.932,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "10ae92dd3f3eb13d0263e0300556c1e0de428a75",
+          "message": "[after] Add graph extensions hint to suspicious multibindi",
+          "timestamp": "2026-03-03T19:43:42Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/10ae92dd3f3eb13d0263e0300556c1e0de428a75"
+        },
+        "date": 1772569671514,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 31923.868,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: -5.91%"
           }
         ]
       }
