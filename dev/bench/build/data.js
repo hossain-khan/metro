@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772656550738,
+  "lastUpdate": 1772863112629,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -8176,6 +8176,62 @@ window.BENCHMARK_DATA = {
             "value": 30587.0,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: -1.22%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "85543469~1",
+          "message": "[before] Move class and provides factory function generatio",
+          "timestamp": "2026-03-07T00:14:12-05:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/85543469edb769d13099c2b49608b38d8baf2c90"
+        },
+        "date": 1772863112629,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 32802.986,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "85543469edb769d13099c2b49608b38d8baf2c90",
+          "message": "[after] Move class and provides factory function generatio",
+          "timestamp": "2026-03-07T00:14:12-05:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/85543469edb769d13099c2b49608b38d8baf2c90"
+        },
+        "date": 1772863112630,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 33303.006,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: +1.52%"
           }
         ]
       }
