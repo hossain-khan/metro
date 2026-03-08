@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772863112629,
+  "lastUpdate": 1772945329497,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -8232,6 +8232,62 @@ window.BENCHMARK_DATA = {
             "value": 33303.006,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: +1.52%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "572cca60~1",
+          "message": "[before] Fix: Codegen error when consuming a scoped replace",
+          "timestamp": "2026-03-08T04:06:09Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/572cca60f5655d831727da3bf3a0820fee574b74"
+        },
+        "date": 1772945329497,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 31272.146,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "572cca60f5655d831727da3bf3a0820fee574b74",
+          "message": "[after] Fix: Codegen error when consuming a scoped replace",
+          "timestamp": "2026-03-08T04:06:09Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/572cca60f5655d831727da3bf3a0820fee574b74"
+        },
+        "date": 1772945329498,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 31352.878000000004,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: +0.26%"
           }
         ]
       }

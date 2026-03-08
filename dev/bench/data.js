@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772863112495,
+  "lastUpdate": 1772945329362,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Startup Benchmark": [
@@ -8232,6 +8232,62 @@ window.BENCHMARK_DATA = {
             "value": 0.2293781310485512,
             "unit": "ms/op",
             "extra": "after (HEAD)\ndelta: +0.75%\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "572cca60~1",
+          "message": "[before] Fix: Codegen error when consuming a scoped replace",
+          "timestamp": "2026-03-08T04:06:09Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/572cca60f5655d831727da3bf3a0820fee574b74"
+        },
+        "date": 1772945329362,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.27382851734340624,
+            "unit": "ms/op",
+            "extra": "before (HEAD~1)\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "572cca60f5655d831727da3bf3a0820fee574b74",
+          "message": "[after] Fix: Codegen error when consuming a scoped replace",
+          "timestamp": "2026-03-08T04:06:09Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/572cca60f5655d831727da3bf3a0820fee574b74"
+        },
+        "date": 1772945329363,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.2783418557184024,
+            "unit": "ms/op",
+            "extra": "after (HEAD)\ndelta: +1.65%\niterations: 10\nforks: 2\nthreads: 1"
           }
         ]
       }
