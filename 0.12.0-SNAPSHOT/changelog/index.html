@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../site-assets/img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
@@ -4793,14 +4793,20 @@
 <li><strong>[FIR]</strong>: Don&rsquo;t use a memoizing sequence for all FirSession instance as it seems that the IDE will mutate the underlying source lists in some cases.</li>
 <li><strong>[FIR]</strong>: Providers can now return instances of classes nested in the same container class.</li>
 <li><strong>[IR]</strong>: Fix codegen error when a scoped binding in a child graph supersedes the same-typed scoped binding from a parent graph and is used in a grandchild graph&rsquo;s multibinding. Basically, if graph A provides <code>Logger</code> and graph <code>B</code> also provides <code>Logger</code> (overriding <code>A</code>&rsquo;s), graph <code>C</code> would incorrectly try to get it from <code>A</code> instead of <code>B</code>.</li>
+<li><strong>[metrox-viewmodel-compose]</strong>: Pass <code>CreationExtras</code> to the <code>createViewModel</code> lamba for <code>assistedMetroViewModel</code> when using <code>ManualViewModelAssistedFactory</code></li>
 </ul>
 <h3 id="changes">Changes<a class="headerlink" href="#changes" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Test Kotlin 2.3.20-RC.</li>
+<li>Test Kotlin 2.3.20-RC2.</li>
 <li>Test Android Studio Panda 2</li>
 <li>Test Android Studio Panda 3 canaries</li>
 </ul>
 <h3 id="contributors">Contributors<a class="headerlink" href="#contributors" title="Permanent link">&para;</a></h3>
+<p>Special thanks to the following contributors for contributing to this release!</p>
+<ul>
+<li><a href="https://github.com/hvisser">@hvisser</a></li>
+</ul>
 <h2 id="0112">0.11.2<a class="headerlink" href="#0112" title="Permanent link">&para;</a></h2>
 <p><em>2026-03-02</em></p>
 <h3 id="new_1">New<a class="headerlink" href="#new_1" title="Permanent link">&para;</a></h3>
@@ -6353,7 +6359,7 @@ Possible fixes:
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 10, 2026 12:21:16 UTC">March 10, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 10, 2026 17:04:13 UTC">March 10, 2026</span>
   </span>
 
     
