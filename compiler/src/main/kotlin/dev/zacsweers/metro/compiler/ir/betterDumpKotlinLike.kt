@@ -12,10 +12,12 @@
 //   1. Renamed KotlinLikeDumper → BetterKotlinLikeDumper.
 //   2. IrSymbol.safeName: IrClass owners use nestedClassName() for full nested name chain.
 //   3. IrSymbol.safeParentClassName: uses nestedClassName() on the parent class.
-//   4. visitClass: prints nestedClassName(declaration) instead of declaration.name.asString().
-//   5. printMemberAccessExpressionWithNoIndent: callable reference receivers use nestedClassName().
-//   6. Removed VariableNameData/normalizedName (internal APIs) — replaced with simple name access.
-//   7. Local copy of stableOrdered() (internal API).
+//   4. printMemberAccessExpressionWithNoIndent: callable reference receivers use nestedClassName().
+//   5. Removed VariableNameData/normalizedName (internal APIs) — replaced with simple name access.
+//   6. Local copy of stableOrdered() (internal API).
+//
+// NOTE: visitClass is intentionally NOT changed — class declarations keep simple names.
+// Only references to classes in expressions use nested names.
 //
 // These changes ensure nested class names render fully qualified by their enclosing class chain
 // (e.g. "ExampleGraph.Impl.Companion" instead of just "Companion"), which is much more readable
@@ -71,6 +73,15 @@ public fun IrElement.betterDumpKotlinLike(
  * the simple name if it has no parent class.
  */
 private fun nestedClassName(declaration: IrClass): String {
+    if (declaration.isCompanion && declaration.parent is IrClass) {
+        // Render companion objects as "ParentClass /* companion */" instead of "ParentClass.Companion"
+        val parent = declaration.parent as IrClass
+        return if (parent.parent is IrClass) {
+            "${nestedClassName(parent)} /* companion */"
+        } else {
+            "${parent.name.asString()} /* companion */"
+        }
+    }
     val names = mutableListOf(declaration.name.asString())
     var current: IrDeclarationParent = declaration.parent
     while (current is IrClass) {
@@ -243,8 +254,7 @@ private class BetterKotlinLikeDumper(val p: Printer, val options: KotlinLikeDump
             )
         }
 
-        // METRO CHANGE: use full nested class name instead of just simple name
-        p.printWithNoIndent(nestedClassName(declaration))
+        p.printWithNoIndent(declaration.name.asString())
 
         declaration.printTypeParametersWithNoIndent()
         // TODO no test

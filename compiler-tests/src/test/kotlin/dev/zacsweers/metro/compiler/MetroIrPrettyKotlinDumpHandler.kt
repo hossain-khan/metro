@@ -1,7 +1,5 @@
-/*
- * Copyright 2010-2021 JetBrains s.r.o. and Kotlin Programming Language contributors.
- * Use of this source code is governed by the Apache 2.0 license that can be found in the license/LICENSE.txt file.
- */
+// Copyright (C) 2025 Zac Sweers
+// SPDX-License-Identifier: Apache-2.0
 package dev.zacsweers.metro.compiler
 
 import dev.zacsweers.metro.compiler.ir.betterDumpKotlinLike
@@ -12,8 +10,6 @@ import org.jetbrains.kotlin.test.backend.handlers.IrTextDumpHandler.Companion.co
 import org.jetbrains.kotlin.test.backend.handlers.IrTextDumpHandler.Companion.groupWithTestFiles
 import org.jetbrains.kotlin.test.backend.handlers.assertFileDoesntExist
 import org.jetbrains.kotlin.test.backend.ir.IrBackendInput
-import org.jetbrains.kotlin.test.directives.CodegenTestDirectives
-import org.jetbrains.kotlin.test.directives.CodegenTestDirectives.DUMP_KT_IR
 import org.jetbrains.kotlin.test.directives.CodegenTestDirectives.EXTERNAL_FILE
 import org.jetbrains.kotlin.test.directives.FirDiagnosticsDirectives
 import org.jetbrains.kotlin.test.directives.model.DirectivesContainer
@@ -27,6 +23,9 @@ import org.jetbrains.kotlin.test.utils.withExtension
 /**
  * Like [org.jetbrains.kotlin.test.backend.handlers.IrPrettyKotlinDumpHandler] but uses
  * [betterDumpKotlinLike] so that nested class names are fully qualified in the dump output.
+ *
+ * Triggered by [MetroDirectives.METRO_DUMP_KT_IR] instead of `DUMP_KT_IR` to avoid conflicts
+ * with the built-in handler.
  */
 class MetroIrPrettyKotlinDumpHandler(
   testServices: TestServices,
@@ -39,10 +38,10 @@ class MetroIrPrettyKotlinDumpHandler(
   private val dumper = MultiModuleInfoDumper("// MODULE: %s")
 
   override val directiveContainers: List<DirectivesContainer>
-    get() = listOf(CodegenTestDirectives, FirDiagnosticsDirectives)
+    get() = listOf(MetroDirectives, FirDiagnosticsDirectives)
 
   override fun processModule(module: TestModule, info: IrBackendInput) {
-    if (DUMP_KT_IR !in module.directives) return
+    if (MetroDirectives.METRO_DUMP_KT_IR !in module.directives) return
 
     val options =
       KotlinLikeDumpOptions(
@@ -76,7 +75,7 @@ class MetroIrPrettyKotlinDumpHandler(
     val expectedFile = moduleStructure.originalTestDataFiles.first().withExtension(extension)
 
     if (dumper.isEmpty()) {
-      assertions.assertFileDoesntExist(expectedFile, DUMP_KT_IR)
+      assertions.assertFileDoesntExist(expectedFile, MetroDirectives.METRO_DUMP_KT_IR)
     } else {
       assertions.assertEqualsToFile(expectedFile, dumper.generateResultingDump())
     }
