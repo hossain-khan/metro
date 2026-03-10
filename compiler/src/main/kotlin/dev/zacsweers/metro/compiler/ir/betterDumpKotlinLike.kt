@@ -27,6 +27,7 @@
 package dev.zacsweers.metro.compiler.ir
 
 import com.intellij.openapi.util.text.StringUtil
+import dev.zacsweers.metro.compiler.Origins
 import org.jetbrains.kotlin.descriptors.ClassKind
 import org.jetbrains.kotlin.descriptors.DescriptorVisibilities
 import org.jetbrains.kotlin.descriptors.DescriptorVisibility
@@ -862,7 +863,7 @@ private class BetterKotlinLikeDumper(val p: Printer, val options: KotlinLikeDump
     }
 
     private fun IrSimpleFunction.printAccessor(s: String, property: IrDeclaration) {
-        val isCustomAccessor = origin != IrDeclarationOrigin.DEFAULT_PROPERTY_ACCESSOR
+        val isCustomAccessor = origin != Origins.FirstParty.DEFAULT_PROPERTY_ACCESSOR
         printSimpleFunction(
             property,
             keyword = "",
