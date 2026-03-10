@@ -8,37 +8,44 @@ import kotlin.concurrent.AtomicReference
 
 private val UNINITIALIZED = Any()
 
+/**
+ * A [SuspendLazy] implementation using safe publication via compare-and-set.
+ *
+ * Multiple threads may compute the value redundantly, but only the first to CAS wins. Modeled after
+ * Kotlin stdlib's `SafePublicationLazyImpl`.
+ */
 internal class SafePublicationSuspendLazy<T>(initializer: suspend () -> T) :
   SuspendLazy<T>, SuspendProvider<T> {
-  private var initializer = AtomicReference<(suspend () -> T)?>(initializer)
-  private var valueRef = AtomicReference<Any?>(UNINITIALIZED)
+  private var initializer: (suspend () -> T)? = initializer
+  private val atomicValue = AtomicReference<Any?>(UNINITIALIZED)
 
   override suspend fun invoke(): T = value()
 
   @Suppress("UNCHECKED_CAST")
   override suspend fun value(): T {
-    val value = valueRef.value
-    if (value !== UNINITIALIZED) {
-      return value as T
+    val result = atomicValue.value
+    if (result !== UNINITIALIZED) {
+      return result as T
     }
 
-    val initializerValue = initializer.value
-    // if we see null in initializer here, it means that the value is already set by another thread
-    if (initializerValue != null) {
-      val newValue = initializerValue()
-      if (valueRef.compareAndSet(UNINITIALIZED, newValue)) {
-        initializer.value = null
-        return newValue
+    val initializerRef = initializer
+    // if the initializer is already null, another thread won the race
+    if (initializerRef != null) {
+      val newValue = initializerRef()
+      if (atomicValue.compareAndSet(UNINITIALIZED, newValue)) {
+        initializer = null
+        return newValue as T
       }
     }
-    return valueRef.value as T
+
+    return atomicValue.value as T
   }
 
-  override fun isInitialized(): Boolean = valueRef.value !== UNINITIALIZED
+  override fun isInitialized(): Boolean = atomicValue.value !== UNINITIALIZED
 
   override fun toString(): String =
     if (isInitialized()) {
-      "SuspendLazy(value=${valueRef.value})"
+      "SuspendLazy(value=${atomicValue.value})"
     } else {
       "SuspendLazy(value=<not initialized>)"
     }

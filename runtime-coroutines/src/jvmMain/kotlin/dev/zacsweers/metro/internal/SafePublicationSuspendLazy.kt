@@ -6,10 +6,15 @@ import dev.zacsweers.metro.SuspendLazy
 import dev.zacsweers.metro.SuspendProvider
 import java.io.Serializable
 import java.util.concurrent.atomic.AtomicReferenceFieldUpdater
-import kotlin.concurrent.Volatile
 
 private val UNINITIALIZED = Any()
 
+/**
+ * A [SuspendLazy] implementation using safe publication via compare-and-set.
+ *
+ * Multiple threads may compute the value redundantly, but only the first to CAS wins. Modeled after
+ * Kotlin stdlib's `SafePublicationLazyImpl`.
+ */
 internal class SafePublicationSuspendLazy<T>(initializer: suspend () -> T) :
   SuspendLazy<T>, SuspendProvider<T>, Serializable {
   @Volatile private var initializer: (suspend () -> T)? = initializer
@@ -24,15 +29,16 @@ internal class SafePublicationSuspendLazy<T>(initializer: suspend () -> T) :
       return result as T
     }
 
-    val initializerValue = initializer
-    // if we see null in initializer here, it means that the value is already set by another thread
-    if (initializerValue != null) {
-      val newValue = initializerValue()
+    val initializerRef = initializer
+    // if the initializer is already null, another thread won the race
+    if (initializerRef != null) {
+      val newValue = initializerRef()
       if (valueUpdater.compareAndSet(this, UNINITIALIZED, newValue)) {
         initializer = null
-        return newValue
+        return newValue as T
       }
     }
+
     return _value as T
   }
 
