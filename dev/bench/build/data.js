@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1773353455532,
+  "lastUpdate": 1773354351393,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -8344,6 +8344,62 @@ window.BENCHMARK_DATA = {
             "value": 32041.334000000003,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: +1.76%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "c38437df~1",
+          "message": "[before] Fix IR origin-based replacements in contributed gr",
+          "timestamp": "2026-03-12T21:44:00Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/c38437dfa1203aed0550acfaec47fe16776e370f"
+        },
+        "date": 1773354351393,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 30424.336,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "c38437dfa1203aed0550acfaec47fe16776e370f",
+          "message": "[after] Fix IR origin-based replacements in contributed gr",
+          "timestamp": "2026-03-12T21:44:00Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/c38437dfa1203aed0550acfaec47fe16776e370f"
+        },
+        "date": 1773354351394,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 30640.224,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: +0.71%"
           }
         ]
       }

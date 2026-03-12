@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1773353455393,
+  "lastUpdate": 1773354351258,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Startup Benchmark": [
@@ -8344,6 +8344,62 @@ window.BENCHMARK_DATA = {
             "value": 0.22842884275763892,
             "unit": "ms/op",
             "extra": "after (HEAD)\ndelta: -2.71%\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "c38437df~1",
+          "message": "[before] Fix IR origin-based replacements in contributed gr",
+          "timestamp": "2026-03-12T21:44:00Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/c38437dfa1203aed0550acfaec47fe16776e370f"
+        },
+        "date": 1773354351258,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.22750816824973202,
+            "unit": "ms/op",
+            "extra": "before (HEAD~1)\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "c38437dfa1203aed0550acfaec47fe16776e370f",
+          "message": "[after] Fix IR origin-based replacements in contributed gr",
+          "timestamp": "2026-03-12T21:44:00Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/c38437dfa1203aed0550acfaec47fe16776e370f"
+        },
+        "date": 1773354351259,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.22214569754620567,
+            "unit": "ms/op",
+            "extra": "after (HEAD)\ndelta: -2.36%\niterations: 10\nforks: 2\nthreads: 1"
           }
         ]
       }
