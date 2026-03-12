@@ -6,7 +6,7 @@ interface ExampleGraph {
   @MetroImplMarker
   class Impl : ExampleGraph {
     private val provideStringProvider: Provider<String>
-      field = DoubleCheck /* companion */.provider<Provider<String>, String>(delegate = ExampleGraph.Bindings.Companion.ProvideStringMetroFactory.create())
+      field = DoubleCheck/* companion */.provider<Provider<String>, String>(delegate = ExampleGraph.Bindings.Companion.ProvideStringMetroFactory.create())
 
     private constructor() /* primary */ {
       super/*Any*/()
@@ -35,7 +35,7 @@ interface ExampleGraph {
 
     @GraphFactoryInvokeFunctionMarker
     operator fun invoke(): ExampleGraph {
-      return ExampleGraph.Impl()
+      return Impl()
     }
 
   }
@@ -69,15 +69,15 @@ interface ExampleGraph {
         }
 
         fun create(): Factory<String> {
-          return ExampleGraph.Bindings.Companion.ProvideStringMetroFactory
+          return ProvideStringMetroFactory
         }
 
         fun provideString(): String {
-          return ExampleGraph.Bindings /* companion */.provideString()
+          return Bindings/* companion */.provideString()
         }
 
         override operator fun invoke(): String {
-          return ExampleGraph.Bindings.Companion.ProvideStringMetroFactory.provideString()
+          return ProvideStringMetroFactory.provideString()
         }
 
         @SingleIn(scope = AppScope::class)
