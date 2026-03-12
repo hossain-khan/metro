@@ -181,10 +181,10 @@ internal class BindingGraphGenerator(
         }
 
         val isInherited = typeKey in inheritedProviderFactoryKeys
-        if (
-          !providerFactory.annotations.isIntoMultibinding && typeKey in bindingLookup && isInherited
-        ) {
-          // If we already have a binding provisioned in this scenario, ignore the parent's version
+        if (typeKey in bindingLookup && isInherited) {
+          // If we already have a binding provisioned in this scenario, ignore the parent's version.
+          // This includes multibinding contributors — the same contribution discovered through
+          // multiple include/contribution paths should only be registered once.
           continue
         }
 
@@ -253,12 +253,10 @@ internal class BindingGraphGenerator(
         )
 
         val isInherited = typeKey in inheritedBindsCallableKeys
-        if (
-          !bindsCallable.callableMetadata.annotations.isIntoMultibinding &&
-            typeKey in bindingLookup &&
-            isInherited
-        ) {
-          // If we already have a binding provisioned in this scenario, ignore the parent's version
+        if (typeKey in bindingLookup && isInherited) {
+          // If we already have a binding provisioned in this scenario, ignore the parent's version.
+          // This includes multibinding contributors, so we ensure the same contribution discovered
+          // through multiple include/contribution paths should only be registered once.
           continue
         }
 
@@ -634,8 +632,11 @@ internal class BindingGraphGenerator(
             if (key == node.metroGraph?.generatedGraphExtensionData?.typeKey) continue
             // Skip if there's a dynamic replacement for this key
             if (key in node.dynamicTypeKeys) continue
-            val existingBinding = graph.findBinding(key)
-            if (existingBinding != null) {
+
+            // Use bindingLookup as the source of truth. graph.findBinding() only reflects keys
+            // added through graph.addBinding(), which is disabled when full graph validation is
+            // off.
+            if (key in bindingLookup) {
               // If we already have a binding provisioned in this scenario, ignore the parent's
               // version
               continue
