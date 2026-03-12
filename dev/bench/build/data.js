@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772945329497,
+  "lastUpdate": 1773353455532,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -8288,6 +8288,62 @@ window.BENCHMARK_DATA = {
             "value": 31352.878000000004,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: +0.26%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "21183a03~1",
+          "message": "[before] Fix assisted invoke parameter type wrapping in IR ",
+          "timestamp": "2026-03-12T17:26:40-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/21183a0380f3553f2b22c0b2a37a3b42b139989f"
+        },
+        "date": 1773353455532,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 31485.694,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "21183a0380f3553f2b22c0b2a37a3b42b139989f",
+          "message": "[after] Fix assisted invoke parameter type wrapping in IR ",
+          "timestamp": "2026-03-12T17:26:40-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/21183a0380f3553f2b22c0b2a37a3b42b139989f"
+        },
+        "date": 1773353455533,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 32041.334000000003,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: +1.76%"
           }
         ]
       }

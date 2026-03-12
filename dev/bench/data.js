@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1772945329362,
+  "lastUpdate": 1773353455393,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Startup Benchmark": [
@@ -8288,6 +8288,62 @@ window.BENCHMARK_DATA = {
             "value": 0.2783418557184024,
             "unit": "ms/op",
             "extra": "after (HEAD)\ndelta: +1.65%\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "21183a03~1",
+          "message": "[before] Fix assisted invoke parameter type wrapping in IR ",
+          "timestamp": "2026-03-12T17:26:40-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/21183a0380f3553f2b22c0b2a37a3b42b139989f"
+        },
+        "date": 1773353455393,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.23479381667719532,
+            "unit": "ms/op",
+            "extra": "before (HEAD~1)\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "21183a0380f3553f2b22c0b2a37a3b42b139989f",
+          "message": "[after] Fix assisted invoke parameter type wrapping in IR ",
+          "timestamp": "2026-03-12T17:26:40-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/21183a0380f3553f2b22c0b2a37a3b42b139989f"
+        },
+        "date": 1773353455394,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.22842884275763892,
+            "unit": "ms/op",
+            "extra": "after (HEAD)\ndelta: -2.71%\niterations: 10\nforks: 2\nthreads: 1"
           }
         ]
       }
