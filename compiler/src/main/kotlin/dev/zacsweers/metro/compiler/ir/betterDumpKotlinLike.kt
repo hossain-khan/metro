@@ -27,7 +27,8 @@
 // To update: diff this file against the upstream source and re-apply the marked changes.
 package dev.zacsweers.metro.compiler.ir
 
-import com.intellij.openapi.util.text.StringUtil
+// METRO CHANGE: removed com.intellij.openapi.util.text.StringUtil dependency,
+// replaced with local escapeString/escapeChar helpers below.
 import dev.zacsweers.metro.compiler.Origins
 import org.jetbrains.kotlin.descriptors.ClassKind
 import org.jetbrains.kotlin.descriptors.DescriptorVisibilities
@@ -1579,8 +1580,8 @@ private class BetterKotlinLikeDumper(
       val safeValue =
         when (kind) {
           // TODO no tests for escaping quotes (',")
-          is IrConstKind.Char -> StringUtil.escapeCharCharacters(value)
-          is IrConstKind.String -> StringUtil.escapeStringCharacters(value)
+          is IrConstKind.Char -> escapeString(value)
+          is IrConstKind.String -> escapeString(value)
           else -> value
         }
 
@@ -1890,5 +1891,26 @@ private class BetterKotlinLikeDumper(
   private companion object {
     private const val CUSTOM_MODIFIER_START = "/* "
     private const val CUSTOM_MODIFIER_END = " */"
+  }
+}
+
+// METRO CHANGE: local replacements for StringUtil.escapeStringCharacters / escapeCharCharacters
+// to avoid a dependency on com.intellij.openapi.util.text.StringUtil.
+private fun escapeString(s: String): String = buildString(s.length) {
+  for (c in s) {
+    when (c) {
+      '\n' -> append("\\n")
+      '\r' -> append("\\r")
+      '\t' -> append("\\t")
+      '\\' -> append("\\\\")
+      '\"' -> append("\\\"")
+      '\$' -> append("\\\$")
+      else ->
+        if (c < ' ') {
+          append("\\u${c.code.toString(16).padStart(4, '0')}")
+        } else {
+          append(c)
+        }
+    }
   }
 }
