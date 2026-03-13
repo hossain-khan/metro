@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1773359254166,
+  "lastUpdate": 1773360785898,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -8456,6 +8456,62 @@ window.BENCHMARK_DATA = {
             "value": 30520.052000000003,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: -3.81%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Tom Mulcahy",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Tom Mulcahy",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "38d78733~1",
+          "message": "[before] Fix duplicate multibindings error (#1960)",
+          "timestamp": "2026-03-12T23:32:20Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/38d78733f5ad29f609248302821a126475e98f79"
+        },
+        "date": 1773360785898,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 29394.988,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Tom Mulcahy",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Tom Mulcahy",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "38d78733f5ad29f609248302821a126475e98f79",
+          "message": "[after] Fix duplicate multibindings error (#1960)",
+          "timestamp": "2026-03-12T23:32:20Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/38d78733f5ad29f609248302821a126475e98f79"
+        },
+        "date": 1773360785899,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 29092.526,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: -1.03%"
           }
         ]
       }
