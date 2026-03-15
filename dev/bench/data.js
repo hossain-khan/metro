@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1773433148562,
+  "lastUpdate": 1773536511155,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Startup Benchmark": [
@@ -8568,6 +8568,62 @@ window.BENCHMARK_DATA = {
             "value": 0.23615726845582952,
             "unit": "ms/op",
             "extra": "after (HEAD)\ndelta: +1.97%\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "753f6862~1",
+          "message": "[before] Fix `Map<Class<*>, V>` interop in constructor inje",
+          "timestamp": "2026-03-14T20:18:21-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/753f686290608c8d0ece2d4e3e8b95dcb059ffe9"
+        },
+        "date": 1773536511155,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.22684724561630176,
+            "unit": "ms/op",
+            "extra": "before (HEAD~1)\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "753f686290608c8d0ece2d4e3e8b95dcb059ffe9",
+          "message": "[after] Fix `Map<Class<*>, V>` interop in constructor inje",
+          "timestamp": "2026-03-14T20:18:21-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/753f686290608c8d0ece2d4e3e8b95dcb059ffe9"
+        },
+        "date": 1773536511156,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.2377349250267929,
+            "unit": "ms/op",
+            "extra": "after (HEAD)\ndelta: +4.80%\niterations: 10\nforks: 2\nthreads: 1"
           }
         ]
       }

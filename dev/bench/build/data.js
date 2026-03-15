@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1773433148704,
+  "lastUpdate": 1773536511291,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -8568,6 +8568,62 @@ window.BENCHMARK_DATA = {
             "value": 29749.002,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: -4.70%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "753f6862~1",
+          "message": "[before] Fix `Map<Class<*>, V>` interop in constructor inje",
+          "timestamp": "2026-03-14T20:18:21-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/753f686290608c8d0ece2d4e3e8b95dcb059ffe9"
+        },
+        "date": 1773536511291,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 31802.354,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "753f686290608c8d0ece2d4e3e8b95dcb059ffe9",
+          "message": "[after] Fix `Map<Class<*>, V>` interop in constructor inje",
+          "timestamp": "2026-03-14T20:18:21-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/753f686290608c8d0ece2d4e3e8b95dcb059ffe9"
+        },
+        "date": 1773536511292,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 30846.2,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: -3.01%"
           }
         ]
       }
