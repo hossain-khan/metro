@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1773536511291,
+  "lastUpdate": 1773687482378,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -8624,6 +8624,62 @@ window.BENCHMARK_DATA = {
             "value": 30846.2,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: -3.01%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "3ea5b051~1",
+          "message": "[before] Fix binding supersession in multi-level graph exte",
+          "timestamp": "2026-03-16T18:12:56Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/3ea5b05170117086e1703b3909a4ab7461fb0b83"
+        },
+        "date": 1773687482378,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 33713.085999999996,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "3ea5b05170117086e1703b3909a4ab7461fb0b83",
+          "message": "[after] Fix binding supersession in multi-level graph exte",
+          "timestamp": "2026-03-16T18:12:56Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/3ea5b05170117086e1703b3909a4ab7461fb0b83"
+        },
+        "date": 1773687482379,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 31543.947999999997,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: -6.43%"
           }
         ]
       }

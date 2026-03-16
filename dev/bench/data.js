@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1773536511155,
+  "lastUpdate": 1773687482243,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Startup Benchmark": [
@@ -8624,6 +8624,62 @@ window.BENCHMARK_DATA = {
             "value": 0.2377349250267929,
             "unit": "ms/op",
             "extra": "after (HEAD)\ndelta: +4.80%\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "3ea5b051~1",
+          "message": "[before] Fix binding supersession in multi-level graph exte",
+          "timestamp": "2026-03-16T18:12:56Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/3ea5b05170117086e1703b3909a4ab7461fb0b83"
+        },
+        "date": 1773687482243,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.22643144502497176,
+            "unit": "ms/op",
+            "extra": "before (HEAD~1)\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "3ea5b05170117086e1703b3909a4ab7461fb0b83",
+          "message": "[after] Fix binding supersession in multi-level graph exte",
+          "timestamp": "2026-03-16T18:12:56Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/3ea5b05170117086e1703b3909a4ab7461fb0b83"
+        },
+        "date": 1773687482244,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.23215905108938678,
+            "unit": "ms/op",
+            "extra": "after (HEAD)\ndelta: +2.53%\niterations: 10\nforks: 2\nthreads: 1"
           }
         ]
       }
