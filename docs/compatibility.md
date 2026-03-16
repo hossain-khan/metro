@@ -59,17 +59,14 @@ IDEs have their own compatibility story with Kotlin versions. The Kotlin IDE plu
 
 The following Kotlin versions are tested via CI:
 
-| Kotlin Version  |
-|-----------------|
-| 2.4.0-dev-539   |
-| 2.3.20-dev-5706 |
-| 2.3.20-RC       |
-| 2.3.20-Beta2    |
-| 2.3.20-Beta1    |
-| 2.3.10          |
-| 2.3.0           |
-| 2.2.21          |
-| 2.2.20          |
+| Kotlin Version |
+|----------------|
+| 2.4.0-dev-539  |
+| 2.3.20         |
+| 2.3.10         |
+| 2.3.0          |
+| 2.2.21         |
+| 2.2.20         |
 
 !!! note
     Versions without dedicated compiler-compat modules will use the nearest available implementation _below_ that version. See [`compiler-compat/version-aliases.txt`](https://github.com/ZacSweers/metro/blob/main/compiler-compat/version-aliases.txt) for the full list.
@@ -80,9 +77,11 @@ The following Kotlin versions are tested via CI:
 
 The following IDE versions are tested via IDE integration tests:
 
-| IntelliJ IDEA | Android Studio               |
-|---------------|------------------------------|
-| 2025.3.2      | 2025.3.1.8 (Panda 1 Patch 1) |
+| IntelliJ IDEA | Android Studio                |
+|---------------|-------------------------------|
+| 2025.3.2      | 2025.3.1.8 (Panda 1 Patch 1)  |
+|               | 2025.3.2.6 (Panda 2)          |
+|               | 2025.3.3.2 (Panda 3 Canary 2) |
 
 ## Runtime Compatibility
 

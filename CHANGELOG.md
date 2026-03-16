@@ -4,15 +4,19 @@ Changelog
 **Unreleased**
 --------------
 
-### New
+0.11.3
+------
+
+_2026-03-16_
 
 ### Enhancements
 
 - **[IR]**: When reporting suspicious unused multibindings, include a hint about their use in graph extensions if applicable.
+- **[interop]**: Support `@ContributesBinding(..., multibinding = true)` interop with kotlin-inject-anvil.
 
 ### Fixes
 
-- **[FIR]**: Don't use a memoizing sequence for all FirSession instance as it seems that the IDE will mutate the underlying source lists in some cases.
+- **[FIR]**: Don't use a memoizing sequence for all `FirSession` instances as it seems that the IDE will mutate the underlying source lists in some cases.
 - **[FIR]**: Providers can now return instances of classes nested in the same container class.
 - **[IR]**: Fix `Map<Class<*>, V>` map key interop in constructor injection paths when `enableKClassToClassMapKeyInterop` is enabled.
 - **[IR]**: Fix codegen error when a scoped binding in a child graph supersedes the same-typed scoped binding from a parent graph and is used in a grandchild graph's multibinding. Basically, if graph A provides `Logger` and graph `B` also provides `Logger` (overriding `A`'s), graph `C` would incorrectly try to get it from `A` instead of `B`.
@@ -20,22 +24,27 @@ Changelog
 - **[IR]**: Fix `NoSuchFieldError` at runtime when sharded graphs access `@Includes` dependency properties.
 - **[IR]**: Check parent classes for `@Origin` annotations when performing IR-based contribution merging.
 - **[IR]**: Fix graph extensions inheriting stale bindings from ancestor graphs when a nearer parent already superseded them (e.g., a child's `@Binds` overriding a grandparent's `@Provides` of the same type).
-- **[interop]**: Support `@ContributesBinding(..., multibinding = true)` interop with kotlin-inject-anvil.
 - **[metrox-viewmodel-compose]**: Pass `CreationExtras` to the `createViewModel` lamba for `assistedMetroViewModel` when using `ManualViewModelAssistedFactory`
 
 ### Changes
 
 - Test Kotlin 2.3.20.
-  - Note that all the 2.3.20 pre-releases were tested up to this release, but are no longer tested after this release.
+  - Note that all the 2.3.20 pre-releases were tested up to this release but are no longer tested after this release.
 - Test Android Studio Panda 2
 - Test Android Studio Panda 3 canaries
 - Update shaded `androidx.tracing` to `2.0.0-alpha03`.
+- Update shaded Wire dep to `6.0.0`.
 
 ### Contributors
 
 Special thanks to the following contributors for contributing to this release!
 
+- [@hossain-khan](https://github.com/hossain-khan)
 - [@hvisser](https://github.com/hvisser)
+- [@jonamireh](https://github.com/jonamireh)
+- [@scottjasso](https://github.com/scottjasso)
+- [@tcmulcahy](https://github.com/tcmulcahy)
+- [@vRallev](https://github.com/vRallev)
 
 0.11.2
 ------
