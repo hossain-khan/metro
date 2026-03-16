@@ -16,6 +16,7 @@ import dev.zacsweers.metro.compiler.ir.findAnnotations
 import dev.zacsweers.metro.compiler.ir.isAnnotatedWithAny
 import dev.zacsweers.metro.compiler.ir.isBindingContainer
 import dev.zacsweers.metro.compiler.ir.isExternalParent
+import dev.zacsweers.metro.compiler.ir.isKiaIntoMultibinding
 import dev.zacsweers.metro.compiler.ir.mapKeyAnnotation
 import dev.zacsweers.metro.compiler.ir.qualifierAnnotation
 import dev.zacsweers.metro.compiler.ir.rawType
@@ -315,8 +316,14 @@ internal class ContributionTransformer(
         }
         in contributesBindingAnnotations -> {
           contributions +=
-            Contribution.ContributesBinding(contributingSymbol, annotation) {
-              listOf(buildBindsAnnotation())
+            if (annotation.isKiaIntoMultibinding()) {
+              Contribution.ContributesIntoSetBinding(contributingSymbol, annotation) {
+                listOf(buildIntoSetAnnotation(), buildBindsAnnotation())
+              }
+            } else {
+              Contribution.ContributesBinding(contributingSymbol, annotation) {
+                listOf(buildBindsAnnotation())
+              }
             }
         }
         in contributesIntoSetAnnotations -> {
