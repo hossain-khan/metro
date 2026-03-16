@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1773687482243,
+  "lastUpdate": 1773692606104,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Startup Benchmark": [
@@ -8680,6 +8680,62 @@ window.BENCHMARK_DATA = {
             "value": 0.23215905108938678,
             "unit": "ms/op",
             "extra": "after (HEAD)\ndelta: +2.53%\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "W Scott Jasso",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "W Scott Jasso",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "efdba41a~1",
+          "message": "[before] Interop for Kotlin-Inject-Anvil multibinding=true ",
+          "timestamp": "2026-03-16T19:45:07Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/efdba41a8f4b26c97f8d86eed2d05923d1d2e9ef"
+        },
+        "date": 1773692606104,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.23442708700973824,
+            "unit": "ms/op",
+            "extra": "before (HEAD~1)\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "W Scott Jasso",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "W Scott Jasso",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "efdba41a8f4b26c97f8d86eed2d05923d1d2e9ef",
+          "message": "[after] Interop for Kotlin-Inject-Anvil multibinding=true ",
+          "timestamp": "2026-03-16T19:45:07Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/efdba41a8f4b26c97f8d86eed2d05923d1d2e9ef"
+        },
+        "date": 1773692606105,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.22312415130867014,
+            "unit": "ms/op",
+            "extra": "after (HEAD)\ndelta: -4.82%\niterations: 10\nforks: 2\nthreads: 1"
           }
         ]
       }
