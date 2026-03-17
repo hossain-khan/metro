@@ -181,10 +181,10 @@ internal class BindingGraphGenerator(
         }
 
         val isInherited = typeKey in inheritedProviderFactoryKeys
-        if (
-          !providerFactory.annotations.isIntoMultibinding && typeKey in bindingLookup && isInherited
-        ) {
-          // If we already have a binding provisioned in this scenario, ignore the parent's version
+        if (typeKey in bindingLookup && isInherited) {
+          // If we already have a binding provisioned in this scenario, ignore the parent's version.
+          // This includes multibinding contributors — the same contribution discovered through
+          // multiple include/contribution paths should only be registered once.
           continue
         }
 
@@ -253,12 +253,10 @@ internal class BindingGraphGenerator(
         )
 
         val isInherited = typeKey in inheritedBindsCallableKeys
-        if (
-          !bindsCallable.callableMetadata.annotations.isIntoMultibinding &&
-            typeKey in bindingLookup &&
-            isInherited
-        ) {
-          // If we already have a binding provisioned in this scenario, ignore the parent's version
+        if (typeKey in bindingLookup && isInherited) {
+          // If we already have a binding provisioned in this scenario, ignore the parent's version.
+          // This includes multibinding contributors, so we ensure the same contribution discovered
+          // through multiple include/contribution paths should only be registered once.
           continue
         }
 
@@ -634,8 +632,11 @@ internal class BindingGraphGenerator(
             if (key == node.metroGraph?.generatedGraphExtensionData?.typeKey) continue
             // Skip if there's a dynamic replacement for this key
             if (key in node.dynamicTypeKeys) continue
-            val existingBinding = graph.findBinding(key)
-            if (existingBinding != null) {
+
+            // Use bindingLookup as the source of truth. graph.findBinding() only reflects keys
+            // added through graph.addBinding(), which is disabled when full graph validation is
+            // off.
+            if (key in bindingLookup) {
               // If we already have a binding provisioned in this scenario, ignore the parent's
               // version
               continue
@@ -695,10 +696,15 @@ internal class BindingGraphGenerator(
       // Skip @GraphPrivate factories — private contributions should not leak to child graphs.
       val isDynamicParent =
         extendedNode is GraphNode.Local && extendedNode.dynamicTypeKeys.isNotEmpty()
+
+      val alreadyCollectedKeys = providerFactoryKeys + bindsCallableKeys
+
       for ((key, factories) in extendedNode.providerFactories) {
         // Dynamic parent bindings take precedence over child's directly provided keys
         val isDynamicInParent = isDynamicParent && key in extendedNode.dynamicTypeKeys
-        if (key !in node.directlyProvidedKeys || isDynamicInParent) {
+        if (
+          isDynamicInParent || (key !in node.directlyProvidedKeys && key !in alreadyCollectedKeys)
+        ) {
           for (factory in factories) {
             if (!factory.annotations.isScoped && key !in extendedNode.graphPrivateKeys) {
               providerFactories.add(key to factory)
@@ -715,7 +721,9 @@ internal class BindingGraphGenerator(
       for ((key, callables) in extendedNode.bindsCallables) {
         // Dynamic parent bindings take precedence over child's directly provided keys
         val isDynamicInParent = isDynamicParent && key in extendedNode.dynamicTypeKeys
-        if (key !in node.directlyProvidedKeys || isDynamicInParent) {
+        if (
+          isDynamicInParent || (key !in node.directlyProvidedKeys && key !in alreadyCollectedKeys)
+        ) {
           for (callable in callables) {
             if (callable.source in extendedNode.graphPrivateKeys) continue
             bindsCallableKeys.add(key)

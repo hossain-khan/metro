@@ -250,6 +250,24 @@ public class BoxTestGenerated extends AbstractBoxTest {
       }
 
       @Test
+      @TestMetadata("ContributesBindingMixedRegularAndMultibinding.kt")
+      public void testContributesBindingMixedRegularAndMultibinding() {
+        runTest("compiler-tests/src/test/data/box/aggregation/interop/ContributesBindingMixedRegularAndMultibinding.kt");
+      }
+
+      @Test
+      @TestMetadata("ContributesBindingMultibindingInterop.kt")
+      public void testContributesBindingMultibindingInterop() {
+        runTest("compiler-tests/src/test/data/box/aggregation/interop/ContributesBindingMultibindingInterop.kt");
+      }
+
+      @Test
+      @TestMetadata("ContributesBindingMultibindingWithExplicitBoundType.kt")
+      public void testContributesBindingMultibindingWithExplicitBoundType() {
+        runTest("compiler-tests/src/test/data/box/aggregation/interop/ContributesBindingMultibindingWithExplicitBoundType.kt");
+      }
+
+      @Test
       @TestMetadata("ContributesMultibindingInteropAnnotationsAddBindingToSetOrMapWithMapKey.kt")
       public void testContributesMultibindingInteropAnnotationsAddBindingToSetOrMapWithMapKey() {
         runTest("compiler-tests/src/test/data/box/aggregation/interop/ContributesMultibindingInteropAnnotationsAddBindingToSetOrMapWithMapKey.kt");
@@ -1284,6 +1302,12 @@ public class BoxTestGenerated extends AbstractBoxTest {
       public void testRequiredAnnotationWorksWhenPresent() {
         runTest("compiler-tests/src/test/data/box/dependencygraph/optional/RequiredAnnotationWorksWhenPresent.kt");
       }
+
+      @Test
+      @TestMetadata("ScopedDefaultInSeparateCompilation.kt")
+      public void testScopedDefaultInSeparateCompilation() {
+        runTest("compiler-tests/src/test/data/box/dependencygraph/optional/ScopedDefaultInSeparateCompilation.kt");
+      }
     }
 
     @Nested
@@ -1381,6 +1405,12 @@ public class BoxTestGenerated extends AbstractBoxTest {
       @TestMetadata("ShardingWithCycle.kt")
       public void testShardingWithCycle() {
         runTest("compiler-tests/src/test/data/box/dependencygraph/sharding/ShardingWithCycle.kt");
+      }
+
+      @Test
+      @TestMetadata("ShardingWithIncludes.kt")
+      public void testShardingWithIncludes() {
+        runTest("compiler-tests/src/test/data/box/dependencygraph/sharding/ShardingWithIncludes.kt");
       }
 
       @Test
@@ -2025,6 +2055,12 @@ public class BoxTestGenerated extends AbstractBoxTest {
         }
 
         @Test
+        @TestMetadata("DuplicateMultibindingSourcesFromSharedIncludedModule.kt")
+        public void testDuplicateMultibindingSourcesFromSharedIncludedModule() {
+          runTest("compiler-tests/src/test/data/box/interop/dagger/anvil/DuplicateMultibindingSourcesFromSharedIncludedModule.kt");
+        }
+
+        @Test
         @TestMetadata("InheritedBindingsDoNotCauseDuplicates.kt")
         public void testInheritedBindingsDoNotCauseDuplicates() {
           runTest("compiler-tests/src/test/data/box/interop/dagger/anvil/InheritedBindingsDoNotCauseDuplicates.kt");
@@ -2073,6 +2109,12 @@ public class BoxTestGenerated extends AbstractBoxTest {
       @Test
       public void testAllFilesPresentInKclass() {
         KtTestUtil.assertAllTestsPresentByMetadataWithExcluded(this.getClass(), new File("compiler-tests/src/test/data/box/interop/kclass"), Pattern.compile("^(.+)\\.kt$"), null, true);
+      }
+
+      @Test
+      @TestMetadata("ClassMapKeyInjectConstructorInterop.kt")
+      public void testClassMapKeyInjectConstructorInterop() {
+        runTest("compiler-tests/src/test/data/box/interop/kclass/ClassMapKeyInjectConstructorInterop.kt");
       }
 
       @Test

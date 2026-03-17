@@ -1,3 +1,9 @@
+# Zensical - used for local dev and CI validation builds
+# https://zensical.org/
+zensical==0.0.27
+
+# MkDocs + Material + mike - still needed for versioned deployments via mike
+# See docs/zensical-migration.md for details
 click==8.3.1
 future==1.0.0
 Jinja2==3.1.6
@@ -24,5 +30,5 @@ tornado==6.5.5
 
 # Imaging dependencies for mkdocs-material social plugin
 # https://squidfunk.github.io/mkdocs-material/plugins/requirements/image-processing/
-cairosvg==2.8.2
+cairosvg==2.9.0
 pillow==12.1.1

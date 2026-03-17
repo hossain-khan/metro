@@ -957,6 +957,15 @@ internal fun FirAnnotation.excludesArgument(session: FirSession) =
 
 internal fun FirAnnotation.replacesArgument() = arrayArgument(Symbols.Names.replaces, index = 2)
 
+// KIA ContributesBinding parameter order:
+// 0 - scope
+// 1 - boundType
+// 2 - replaces
+// 3 - multibinding
+internal fun FirAnnotation.isKiaIntoMultibinding(): Boolean =
+  argumentAsOrNull<FirLiteralExpression>(Symbols.Names.multibinding, index = 3)?.value as? Boolean
+    ?: false
+
 internal fun FirAnnotation.rankValue(): Long {
   // Although the parameter is defined as an Int, the value we receive here may end up being
   // an Int or a Long so we need to handle both
