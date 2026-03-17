@@ -16,9 +16,8 @@ plugins {
   alias(libs.plugins.metro) apply false
   alias(libs.plugins.anvil) apply false
   alias(libs.plugins.mavenPublish) apply false // wat
-  id("metro.spotless")
 }
 
-allprojects { apply(plugin = "metro.spotless") }
-
 subprojects { apply(plugin = "metro.base") }
+
+tasks.maybeCreate("clean")
