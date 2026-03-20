@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
-    <title>ViewModelAssistedFactory</title>
+    <title>implicitClassKey</title>
 <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
     <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
@@ -43,7 +43,7 @@
         </div>
         <div class="navigation-controls">
         <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
-                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true" data-filter=":metrox-viewmodel/commonMain">common</button>
+                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true" data-filter=":runtime/commonMain">common</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
                 <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
@@ -54,7 +54,7 @@
                     </div>
                         <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":metrox-viewmodel/commonMain" data-filter=":metrox-viewmodel/commonMain">
+                                <input type="checkbox" class="checkbox--input" id=":runtime/commonMain" data-filter=":runtime/commonMain">
                                 <span class="checkbox--icon"></span>
                                 common
                             </label>
@@ -90,36 +90,12 @@
         </nav>
         <div id="resizer" class="resizer" data-item-type="BAR"></div>
         <div id="main" data-item-type="SECTION" role="main">
-<div class="main-content" data-page-type="classlike" id="content" pageids="metrox-viewmodel::dev.zacsweers.metrox.viewmodel/ViewModelAssistedFactory///PointingToDeclaration//238095393">
-  <div class="breadcrumbs"><a href="../../index.html">metrox-viewmodel</a><span class="delimiter">/</span><a href="../index.html">dev.zacsweers.metrox.viewmodel</a><span class="delimiter">/</span><span class="current">ViewModelAssistedFactory</span></div>
+<div class="main-content" data-page-type="member" id="content" pageids="runtime::dev.zacsweers.metro/MapKey/implicitClassKey/#/PointingToDeclaration//673331665">
+  <div class="breadcrumbs"><a href="../../index.html">runtime</a><span class="delimiter">/</span><a href="../index.html">dev.zacsweers.metro</a><span class="delimiter">/</span><a href="index.html">MapKey</a><span class="delimiter">/</span><span class="current">implicitClassKey</span></div>
   <div class="cover ">
-    <h1 class="cover"><span>View</span><wbr><span>Model</span><wbr><span>Assisted</span><wbr><span><span>Factory</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":metrox-viewmodel/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">ViewModelAssistedFactory</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/ZacSweers/metro//tree/main/metrox-viewmodel/src/src/commonMain/kotlin/dev/zacsweers/metrox/viewmodel/ViewModelKeys.kt#L86">source</a>)</span></span></div><p class="paragraph">Factory interface for creating <span data-unresolved-link="androidx.lifecycle/ViewModel///PointingToDeclaration/">ViewModel</span> instances with assisted injection using <span data-unresolved-link="androidx.lifecycle.viewmodel/CreationExtras///PointingToDeclaration/">CreationExtras</span>.</p><p class="paragraph">Implement this interface in an <code class="lang-kotlin">@AssistedFactory</code>-annotated class to create ViewModels that require runtime parameters. The factory receives <span data-unresolved-link="androidx.lifecycle.viewmodel/CreationExtras///PointingToDeclaration/">CreationExtras</span> which can be used to access Android-specific ViewModel creation context (such as <code class="lang-kotlin">SavedStateHandle</code>).</p><p class="paragraph">Example:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">@AssistedInject<br>class DetailsViewModel(@Assisted val id: String) : ViewModel() {<br>  // ...<br><br>  @AssistedFactory<br>  @ViewModelAssistedFactoryKey(Factory::class)<br>  @ContributesIntoMap(AppScope::class)<br>  fun interface Factory : ViewModelAssistedFactory {<br>    override fun create(extras: CreationExtras): DetailsViewModel {<br>      return create(extras.get&lt;String&gt;(KEY_ID))<br>    }<br><br>    fun create(@Assisted id: String): DetailsViewModel<br>  }<br>}</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div></div></div>
+    <h1 class="cover"><span>implicit</span><wbr><span>Class</span><wbr><span><span>Key</span></span></h1>
   </div>
-  <div class="tabbedcontent">
-    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
-    <div class="tabs-section-body">
-      <div data-togglable="FUNCTION">
-        <h2 class="tableheader">Functions</h2>
-        <div class="table"><a data-name="1736492585%2FFunctions%2F238095393" anchor-label="create" id="1736492585%2FFunctions%2F238095393" data-filterable-set=":metrox-viewmodel/commonMain"></a>
-          <div class="table-row table-row_content" data-filterable-current=":metrox-viewmodel/commonMain" data-filterable-set=":metrox-viewmodel/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="create.html"><span><span>create</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1736492585%2FFunctions%2F238095393"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":metrox-viewmodel/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="create.html"><span class="token function">create</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">extras<span class="token operator">: </span><span data-unresolved-link="androidx.lifecycle.viewmodel/CreationExtras///PointingToDeclaration/">CreationExtras</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="androidx.lifecycle/ViewModel///PointingToDeclaration/">ViewModel</span></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":runtime/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="implicit-class-key.html">implicitClassKey</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/ZacSweers/metro//tree/main/runtime/src/src/commonMain/kotlin/dev/zacsweers/metro/MapKey.kt#L104">source</a>)</span></span></div><p class="paragraph">If true, indicates that the given map key annotation's single value parameter should implicitly be treated as a class key.</p><p class="paragraph">Requirements:</p><ul><li><p class="paragraph">Must have a single value parameter of type <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.reflect/-k-class/index.html">kotlin.reflect.KClass</a>.</p></li><li><p class="paragraph">It must have a default value of <code class="lang-kotlin">Nothing::class</code>.</p></li></ul></div></div>
 </div>
     <div class="footer">
         <div class="footer--container">
