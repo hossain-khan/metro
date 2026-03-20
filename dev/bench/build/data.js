@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1773873296689,
+  "lastUpdate": 1773980435151,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -8848,6 +8848,62 @@ window.BENCHMARK_DATA = {
             "value": 31199.806,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: +2.74%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "ee7b5a88~1",
+          "message": "[before] Add implicitClassKey (#2024)",
+          "timestamp": "2026-03-20T03:38:05Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/ee7b5a88862b456648e604126e99550948d209b4"
+        },
+        "date": 1773980435151,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 29716.140000000003,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "ee7b5a88862b456648e604126e99550948d209b4",
+          "message": "[after] Add implicitClassKey (#2024)",
+          "timestamp": "2026-03-20T03:38:05Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/ee7b5a88862b456648e604126e99550948d209b4"
+        },
+        "date": 1773980435152,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 29552.402000000002,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: -0.55%"
           }
         ]
       }
