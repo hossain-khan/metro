@@ -6,13 +6,45 @@ Changelog
 
 ### New
 
+#### [**[MEEP-2014]**](https://github.com/ZacSweers/metro/discussions/2014) Implicit class (map) keys
+
+`MapKey.implicitClassKey` is a new API to allow for class-based map keys to have their class parameters inferred on classes and `@Binds` declarations.
+
+This means that instead of redeclaring the annotated class in the key, for example `@ViewModelKey`, you can now omit it and it will be inferred.
+
+```kotlin
+@ViewModelKey // <-- implicitly HomeViewModel::class
+@ContributesIntoMap(AppScope::class)
+class HomeViewModel : ViewModel()
+```
+
+For classes, the implicit type is the annotated class. For `@Binds` declarations, the receiver or single parameter are the implicit type.
+
+You may still specify an explicit type. The compiler will warn you if you specify a redundant one. If you need to suppress this diagnostic temporarily to ease migration, you can add `-Xwarning-level=MAP_KEY_REDUNDANT_IMPLICIT_CLASS_KEY:disabled` to your compiler arguments.
+
+The compiler will also error if you attempt to do this on `@Provides` declarations, as those cannot be inferred.
+
+Metro's first-party class-based map keys (like `@ClassKey`, `@ViewModelKey`, etc.) now support this. Custom map keys can opt-in to this by setting `MapKey.implicitClassKey` to true. See its doc for more details.
+
+```kotlin
+@MapKey(implicitClassKey = true)
+annotation class ViewModelKey(val value: KClass<out ViewModel> = Nothing::class)
+```
+
+#### Misc
+
 - **[metrox-viewmodel]** Add `mingwX64` target.
+
+### Enhancements
+
+- **[FIR]** Add diagnostic to ensure map key annotations support `FUNCTION` targets if they have a `@Target` annotation.
 
 ### Fixes
 
 - **[IR]** Fix `IllegalArgumentException` thrown when there are multiple top-level functions with the same name but only one is annotated with `@Inject`.
 - **[IR]** Only store a given binding container's own provider factories in metro metadata. This resolves a bug where we could end up duplicate-processing upstream providers in dynamic factories.
 - **[IR]** Fix a severity conversion compat function call for Kotlin 2.3.20+.
+- **[IR]** Ensure stable sort of output `SuspiciousUnusedMultibinding` locations.
 
 ### Changes
 
