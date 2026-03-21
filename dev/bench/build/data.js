@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1774025406707,
+  "lastUpdate": 1774112588149,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -9016,6 +9016,62 @@ window.BENCHMARK_DATA = {
             "value": 30004.51,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: -0.67%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "2d715a04~1",
+          "message": "[before] Remove AnnotationTarget.CLASS from IntoMap and Int",
+          "timestamp": "2026-03-21T12:26:35-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/2d715a040f1a65fc1a683b7af4f9852becafb2af"
+        },
+        "date": 1774112588149,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 28150.483999999997,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "2d715a040f1a65fc1a683b7af4f9852becafb2af",
+          "message": "[after] Remove AnnotationTarget.CLASS from IntoMap and Int",
+          "timestamp": "2026-03-21T12:26:35-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/2d715a040f1a65fc1a683b7af4f9852becafb2af"
+        },
+        "date": 1774112588150,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 28735.097999999998,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: +2.08%"
           }
         ]
       }

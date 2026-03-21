@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1774025406557,
+  "lastUpdate": 1774112588005,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Startup Benchmark": [
@@ -9016,6 +9016,62 @@ window.BENCHMARK_DATA = {
             "value": 0.2511482439632166,
             "unit": "ms/op",
             "extra": "after (HEAD)\ndelta: +5.49%\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "2d715a04~1",
+          "message": "[before] Remove AnnotationTarget.CLASS from IntoMap and Int",
+          "timestamp": "2026-03-21T12:26:35-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/2d715a040f1a65fc1a683b7af4f9852becafb2af"
+        },
+        "date": 1774112588005,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.22869703780188266,
+            "unit": "ms/op",
+            "extra": "before (HEAD~1)\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "2d715a040f1a65fc1a683b7af4f9852becafb2af",
+          "message": "[after] Remove AnnotationTarget.CLASS from IntoMap and Int",
+          "timestamp": "2026-03-21T12:26:35-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/2d715a040f1a65fc1a683b7af4f9852becafb2af"
+        },
+        "date": 1774112588006,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.22740101311399824,
+            "unit": "ms/op",
+            "extra": "after (HEAD)\ndelta: -0.57%\niterations: 10\nforks: 2\nthreads: 1"
           }
         ]
       }
