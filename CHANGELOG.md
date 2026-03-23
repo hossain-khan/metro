@@ -38,6 +38,7 @@ annotation class ViewModelKey(val value: KClass<out ViewModel> = Nothing::class)
 ### Enhancements
 
 - **[FIR]** Add diagnostic to ensure map key annotations support `FUNCTION` targets if they have a `@Target` annotation.
+- **[FIR]** Improve annotation argument matching to only use fully resolved names or none at all. This helps avoid situations in the past with interop where an argument at the same index and type but different name could incorrectly be used.
 
 ### Fixes
 
@@ -58,6 +59,7 @@ annotation class ViewModelKey(val value: KClass<out ViewModel> = Nothing::class)
 - `@Assisted.value` is formally deprecated now. See the [docs](https://zacsweers.github.io/metro/latest/injection-types/#assisted-injection) on why in case you missed this! TL;DR, Metro matches by parameter names going forward.
 - Metro's main branch now builds with Kotlin `2.3.20` but still targets Kotlin 2.2 for its runtime artifacts and supports 2.2.20 all to 2.4.0 dev builds in its compiler.
 - Remove deprecated `macosX64`, `tvosX64`, and `watchosX64` targets.
+- Update Kotlin 2.4.0 compat support from `2.4.0-dev-539` to `2.4.0-dev-2124`. This should support the upcoming IntelliJ 2026.1 release as well as Kotlin 2.4.0-Beta1.
 
 ### Contributors
 
