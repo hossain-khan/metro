@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1774112588149,
+  "lastUpdate": 1774240874044,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -9072,6 +9072,62 @@ window.BENCHMARK_DATA = {
             "value": 28735.097999999998,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: +2.08%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Bradley Campbell",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Bradley Campbell",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "5bea0156~1",
+          "message": "[before] Fix compiler crash when replacing scoped bindings ",
+          "timestamp": "2026-03-23T04:03:57Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/5bea0156e067e9c14de42559409b2c5cf2515e10"
+        },
+        "date": 1774240874044,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 30034.616,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Bradley Campbell",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Bradley Campbell",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "5bea0156e067e9c14de42559409b2c5cf2515e10",
+          "message": "[after] Fix compiler crash when replacing scoped bindings ",
+          "timestamp": "2026-03-23T04:03:57Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/5bea0156e067e9c14de42559409b2c5cf2515e10"
+        },
+        "date": 1774240874045,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 27296.188000000002,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: -9.12%"
           }
         ]
       }

@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1774112588005,
+  "lastUpdate": 1774240873903,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Startup Benchmark": [
@@ -9072,6 +9072,62 @@ window.BENCHMARK_DATA = {
             "value": 0.22740101311399824,
             "unit": "ms/op",
             "extra": "after (HEAD)\ndelta: -0.57%\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Bradley Campbell",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Bradley Campbell",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "5bea0156~1",
+          "message": "[before] Fix compiler crash when replacing scoped bindings ",
+          "timestamp": "2026-03-23T04:03:57Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/5bea0156e067e9c14de42559409b2c5cf2515e10"
+        },
+        "date": 1774240873903,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.2242261392258738,
+            "unit": "ms/op",
+            "extra": "before (HEAD~1)\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Bradley Campbell",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Bradley Campbell",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "5bea0156e067e9c14de42559409b2c5cf2515e10",
+          "message": "[after] Fix compiler crash when replacing scoped bindings ",
+          "timestamp": "2026-03-23T04:03:57Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/5bea0156e067e9c14de42559409b2c5cf2515e10"
+        },
+        "date": 1774240873904,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.22783127775002474,
+            "unit": "ms/op",
+            "extra": "after (HEAD)\ndelta: +1.61%\niterations: 10\nforks: 2\nthreads: 1"
           }
         ]
       }
