@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1774240874044,
+  "lastUpdate": 1774275472964,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -9128,6 +9128,62 @@ window.BENCHMARK_DATA = {
             "value": 27296.188000000002,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: -9.12%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "82e230e6~1",
+          "message": "[before] CompilerCompat: Include compat modules only when t",
+          "timestamp": "2026-03-23T09:41:16-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/82e230e6e8bf32e25dc1e3f9a98b03f542977e62"
+        },
+        "date": 1774275472964,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 29980.621999999996,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "82e230e6e8bf32e25dc1e3f9a98b03f542977e62",
+          "message": "[after] CompilerCompat: Include compat modules only when t",
+          "timestamp": "2026-03-23T09:41:16-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/82e230e6e8bf32e25dc1e3f9a98b03f542977e62"
+        },
+        "date": 1774275472965,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 28513.203999999998,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: -4.89%"
           }
         ]
       }
