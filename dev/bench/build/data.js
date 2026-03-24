@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1774301170200,
+  "lastUpdate": 1774328622831,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -9296,6 +9296,62 @@ window.BENCHMARK_DATA = {
             "value": 31797.732,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: +0.24%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "94e7da02~1",
+          "message": "[before] Fix `argumentAsOrNull` misreading named annotation",
+          "timestamp": "2026-03-24T00:19:43-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/94e7da02daad1746e1d8119fe99afa28ed0256bc"
+        },
+        "date": 1774328622831,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 30799.488,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "94e7da02daad1746e1d8119fe99afa28ed0256bc",
+          "message": "[after] Fix `argumentAsOrNull` misreading named annotation",
+          "timestamp": "2026-03-24T00:19:43-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/94e7da02daad1746e1d8119fe99afa28ed0256bc"
+        },
+        "date": 1774328622832,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 29870.721999999998,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: -3.02%"
           }
         ]
       }

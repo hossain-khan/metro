@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1774301170064,
+  "lastUpdate": 1774328622686,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Startup Benchmark": [
@@ -9296,6 +9296,62 @@ window.BENCHMARK_DATA = {
             "value": 0.22667108056288657,
             "unit": "ms/op",
             "extra": "after (HEAD)\ndelta: -1.02%\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "94e7da02~1",
+          "message": "[before] Fix `argumentAsOrNull` misreading named annotation",
+          "timestamp": "2026-03-24T00:19:43-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/94e7da02daad1746e1d8119fe99afa28ed0256bc"
+        },
+        "date": 1774328622686,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.22608364561974495,
+            "unit": "ms/op",
+            "extra": "before (HEAD~1)\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "94e7da02daad1746e1d8119fe99afa28ed0256bc",
+          "message": "[after] Fix `argumentAsOrNull` misreading named annotation",
+          "timestamp": "2026-03-24T00:19:43-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/94e7da02daad1746e1d8119fe99afa28ed0256bc"
+        },
+        "date": 1774328622687,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.22187194501634155,
+            "unit": "ms/op",
+            "extra": "after (HEAD)\ndelta: -1.86%\niterations: 10\nforks: 2\nthreads: 1"
           }
         ]
       }
