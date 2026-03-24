@@ -4,6 +4,11 @@ Changelog
 **Unreleased**
 --------------
 
+0.12.0
+------
+
+_2026-03-24_
+
 ### New
 
 #### [**[MEEP-2014]**](https://github.com/ZacSweers/metro/discussions/2014) Implicit class (map) keys
@@ -55,13 +60,14 @@ annotation class ViewModelKey(val value: KClass<out ViewModel> = Nothing::class)
 
 - The Metro compiler now requires JVM 21+. Note that the runtime JVM artifacts still target 11 unless otherwise documented.
 - The Metro Gradle plugin now requires JVM 21+.
-- The Metro Gradle plugin now requires Gradle 9+.
-- The Metro Gradle plugin now targets Kotlin 2.2.
+- The Metro Gradle plugin now requires Gradle 9+. Note that if you do not use Kotlin Gradle DSL, it may work on older versions but YMMV.
+- The Metro Gradle plugin now targets Kotlin `2.2`.
 - `@Assisted.value` is formally deprecated now. See the [docs](https://zacsweers.github.io/metro/latest/injection-types/#assisted-injection) on why in case you missed this! TL;DR, Metro matches by parameter names going forward.
 - Metro's main branch now builds with Kotlin `2.3.20` but still targets Kotlin 2.2 for its runtime artifacts and supports 2.2.20 all to 2.4.0 dev builds in its compiler.
 - Remove deprecated `macosX64`, `tvosX64`, and `watchosX64` targets.
-- Update Kotlin 2.4.0 compat support from `2.4.0-dev-539` to `2.4.0-dev-2124`. This should support the upcoming IntelliJ 2026.1 release as well as Kotlin 2.4.0-Beta1.
-- Test IntelliJ 2026.1 RC.
+- Update Kotlin 2.4 compat support from `2.4.0-dev-539` to `2.4.0-dev-2124`. This should support the upcoming IntelliJ 2026.1 release as well as the upcoming Kotlin `2.4.0-Beta1`.
+- Test IntelliJ `2026.1 RC`.
+- Update shaded Wire dependency to `6.1.0`.
 
 ### Contributors
 
@@ -73,6 +79,7 @@ Special thanks to the following contributors for contributing to this release!
 - [@jonamireh](https://github.com/jonamireh)
 - [@kevinguitar](https://github.com/kevinguitar)
 - [@svenjacobs](https://github.com/svenjacobs)
+- [@vRallev](https://github.com/vRallev)
 
 0.11.4
 ------
