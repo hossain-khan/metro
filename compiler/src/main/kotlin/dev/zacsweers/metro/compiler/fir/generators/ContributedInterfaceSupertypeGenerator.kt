@@ -6,6 +6,7 @@ import dev.zacsweers.metro.compiler.MetroOptions
 import dev.zacsweers.metro.compiler.api.fir.MetroContributionExtension
 import dev.zacsweers.metro.compiler.compat.CompatContext
 import dev.zacsweers.metro.compiler.computeOutrankedBindings
+import dev.zacsweers.metro.compiler.expectAs
 import dev.zacsweers.metro.compiler.expectAsOrNull
 import dev.zacsweers.metro.compiler.fir.FirTypeKey
 import dev.zacsweers.metro.compiler.fir.MetroFirTypeResolver
@@ -192,7 +193,7 @@ internal class ContributedInterfaceSupertypeGenerator(
         if (originClass.isBindingContainer(session)) {
           val hasMatchingScope =
             originClass.annotationsIn(session, session.classIds.contributesToAnnotations).any {
-              it.resolvedScopeClassId(typeResolver) == scopeClassId
+              it.resolvedScopeClassId(session, typeResolver) == scopeClassId
             }
           put(originClass.classId, hasMatchingScope)
           continue
@@ -213,7 +214,7 @@ internal class ContributedInterfaceSupertypeGenerator(
             nestedClass
               ?.annotationsIn(session, setOf(Symbols.ClassIds.metroContribution))
               ?.single()
-              ?.resolvedScopeClassId(typeResolver)
+              ?.resolvedScopeClassId(session, typeResolver)
           if (scopeId == scopeClassId) {
             put(originClass.classId.createNestedClassId(nestedClassName), false)
           }
@@ -235,7 +236,7 @@ internal class ContributedInterfaceSupertypeGenerator(
     val graphAnnotation = declaration.graphAnnotation() ?: return false
 
     // Can't check the scope class ID here but we'll check in computeAdditionalSupertypes
-    return graphAnnotation.scopeArgument() != null
+    return graphAnnotation.scopeArgument(session) != null
   }
 
   override fun FirDeclarationPredicateRegistrar.registerPredicates() {
@@ -281,8 +282,8 @@ internal class ContributedInterfaceSupertypeGenerator(
 
     val scopes =
       buildSet {
-          graphAnnotation.resolvedScopeClassId(typeResolver)?.let(::add)
-          graphAnnotation.resolvedAdditionalScopesClassIds(typeResolver).let(::addAll)
+          graphAnnotation.resolvedScopeClassId(session, typeResolver)?.let(::add)
+          graphAnnotation.resolvedAdditionalScopesClassIds(session, typeResolver).let(::addAll)
         }
         .filterNotTo(mutableSetOf()) { it == StandardClassIds.Nothing }
 
@@ -321,7 +322,7 @@ internal class ContributedInterfaceSupertypeGenerator(
       TreeMap<ClassId, ConeKotlinType>(compareBy(ClassId::asString)).apply {
         for (contribution in contributionClassLikes) {
           // This is always the `MetroContribution`, the contribution is its parent
-          val classId = contribution.classId?.parentClassId ?: continue
+          val classId = contribution.expectAs<ConeKotlinType>().classId?.parentClassId ?: continue
           put(classId, contribution)
         }
       }
@@ -466,7 +467,8 @@ internal class ContributedInterfaceSupertypeGenerator(
     contributionClassLikes
       .mapNotNull {
         val symbol = it.toClassSymbol(session)
-        if (contributionMappingsByClassId[it.classId] == true) {
+        // TODO remove expectAs in 2.3.20
+        if (contributionMappingsByClassId[it.expectAs<ConeKotlinType>().classId] == true) {
           // It's a binding container, use as-is
           symbol
         } else {
@@ -479,8 +481,8 @@ internal class ContributedInterfaceSupertypeGenerator(
 
         contributingType
           .annotationsIn(session, session.classIds.allContributesAnnotationsWithContainers)
-          .filter { it.scopeArgument()?.resolveClassId(localTypeResolver) in scopes }
-          .flatMap { annotation -> annotation.resolvedReplacedClassIds(localTypeResolver) }
+          .filter { it.scopeArgument(session)?.resolveClassId(localTypeResolver) in scopes }
+          .flatMap { annotation -> annotation.resolvedReplacedClassIds(session, localTypeResolver) }
       }
       .distinct()
       .forEach { replacedClassId ->
@@ -576,11 +578,16 @@ internal class ContributedInterfaceSupertypeGenerator(
           contributingType
             .annotationsIn(session, session.classIds.contributesBindingAnnotationsWithContainers)
             .mapNotNull { annotation ->
-              val scope = annotation.resolvedScopeClassId(typeResolver) ?: return@mapNotNull null
+              val scope =
+                annotation.resolvedScopeClassId(session, typeResolver) ?: return@mapNotNull null
               if (scope !in allScopes) return@mapNotNull null
 
               val explicitBindingMissingMetadata =
-                annotation.argumentAsOrNull<FirAnnotation>(Symbols.Names.binding, index = 1)
+                annotation.argumentAsOrNull<FirAnnotation>(
+                  session,
+                  Symbols.Names.binding,
+                  index = 1,
+                )
 
               if (explicitBindingMissingMetadata != null) {
                 // This is a case where an explicit binding is specified but we receive the argument
@@ -606,7 +613,7 @@ internal class ContributedInterfaceSupertypeGenerator(
                       boundType,
                       contributingType.qualifierAnnotation(session, typeResolver),
                     ),
-                  rank = annotation.rankValue(),
+                  rank = annotation.rankValue(session),
                 )
               }
             }

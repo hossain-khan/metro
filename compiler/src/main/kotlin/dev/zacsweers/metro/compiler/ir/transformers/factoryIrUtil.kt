@@ -9,6 +9,7 @@ import dev.zacsweers.metro.compiler.ir.IrAnnotation
 import dev.zacsweers.metro.compiler.ir.IrMetroContext
 import dev.zacsweers.metro.compiler.ir.IrTypeKey
 import dev.zacsweers.metro.compiler.ir.annotationClass
+import dev.zacsweers.metro.compiler.ir.annotationsIn
 import dev.zacsweers.metro.compiler.ir.copyParameterDefaultValues
 import dev.zacsweers.metro.compiler.ir.createIrBuilder
 import dev.zacsweers.metro.compiler.ir.deepRemapperFor
@@ -108,7 +109,7 @@ internal fun generateStaticCreateFunction(
           copyQualifiers = true,
           typeRemapper = { type -> typeRemapper.remapType(type) },
         )
-        context.metadataDeclarationRegistrar.registerFunctionAsMetadataVisible(this)
+        context.metadataDeclarationRegistrarCompat.registerFunctionAsMetadataVisible(this)
       }
   transformStaticCreateFunction(
     factoryClass = factoryClass,
@@ -181,10 +182,12 @@ private fun transformStaticCreateFunction(
       for ((i, param) in regularParameters.withIndex()) {
         val sourceParam = parameters.regularParameters[i]
         sourceParam.typeKey.qualifier?.let { qualifier ->
-          context.pluginContext.metadataDeclarationRegistrar.addMetadataVisibleAnnotationsToElement(
-            param,
-            qualifier.ir.deepCopyWithSymbols(),
-          )
+          with(context) {
+            metadataDeclarationRegistrarCompat.addMetadataVisibleAnnotationsToElement(
+              param,
+              listOf(qualifier.ir.deepCopyWithSymbols()),
+            )
+          }
         }
       }
     }
@@ -248,7 +251,7 @@ internal fun generateStaticNewInstanceFunction(
           copyQualifiers = true,
           typeRemapper = { type -> typeRemapper.remapType(type) },
         )
-        context.metadataDeclarationRegistrar.registerFunctionAsMetadataVisible(this)
+        context.metadataDeclarationRegistrarCompat.registerFunctionAsMetadataVisible(this)
       }
   transformStaticNewInstanceFunction(
     sourceMetroParameters = sourceMetroParameters,
@@ -378,7 +381,7 @@ internal fun generateMetadataVisibleMirrorFunction(
         // this for
         body = context.createIrBuilder(symbol).run { irExprBodySafe(stubExpression()) }
       }
-  context.metadataDeclarationRegistrar.registerFunctionAsMetadataVisible(function)
+  context.metadataDeclarationRegistrarCompat.registerFunctionAsMetadataVisible(function)
   return function
 }
 
@@ -428,8 +431,15 @@ internal fun IrFunction.addParameters(
           defaultValue = context.createIrBuilder(symbol).run { irExprBody(stubExpression()) }
         }
       }
-      .applyIf(copyQualifiers) {
-        param.typeKey.qualifier?.let { annotations += it.ir.deepCopyWithSymbols() }
+      .apply {
+        // Propagate @OptionalBinding if present
+        param.asValueParameter
+          .annotationsIn(context.metroSymbols.classIds.optionalBindingAnnotations)
+          .firstOrNull()
+          ?.let { annotations += it.deepCopyWithSymbols() }
+        if (copyQualifiers) {
+          param.typeKey.qualifier?.let { annotations += it.ir.deepCopyWithSymbols() }
+        }
       }
       .also { onParam(param.typeKey, it) }
   }

@@ -9,6 +9,7 @@ import dev.zacsweers.metro.compiler.LOG_PREFIX
 import dev.zacsweers.metro.compiler.MetroLogger
 import dev.zacsweers.metro.compiler.MetroOptions
 import dev.zacsweers.metro.compiler.compat.CompatContext
+import dev.zacsweers.metro.compiler.compat.IrGeneratedDeclarationsRegistrarCompat
 import dev.zacsweers.metro.compiler.createDiagnosticReportPath
 import dev.zacsweers.metro.compiler.exitProcessing
 import dev.zacsweers.metro.compiler.ir.cache.IrCache
@@ -46,6 +47,7 @@ internal interface IrMetroContext : IrPluginContext, CompatContext {
     get() = this
 
   val pluginContext: IrPluginContext
+  val metadataDeclarationRegistrarCompat: IrGeneratedDeclarationsRegistrarCompat
   val metroSymbols: Symbols
   val options: MetroOptions
   val debug: Boolean
@@ -162,6 +164,11 @@ internal interface IrMetroContext : IrPluginContext, CompatContext {
       expectActualTracker: ExpectActualTracker,
     ) : IrMetroContext, IrPluginContext by pluginContext, CompatContext by compatContext {
       private var reportedErrors = 0
+
+      override val metadataDeclarationRegistrarCompat:
+        IrGeneratedDeclarationsRegistrarCompat by lazy {
+        compatContext.createIrGeneratedDeclarationsRegistrar(this)
+      }
 
       override fun onErrorReported() {
         reportedErrors++
