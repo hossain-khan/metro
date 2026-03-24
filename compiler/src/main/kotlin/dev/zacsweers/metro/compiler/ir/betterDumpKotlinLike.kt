@@ -165,7 +165,7 @@ import org.jetbrains.kotlin.utils.Printer
  */
 public fun IrElement.betterDumpKotlinLike(
   options: KotlinLikeDumpOptions = KotlinLikeDumpOptions(),
-  classNameTransformer: (context: IrDeclaration?, declaration: IrClass) -> String =
+  classNameTransformer: (context: IrDeclaration?, declaration: IrDeclarationWithName) -> String =
     ::nestedClassNameRenderer,
 ): String {
   val sb = StringBuilder()
@@ -203,7 +203,7 @@ private class BetterKotlinLikeDumper(
   val p: Printer,
   val options: KotlinLikeDumpOptions,
   // METRO CHANGE: customizable class name rendering
-  val classNameTransformer: (context: IrDeclaration?, declaration: IrClass) -> String,
+  val classNameTransformer: (context: IrDeclaration?, declaration: IrDeclarationWithName) -> String,
 ) : IrVisitor<Unit, IrDeclaration?>() {
   private var currentWhenStmt: IrWhen? = null
   // METRO CHANGE: track current container for classNameTransformer context
@@ -217,8 +217,7 @@ private class BetterKotlinLikeDumper(
       } else {
         when (val owner = owner) {
           is IrVariable -> owner /* hello */.name.asString()
-          is IrClass -> classNameTransformer(currentContainer, owner)
-          is IrDeclarationWithName -> owner.name.toString()
+          is IrDeclarationWithName -> classNameTransformer(currentContainer, owner)
           else -> "/* ERROR: unnamed symbol $signature */"
         }
       }
@@ -1896,21 +1895,22 @@ private class BetterKotlinLikeDumper(
 
 // METRO CHANGE: local replacements for StringUtil.escapeStringCharacters / escapeCharCharacters
 // to avoid a dependency on com.intellij.openapi.util.text.StringUtil.
-private fun escapeString(s: String): String = buildString(s.length) {
-  for (c in s) {
-    when (c) {
-      '\n' -> append("\\n")
-      '\r' -> append("\\r")
-      '\t' -> append("\\t")
-      '\\' -> append("\\\\")
-      '\"' -> append("\\\"")
-      '\$' -> append("\\\$")
-      else ->
-        if (c < ' ') {
-          append("\\u${c.code.toString(16).padStart(4, '0')}")
-        } else {
-          append(c)
-        }
+private fun escapeString(s: String): String =
+  buildString(s.length) {
+    for (c in s) {
+      when (c) {
+        '\n' -> append("\\n")
+        '\r' -> append("\\r")
+        '\t' -> append("\\t")
+        '\\' -> append("\\\\")
+        '\"' -> append("\\\"")
+        '\$' -> append("\\\$")
+        else ->
+          if (c < ' ') {
+            append("\\u${c.code.toString(16).padStart(4, '0')}")
+          } else {
+            append(c)
+          }
+      }
     }
   }
-}

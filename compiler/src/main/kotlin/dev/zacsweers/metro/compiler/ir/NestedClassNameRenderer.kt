@@ -5,6 +5,7 @@ package dev.zacsweers.metro.compiler.ir
 import org.jetbrains.kotlin.ir.declarations.IrClass
 import org.jetbrains.kotlin.ir.declarations.IrDeclaration
 import org.jetbrains.kotlin.ir.declarations.IrDeclarationParent
+import org.jetbrains.kotlin.ir.declarations.IrDeclarationWithName
 
 /**
  * A [classNameTransformer][betterDumpKotlinLike] that renders nested class names relative to the
@@ -16,7 +17,11 @@ import org.jetbrains.kotlin.ir.declarations.IrDeclarationParent
  *
  * Companion objects render as `ParentClass/* companion */` instead of `ParentClass.Companion`.
  */
-internal fun nestedClassNameRenderer(context: IrDeclaration?, declaration: IrClass): String {
+internal fun nestedClassNameRenderer(
+  context: IrDeclaration?,
+  declaration: IrDeclarationWithName,
+): String {
+  if (declaration !is IrClass) return declaration.name.asString()
   if (declaration.isCompanion && declaration.parent is IrClass) {
     val parent = declaration.parent as IrClass
     val parentName = nestedClassNameRenderer(context, parent)
