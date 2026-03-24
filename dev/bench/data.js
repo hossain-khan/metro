@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1774328622686,
+  "lastUpdate": 1774363859416,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Startup Benchmark": [
@@ -9352,6 +9352,62 @@ window.BENCHMARK_DATA = {
             "value": 0.22187194501634155,
             "unit": "ms/op",
             "extra": "after (HEAD)\ndelta: -1.86%\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "e8aee6bd~1",
+          "message": "[before] Preserve nullability when remapping parameters wit",
+          "timestamp": "2026-03-24T10:11:45-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/e8aee6bdf8b80ce79eb3b9a0c8acb23bb7155d9f"
+        },
+        "date": 1774363859416,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.22209882910316142,
+            "unit": "ms/op",
+            "extra": "before (HEAD~1)\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "e8aee6bdf8b80ce79eb3b9a0c8acb23bb7155d9f",
+          "message": "[after] Preserve nullability when remapping parameters wit",
+          "timestamp": "2026-03-24T10:11:45-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/e8aee6bdf8b80ce79eb3b9a0c8acb23bb7155d9f"
+        },
+        "date": 1774363859417,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.23355559136574655,
+            "unit": "ms/op",
+            "extra": "after (HEAD)\ndelta: +5.16%\niterations: 10\nforks: 2\nthreads: 1"
           }
         ]
       }

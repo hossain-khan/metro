@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1774328622831,
+  "lastUpdate": 1774363859551,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -9352,6 +9352,62 @@ window.BENCHMARK_DATA = {
             "value": 29870.721999999998,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: -3.02%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "e8aee6bd~1",
+          "message": "[before] Preserve nullability when remapping parameters wit",
+          "timestamp": "2026-03-24T10:11:45-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/e8aee6bdf8b80ce79eb3b9a0c8acb23bb7155d9f"
+        },
+        "date": 1774363859551,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 32697.778000000002,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "e8aee6bdf8b80ce79eb3b9a0c8acb23bb7155d9f",
+          "message": "[after] Preserve nullability when remapping parameters wit",
+          "timestamp": "2026-03-24T10:11:45-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/e8aee6bdf8b80ce79eb3b9a0c8acb23bb7155d9f"
+        },
+        "date": 1774363859552,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 30650.102000000003,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: -6.26%"
           }
         ]
       }
