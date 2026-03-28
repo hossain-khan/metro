@@ -1998,36 +1998,60 @@
 </tr>
 <tr>
 <td>Multi-module aggregation</td>
-<td style="text-align: center;">✅</td>
-<td>✅</td>
-<td style="text-align: center;">🟡</td>
-<td style="text-align: center;">Kotlin <code>2.3.20</code></td>
-<td style="text-align: center;">Kotlin <code>2.3.20</code></td>
-<td style="text-align: center;">Kotlin <code>2.3.20</code></td>
-<td style="text-align: center;">Kotlin <code>2.3.20</code></td>
-<td style="text-align: center;">Kotlin <code>2.3.20</code></td>
+<td style="text-align: center;">✅<br/>Kotlin <code>2.3.0</code>+</td>
+<td>✅<br/>Kotlin <code>2.3.20</code>+</td>
+<td style="text-align: center;">🟡<br/>Kotlin <code>2.3.21</code>+</td>
+<td style="text-align: center;">✅<br/>Kotlin <code>2.3.20</code>+</td>
+<td style="text-align: center;">✅<br/>Kotlin <code>2.3.20</code>+</td>
+<td style="text-align: center;">✅<br/>Kotlin <code>2.3.20</code>+</td>
+<td style="text-align: center;">✅<br/>Kotlin <code>2.3.20</code>+</td>
+<td style="text-align: center;">✅<br/>Kotlin <code>2.3.20</code>+</td>
 </tr>
 <tr>
 <td>Top-level function injection</td>
-<td style="text-align: center;">✅</td>
-<td>✅</td>
-<td style="text-align: center;">🟡</td>
-<td style="text-align: center;">Kotlin <code>2.3.20</code></td>
-<td style="text-align: center;">Kotlin <code>2.3.20</code></td>
-<td style="text-align: center;">Kotlin <code>2.3.20</code></td>
-<td style="text-align: center;">Kotlin <code>2.3.20</code></td>
-<td style="text-align: center;">Kotlin <code>2.3.20</code></td>
+<td style="text-align: center;">✅<br/>Kotlin <code>2.3.0</code>+</td>
+<td>✅<br/>Kotlin <code>2.3.20</code>+</td>
+<td style="text-align: center;">🟡<br/>Kotlin <code>2.3.21</code>+</td>
+<td style="text-align: center;">✅<br/>Kotlin <code>2.3.20</code>+</td>
+<td style="text-align: center;">✅<br/>Kotlin <code>2.3.20</code>+</td>
+<td style="text-align: center;">✅<br/>Kotlin <code>2.3.20</code>+</td>
+<td style="text-align: center;">✅<br/>Kotlin <code>2.3.20</code>+</td>
+<td style="text-align: center;">✅<br/>Kotlin <code>2.3.20</code>+</td>
 </tr>
 </tbody>
 </table>
 <p>🟡 — Kotlin/JS does not yet support generating top-level declarations from compiler plugins on any version with incremental compilation enabled. Please star <a href="https://youtrack.jetbrains.com/issue/KT-82395">https://youtrack.jetbrains.com/issue/KT-82395</a> and <a href="https://youtrack.jetbrains.com/issue/KT-82989">https://youtrack.jetbrains.com/issue/KT-82989</a>.</p>
-<p><strong>Legend:</strong><br />
-- <strong>WASM</strong>: wasmJs, wasmWasi<br />
-- <strong>Apple</strong>: macOS (x64, arm64), iOS (x64, arm64, simulatorArm64), watchOS (x64, arm32, arm64, deviceArm64, simulatorArm64), tvOS (x64, arm64, simulatorArm64)<br />
-- <strong>Linux</strong>: linuxX64, linuxArm64<br />
-- <strong>Windows</strong>: mingwX64<br />
-- <strong>Android Native</strong>: androidNativeArm32, androidNativeArm64, androidNativeX86, androidNativeX64</p>
-<p>Cross-platform aggregation features are only supported on JVM and Android at the moment but should be available in Kotlin 2.3.20+. Follow <a href="https://github.com/ZacSweers/metro/issues/460">this issue</a>.</p>
+<p><strong>Legend:</strong></p>
+<ul>
+<li><strong>WASM</strong>:<ul>
+<li><code>wasmJs</code></li>
+<li><code>wasmWasi</code></li>
+</ul>
+</li>
+<li><strong>Apple</strong>:<ul>
+<li>macOS (<code>arm64</code>)</li>
+<li>iOS (<code>x64</code>, <code>arm64</code>, <code>simulatorArm64</code>)</li>
+<li>watchOS (<code>arm32</code>, <code>arm64</code>, <code>deviceArm64</code>, <code>simulatorArm64</code>)</li>
+<li>tvOS (<code>arm64</code>, <code>simulatorArm64</code>)</li>
+</ul>
+</li>
+<li><strong>Linux</strong>:<ul>
+<li><code>linuxX64</code></li>
+<li><code>linuxArm64</code></li>
+</ul>
+</li>
+<li><strong>Windows</strong>:<ul>
+<li><code>mingwX64</code></li>
+</ul>
+</li>
+<li><strong>Android Native</strong>:<ul>
+<li><code>androidNativeArm32</code></li>
+<li><code>androidNativeArm64</code></li>
+<li><code>androidNativeX86</code></li>
+<li><code>androidNativeX64</code></li>
+</ul>
+</li>
+</ul>
 <p>When mixing contributions between common and platform-specific source sets, you must define your final <code>@DependencyGraph</code> in the platform-specific code. This is because a graph defined in commonMain wouldn’t have full visibility of contributions from platform-specific types. A good pattern for this is to define your canonical graph in commonMain <em>without</em> a <code>@DependencyGraph</code> annotation and then a <code>{Platform}{Graph}</code> type in the platform source set that extends it and does have the <code>@DependencyGraph</code>. Metro automatically exposes bindings of the base graph type on the graph for any injections that need it.</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// In commonMain</span>
 <span class="kd">interface</span><span class="w"> </span><span class="nc">AppGraph</span><span class="w"> </span><span class="p">{</span>
@@ -2066,7 +2090,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 9, 2026 19:54:10 UTC">February 9, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 28, 2026 21:31:48 UTC">March 28, 2026</span>
   </span>
 
     
