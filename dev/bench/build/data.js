@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1774635841969,
+  "lastUpdate": 1774721372334,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -9520,6 +9520,62 @@ window.BENCHMARK_DATA = {
             "value": 20353.276,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: -2.46%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "renovate[bot]",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "renovate[bot]",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "fdf7c7d0~1",
+          "message": "[before] Update dependency androidx.tracing:tracing-wire-de",
+          "timestamp": "2026-03-28T17:27:49Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/fdf7c7d0d81bb5f35851de1f181842886c86fee4"
+        },
+        "date": 1774721372334,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 20968.314000000002,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "renovate[bot]",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "renovate[bot]",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "fdf7c7d0d81bb5f35851de1f181842886c86fee4",
+          "message": "[after] Update dependency androidx.tracing:tracing-wire-de",
+          "timestamp": "2026-03-28T17:27:49Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/fdf7c7d0d81bb5f35851de1f181842886c86fee4"
+        },
+        "date": 1774721372335,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 21339.772,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: +1.77%"
           }
         ]
       }
