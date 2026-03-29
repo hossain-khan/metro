@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1774721372207,
+  "lastUpdate": 1774749970090,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Startup Benchmark": [
@@ -9576,6 +9576,62 @@ window.BENCHMARK_DATA = {
             "value": 0.2297721126779682,
             "unit": "ms/op",
             "extra": "after (HEAD)\ndelta: +1.68%\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "54d197ae~1",
+          "message": "[before] Support Kotlin JS FIR gen (#2062)",
+          "timestamp": "2026-03-29T01:28:52Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/54d197aeaa0f21d8cc3540fa6e703c7b595fc94b"
+        },
+        "date": 1774749970090,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.23554348191827615,
+            "unit": "ms/op",
+            "extra": "before (HEAD~1)\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "54d197aeaa0f21d8cc3540fa6e703c7b595fc94b",
+          "message": "[after] Support Kotlin JS FIR gen (#2062)",
+          "timestamp": "2026-03-29T01:28:52Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/54d197aeaa0f21d8cc3540fa6e703c7b595fc94b"
+        },
+        "date": 1774749970091,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.23567384533515706,
+            "unit": "ms/op",
+            "extra": "after (HEAD)\ndelta: +0.06%\niterations: 10\nforks: 2\nthreads: 1"
           }
         ]
       }

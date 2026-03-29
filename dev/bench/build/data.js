@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1774721372334,
+  "lastUpdate": 1774749970202,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -9576,6 +9576,62 @@ window.BENCHMARK_DATA = {
             "value": 21339.772,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: +1.77%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "54d197ae~1",
+          "message": "[before] Support Kotlin JS FIR gen (#2062)",
+          "timestamp": "2026-03-29T01:28:52Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/54d197aeaa0f21d8cc3540fa6e703c7b595fc94b"
+        },
+        "date": 1774749970202,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 22448.892,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "54d197aeaa0f21d8cc3540fa6e703c7b595fc94b",
+          "message": "[after] Support Kotlin JS FIR gen (#2062)",
+          "timestamp": "2026-03-29T01:28:52Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/54d197aeaa0f21d8cc3540fa6e703c7b595fc94b"
+        },
+        "date": 1774749970203,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 21993.612,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: -2.03%"
           }
         ]
       }
