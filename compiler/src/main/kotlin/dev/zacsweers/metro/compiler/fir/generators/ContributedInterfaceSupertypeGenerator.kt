@@ -464,6 +464,7 @@ internal class ContributedInterfaceSupertypeGenerator(
 
     // Process replacements from native contributions
     val unmatchedReplacements = mutableSetOf<ClassId>()
+
     contributionClassLikes
       .mapNotNull {
         val symbol = it.toClassSymbol(session)
@@ -476,6 +477,27 @@ internal class ContributedInterfaceSupertypeGenerator(
           symbol?.getContainingClassSymbol()
         }
       }
+      .plus(
+        // When generateContributionProviders is enabled, binding contributions are represented by
+        // provider-holder binding containers that only carry @Origin. Scan the origin class too so
+        // its original @ContributesBinding(replaces = ...) annotations still participate in FIR
+        // merging, matching the IR fallback logic.
+        contributionMappingsByClassId.toList().mapNotNull { (containerClassId, isBindingContainer)
+          ->
+          if (!isBindingContainer) return@mapNotNull null
+
+          val containerSymbol =
+            containerClassId.toSymbol(session)?.expectAsOrNull<FirRegularClassSymbol>()
+              ?: return@mapNotNull null
+          val localTypeResolver = typeResolverFor(containerSymbol) ?: return@mapNotNull null
+          val originClassId =
+            containerSymbol.originClassId(session, localTypeResolver) ?: return@mapNotNull null
+          val originClass =
+            originClassId.toSymbol(session)?.expectAsOrNull<FirClassSymbol<*>>()
+              ?: return@mapNotNull null
+          originClass
+        }
+      )
       .flatMap { contributingType ->
         val localTypeResolver = typeResolverFor(contributingType) ?: return@flatMap emptySequence()
 

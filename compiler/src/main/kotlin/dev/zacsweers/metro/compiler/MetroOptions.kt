@@ -848,6 +848,17 @@ internal enum class MetroOption(val raw: RawMetroOption<*>) {
       required = false,
       allowMultipleOccurrences = false,
     )
+  ),
+  GENERATE_CONTRIBUTION_PROVIDERS(
+    RawMetroOption.boolean(
+      name = "generate-contribution-providers",
+      defaultValue = false,
+      valueDescription = "<true | false>",
+      description =
+        "When enabled, generates top-level contribution provider classes with @Provides functions instead of nested @Binds interfaces. This allows implementation classes to remain internal/private.",
+      required = false,
+      allowMultipleOccurrences = false,
+    )
   );
 
   companion object {
@@ -1010,6 +1021,8 @@ public data class MetroOptions(
     MetroOption.ENABLE_FUNCTION_PROVIDERS.raw.defaultValue.expectAs(),
   public val enableKClassToClassInterop: Boolean =
     MetroOption.ENABLE_KCLASS_TO_CLASS_INTEROP.raw.defaultValue.expectAs(),
+  public val generateContributionProviders: Boolean =
+    MetroOption.GENERATE_CONTRIBUTION_PROVIDERS.raw.defaultValue.expectAs(),
 ) {
 
   public val reportsEnabled: Boolean
@@ -1129,6 +1142,7 @@ public data class MetroOptions(
     public var parallelThreads: Int = base.parallelThreads
     public var enableFunctionProviders: Boolean = base.enableFunctionProviders
     public var enableKClassToClassInterop: Boolean = base.enableKClassToClassInterop
+    public var generateContributionProviders: Boolean = base.generateContributionProviders
 
     private fun FqName.classId(name: String): ClassId {
       return ClassId(this, Name.identifier(name))
@@ -1308,6 +1322,7 @@ public data class MetroOptions(
         parallelThreads = parallelThreads,
         enableFunctionProviders = enableFunctionProviders,
         enableKClassToClassInterop = enableKClassToClassInterop,
+        generateContributionProviders = generateContributionProviders,
       )
     }
 
@@ -1337,7 +1352,16 @@ public data class MetroOptions(
     if (!validateKotlinJsIC(compilerVersion, configuration, onError)) {
       valid = false
     }
-    // Future validations go here
+
+    val contributionProvidersAreEnabledWithoutFirHintGen =
+      generateContributionProviders && generateContributionHints && !generateContributionHintsInFir
+    if (contributionProvidersAreEnabledWithoutFirHintGen) {
+      onError(
+        "generateContributionProviders with generateContributionHints requires " +
+          "generateContributionHintsInFir to also be enabled."
+      )
+      valid = false
+    }
     return valid
   }
 
@@ -1598,6 +1622,8 @@ public data class MetroOptions(
           ENABLE_FUNCTION_PROVIDERS -> enableFunctionProviders = configuration.getAsBoolean(entry)
           ENABLE_KCLASS_TO_CLASS_INTEROP ->
             enableKClassToClassInterop = configuration.getAsBoolean(entry)
+          GENERATE_CONTRIBUTION_PROVIDERS ->
+            generateContributionProviders = configuration.getAsBoolean(entry)
         }
       }
     }
