@@ -26,10 +26,18 @@ class HomeFactory(...) : BaseFactory<HomeFactory>
 ### Fixes
 
 - **[FIR]** Make `allSessions` lookup lazy to avoid lockups in the IDE.
+- **[IR]** Exclude generated data class `copy` functions from `@Includes` accessor candidates.
+- **[IR]** Exclude destructuring component functions from `@Includes` accessor candidates.
 
 ### Changes
 
 - Update shaded `androidx.tracing` to 2.0.0-alpha04.
+
+### Contributors
+
+Special thanks to the following contributors for contributing to this release!
+
+- [@KevinGuitar](https://github.com/KevinGuitar)
 
 0.12.0
 ------
