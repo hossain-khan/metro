@@ -21,10 +21,11 @@ class HomeFactory(...) : BaseFactory<HomeFactory>
 
 ### Changes
 
+- Removed `@Assisted.value`. See the [docs](https://zacsweers.github.io/metro/latest/injection-types/#assisted-injection) on why in case you missed this! TL;DR, Metro matches by parameter names going forward.
 - Remove deprecated compiler options and Gradle extension properties.
     - `chunkFieldInits`
     - `transformProvidersToPrivate`
-    - `publicProviderSeverity`
+    - `publicProviderSeverity` (use `publicScopedProviderSeverity`)
     - `assistedIdentifierSeverity`
     - `generateThrowsAnnotation`
 
