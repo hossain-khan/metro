@@ -1086,6 +1086,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#generatecontributionproviders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        generateContributionProviders
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#implementation-notes" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2091,6 +2102,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#generatecontributionproviders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        generateContributionProviders
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#implementation-notes" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2368,6 +2390,21 @@
 <span class="nd">@Inject</span>
 <span class="kd">class</span><span class="w"> </span><span class="nc">HomeFactory</span><span class="p">(...)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">BaseFactory</span><span class="o">&lt;</span><span class="n">HomeFactory</span><span class="o">&gt;</span>
 </code></pre></div>
+<h2 id="generatecontributionproviders"><code>generateContributionProviders</code><a class="headerlink" href="#generatecontributionproviders" title="Permanent link">&para;</a></h2>
+<p>If you enable the new <code>generateContributionProviders</code> feature, Metro will instead generate top-level <code>@Provides</code> declarations that mirror the injected class&rsquo;s inputs but only return its <em>bound type</em>. This means the annotated class can remain <code>internal</code>, which both helps encapsulation and incremental compilation.</p>
+<div class="highlight"><pre><span></span><code>interface Base
+
+@ContributesBinding(AppScope::class)
+@Inject
+internal class Impl : Base
+
+// Works across modules!
+@DependencyGraph(AppScope::class)
+interface AppGraph {
+  val base: Base
+}
+</code></pre></div>
+<p>The tradeoff is that <code>Impl</code> is no longer available directly on the graph.</p>
 <h2 id="implementation-notes">Implementation notes<a class="headerlink" href="#implementation-notes" title="Permanent link">&para;</a></h2>
 <p>This leans on Kotlin’s ability to put generic type parameters on annotations. That in turn allows for both generic bound types and to contribute map bindings to multiple map keys.</p>
 <p>Because it’s a first-party feature, there’s no need for intermediary “merged” components like kotlin-inject-anvil and anvil-ksp do.</p>
@@ -2392,7 +2429,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 30, 2026 19:52:49 UTC">March 30, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 30, 2026 22:07:09 UTC">March 30, 2026</span>
   </span>
 
     
