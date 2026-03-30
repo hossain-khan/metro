@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1774895644250,
+  "lastUpdate": 1774899333338,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -9800,6 +9800,62 @@ window.BENCHMARK_DATA = {
             "value": 22364.847999999998,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: +4.26%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "b5a34350~1",
+          "message": "[before] Support generics in top-level function inject (#20",
+          "timestamp": "2026-03-30T18:58:11Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/b5a34350f0dbe9d0363775bb1b1b46c4a2889eb7"
+        },
+        "date": 1774899333338,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 21376.09,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "b5a34350f0dbe9d0363775bb1b1b46c4a2889eb7",
+          "message": "[after] Support generics in top-level function inject (#20",
+          "timestamp": "2026-03-30T18:58:11Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/b5a34350f0dbe9d0363775bb1b1b46c4a2889eb7"
+        },
+        "date": 1774899333339,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 21353.036,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: -0.11%"
           }
         ]
       }
