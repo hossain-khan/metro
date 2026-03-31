@@ -39,7 +39,9 @@ import org.jetbrains.kotlin.fir.declarations.FirDeclarationOrigin
 import org.jetbrains.kotlin.fir.declarations.FirMemberDeclaration
 import org.jetbrains.kotlin.fir.declarations.FirResolvePhase
 import org.jetbrains.kotlin.fir.declarations.FirTypeParameterRef
+import org.jetbrains.kotlin.fir.declarations.declaredFunctions
 import org.jetbrains.kotlin.fir.declarations.findArgumentByName
+import org.jetbrains.kotlin.fir.declarations.getAnnotationByClassId
 import org.jetbrains.kotlin.fir.declarations.getBooleanArgument
 import org.jetbrains.kotlin.fir.declarations.getDeprecationsProvider
 import org.jetbrains.kotlin.fir.declarations.getTargetType
@@ -72,8 +74,11 @@ import org.jetbrains.kotlin.fir.expressions.UnresolvedExpressionTypeAccess
 import org.jetbrains.kotlin.fir.expressions.arguments
 import org.jetbrains.kotlin.fir.expressions.builder.buildAnnotation
 import org.jetbrains.kotlin.fir.expressions.builder.buildAnnotationArgumentMapping
+import org.jetbrains.kotlin.fir.expressions.builder.buildArgumentList
 import org.jetbrains.kotlin.fir.expressions.builder.buildEnumEntryDeserializedAccessExpression
+import org.jetbrains.kotlin.fir.expressions.builder.buildGetClassCall
 import org.jetbrains.kotlin.fir.expressions.builder.buildLiteralExpression
+import org.jetbrains.kotlin.fir.expressions.builder.buildResolvedQualifier
 import org.jetbrains.kotlin.fir.expressions.unexpandedClassId
 import org.jetbrains.kotlin.fir.extensions.FirSupertypeGenerationExtension.TypeResolveService
 import org.jetbrains.kotlin.fir.extensions.NestedClassGenerationContext
@@ -120,6 +125,8 @@ import org.jetbrains.kotlin.fir.types.ConeClassLikeType
 import org.jetbrains.kotlin.fir.types.ConeKotlinType
 import org.jetbrains.kotlin.fir.types.ConeKotlinTypeProjection
 import org.jetbrains.kotlin.fir.types.ConeTypeProjection
+import org.jetbrains.kotlin.fir.types.FirPlaceholderProjection
+import org.jetbrains.kotlin.fir.types.FirStarProjection
 import org.jetbrains.kotlin.fir.types.FirTypeProjectionWithVariance
 import org.jetbrains.kotlin.fir.types.FirTypeRef
 import org.jetbrains.kotlin.fir.types.FirUserTypeRef
@@ -129,7 +136,9 @@ import org.jetbrains.kotlin.fir.types.classId
 import org.jetbrains.kotlin.fir.types.coneTypeOrNull
 import org.jetbrains.kotlin.fir.types.constructClassLikeType
 import org.jetbrains.kotlin.fir.types.constructType
+import org.jetbrains.kotlin.fir.types.impl.ConeClassLikeTypeImpl
 import org.jetbrains.kotlin.fir.types.resolvedType
+import org.jetbrains.kotlin.fir.types.toLookupTag
 import org.jetbrains.kotlin.fir.types.type
 import org.jetbrains.kotlin.name.CallableId
 import org.jetbrains.kotlin.name.ClassId
@@ -1063,6 +1072,14 @@ internal fun FirAnnotation.resolvedScopeClassId(session: FirSession) =
 
 internal fun FirAnnotation.resolvedScopeClassId(
   session: FirSession,
+  typeResolver: MetroFirTypeResolver,
+): ClassId? {
+  val scopeArgument = scopeArgument(session) ?: return null
+  return scopeArgument.resolveClassId(typeResolver)
+}
+
+internal fun FirAnnotation.resolvedScopeClassId(
+  session: FirSession,
   typeResolver: TypeResolveService,
 ): ClassId? {
   val scopeArgument = scopeArgument(session) ?: return null
@@ -1228,6 +1245,11 @@ internal fun <T : Any> FirAnnotation.argumentAsOrNull(
       return if (klass.isInstance(arg.expression)) arg.expression as T else null
     }
   }
+
+  // When argumentMapping is populated, it contains all resolved arguments and is the source of
+  // truth. Since our name was not found in it above, the argument is absent. The positional
+  // fallback below is only needed for external/compiled declarations where mapping isn't available.
+  if (argumentMapping.mapping.isNotEmpty()) return null
 
   // Fallback: resolve constructor params to map positional args back to names
   val classSymbol = toAnnotationClassLikeSymbol(session) as? FirRegularClassSymbol
@@ -1618,4 +1640,64 @@ internal fun ConeKotlinType.toClassSymbolCompat(s: FirSession): FirClassSymbol<*
 
 internal fun ConeClassLikeLookupTag.toSymbolCompat(s: FirSession): FirClassLikeSymbol<*>? {
   return toSymbol(s)
+}
+
+/**
+ * Resolves the default binding type from a supertype's `@DefaultBinding<T>` annotation.
+ *
+ * For same-module classes, reads the type argument from the annotation directly. For cross-module
+ * classes, reads the return type of the `defaultBinding()` function in the `DefaultBindingMirror`
+ * nested class.
+ *
+ * Returns the [ConeKotlinType] of the default binding, or null if none found.
+ */
+// TODO lookup tracking?
+internal fun FirClassSymbol<*>.resolveDefaultBindingType(session: FirSession): ConeKotlinType? {
+  // Try to read from @DefaultBinding annotation directly (same-module)
+  getAnnotationByClassId(session.classIds.defaultBindingAnnotation, session)?.let { annotation ->
+    if (annotation !is FirAnnotationCall) return null
+    val typeArg = annotation.typeArguments.firstOrNull() ?: return null
+    return when (typeArg) {
+      is FirPlaceholderProjection,
+      is FirStarProjection -> null // Checked separately
+      is FirTypeProjectionWithVariance -> typeArg.typeRef.coneTypeOrNull
+    }
+  }
+
+  // Fall back to DefaultBindingMirror for cross-module resolution
+  val mirrorSymbol =
+    nestedClasses(session).firstOrNull { it.name == Symbols.Names.DefaultBindingMirrorClass }
+      ?: return null
+
+  // Read the return type of the defaultBinding() function
+  val holderFunction =
+    mirrorSymbol.declaredFunctions(session).firstOrNull {
+      it.name == Symbols.Names.defaultBindingFunction
+    } ?: return null
+  return holderFunction.resolvedReturnType
+}
+
+/** Builds a resolved FirGetClassCall for a given ClassId. */
+internal fun buildClassReference(session: FirSession, classId: ClassId): FirGetClassCall {
+  val classSymbol =
+    session.symbolProvider.getClassLikeSymbolByClassId(classId) as FirRegularClassSymbol
+  val classType = classSymbol.defaultType()
+  return buildGetClassCall {
+    argumentList = buildArgumentList {
+      arguments += buildResolvedQualifier {
+        packageFqName = classId.packageFqName
+        relativeClassFqName = classId.relativeClassName
+        symbol = classSymbol
+        resolvedToCompanionObject = false
+        isFullyQualified = true
+        coneTypeOrNull = classType
+      }
+    }
+    coneTypeOrNull =
+      ConeClassLikeTypeImpl(
+        StandardClassIds.KClass.toLookupTag(),
+        arrayOf(classType),
+        isMarkedNullable = false,
+      )
+  }
 }

@@ -27,6 +27,7 @@ import org.jetbrains.kotlin.name.ClassId
 internal class IrContributionMerger(
   metroContext: IrMetroContext,
   private val contributionData: IrContributionData,
+  boundTypeResolver: IrBoundTypeResolver,
 ) : IrMetroContext by metroContext {
 
   // Cache for scope-based contributions (before exclusions/replacements).
@@ -40,6 +41,8 @@ internal class IrContributionMerger(
   // Cache for parent exclusions by starting class - avoids recomputing hierarchy walks.
   // Thread-safe for concurrent access during parallel graph validation.
   private val parentExcludedCache = ConcurrentHashMap<ClassId, Set<ClassId>>()
+
+  private val rankedBindingProcessing = IrRankedBindingProcessing(boundTypeResolver)
 
   private data class ScopedContributions(
     val allContributions: Map<ClassId, List<IrType>>,
@@ -267,6 +270,14 @@ internal class IrContributionMerger(
         }
         // Binding containers (only remaining ones after exclusions)
         yieldAll(mutableContributedBindingContainers.values)
+
+        // For binding containers with @Origin (contribution providers), also scan the
+        // origin class for @ContributesBinding(replaces=...) annotations
+        for (container in mutableContributedBindingContainers.values) {
+          val originClassId = container.originClassId() ?: continue
+          val originClass = pluginContext.referenceClass(originClassId)?.owner ?: continue
+          yield(originClass)
+        }
       }
 
       trace("Process replacements") {
@@ -328,9 +339,28 @@ internal class IrContributionMerger(
       if (options.enableDaggerAnvilInterop) {
         trace("Process ranked replacements") {
           val unmatchedRankReplacements = mutableSetOf<ClassId>()
-          val rankReplacements = processRankBasedReplacements(allScopes, mutableAllContributions)
+          val rankReplacements =
+            rankedBindingProcessing.processRankBasedReplacements(
+              allScopes,
+              mutableAllContributions,
+              mutableContributedBindingContainers,
+            )
+
           for (replacedClassId in rankReplacements) {
-            if (mutableAllContributions.remove(replacedClassId) == null) {
+            val removedContribution = mutableAllContributions.remove(replacedClassId)
+            val removedContainer = mutableContributedBindingContainers.remove(replacedClassId)
+
+            // Also remove contributions that have @Origin pointing to the replaced class
+            originToContributions[replacedClassId]?.forEach { contributionId ->
+              mutableAllContributions.remove(contributionId)
+              mutableContributedBindingContainers.remove(contributionId)
+            }
+
+            val wasNotMatched =
+              removedContribution == null &&
+                removedContainer == null &&
+                originToContributions[replacedClassId] == null
+            if (wasNotMatched) {
               unmatchedRankReplacements += replacedClassId
             }
           }
@@ -360,17 +390,6 @@ internal class IrContributionMerger(
       mergedContributionsCache[cacheKey] = result
       return@trace result
     }
-
-  /**
-   * This provides `ContributesBinding.rank` interop for users migrating from Dagger-Anvil to make
-   * the migration to Metro more feasible.
-   *
-   * @return The bindings which have been outranked and should not be included in the merged graph.
-   */
-  private fun processRankBasedReplacements(
-    allScopes: Set<ClassId>,
-    contributions: Map<ClassId, List<IrType>>,
-  ): Set<ClassId> = IrRankedBindingProcessing.processRankBasedReplacements(allScopes, contributions)
 }
 
 internal data class IrContributions(

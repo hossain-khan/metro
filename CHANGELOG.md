@@ -6,6 +6,91 @@ Changelog
 
 ### New
 
+#### `generateContributionProviders`
+
+This release introduces a new `generateContributionProviders` API (Kotlin 2.3.20+) to optimize behavior with contributed APIs.
+
+Up to now, Metro's aggregation APIs (i.e. `@Contributes*` binding annotations) have worked similar to Anvil, where the ultimately just generate `@Binds` declarations as simple shorthands for the consuming graphs. This comes with the caveat that the injected class _must_ be publicly visible if it's used outside of that module.
+
+Now, if you enable the new `generateContributionProviders` feature, Metro will instead generate top-level `@Provides` declarations that mirror the injected class's inputs but only return its _bound type_. This means the annotated class can remain `internal`, which both helps encapsulation and incremental compilation.
+
+```
+interface Base
+
+@ContributesBinding(AppScope::class)
+@Inject
+internal class Impl : Base
+
+// Works across modules!
+@DependencyGraph(AppScope::class)
+interface AppGraph {
+  val base: Base
+}
+```
+
+The tradeoff is that `Impl` is no longer available directly on the graph. If you had any explicit code usages of `Impl`, you would have to remove those too in favor of purely the bound type.
+
+#### [**[MEEP-1776]**](https://github.com/ZacSweers/metro/discussions/1776) `@DefaultBinding`
+
+This release introduces a new `@DefaultBinding` annotation that allows for setting a default binding on _supertypes_ of contributed classes. This is useful for common base classes with generics that would otherwise require repetitive (or error-prone) explicit `binding<T>()` declarations in subtypes.
+
+```kotlin
+@DefaultBinding<BaseFactory<*>>
+interface BaseFactory<T : BaseFactory<T>>
+
+@ContributesIntoSet(AppScope::class) // now implicitly contributed as BaseFactory<*>
+@Inject
+class HomeFactory(...) : BaseFactory<HomeFactory>
+```
+
+### Fixes
+
+- **[IR]** Consider Anvil's `rank` parameter when processing contributed binding containers.
+
+### Changes
+
+- Removed `@Assisted.value`. See the [docs](https://zacsweers.github.io/metro/latest/injection-types/#assisted-injection) on why in case you missed this! TL;DR, Metro matches by parameter names going forward.
+- Remove deprecated compiler options and Gradle extension properties.
+    - `chunkFieldInits`
+    - `transformProvidersToPrivate`
+    - `publicProviderSeverity` (use `publicScopedProviderSeverity`)
+    - `assistedIdentifierSeverity`
+    - `generateThrowsAnnotation`
+
+0.12.1
+------
+
+_2026-03-30_
+
+### Enhancements
+
+- Support top-level FIR gen (contribution hints, function inject, etc) in Kotlin/JS on `2.3.21`+ and `2.4.0-Beta2`+.
+- Support generic (top-level) function injection.
+
+### Fixes
+
+- **[FIR]** Make `allSessions` lookup lazy to avoid lockups in the IDE.
+- **[IR]** Exclude generated data class `copy` functions from `@Includes` accessor candidates.
+- **[IR]** Exclude destructuring component functions from `@Includes` accessor candidates.
+
+### Changes
+
+- Update shaded `androidx.tracing` to 2.0.0-alpha04.
+- Update shaded Wire dependency to 6.2.0.
+
+### Contributors
+
+Special thanks to the following contributors for contributing to this release!
+
+- [@KevinGuitar](https://github.com/KevinGuitar)
+
+0.12.0
+------
+
+_2026-03-24_
+
+### New
+
 #### [**[MEEP-2014]**](https://github.com/ZacSweers/metro/discussions/2014) Implicit class (map) keys
 
 `MapKey.implicitClassKey` is a new API to allow for class-based map keys to have their class parameters inferred on classes and `@Binds` declarations.
@@ -48,30 +133,33 @@ annotation class ViewModelKey(val value: KClass<out ViewModel> = Nothing::class)
 - **[IR]** Ensure stable sort of output `SuspiciousUnusedMultibinding` locations.
 - **[IR]** Don't skip dynamic keys inherited from parent graphs when working with dynamic graphs.
 - **[IR]** Propagate `@OptionalBinding` annotations to generated static factory creators if present.
+- **[IR]** Preserve nullability when remapping parameters with generic layers.
 - **[Runtime]** `IntoSet` and `IntoMap` no longer have a `Target` of `AnnotationTarget.CLASS`
 
 ### Changes
 
 - The Metro compiler now requires JVM 21+. Note that the runtime JVM artifacts still target 11 unless otherwise documented.
 - The Metro Gradle plugin now requires JVM 21+.
-- The Metro Gradle plugin now requires Gradle 9+.
-- The Metro Gradle plugin now targets Kotlin 2.2.
+- The Metro Gradle plugin now requires Gradle 9+. Note that if you do not use Kotlin Gradle DSL, it may work on older versions but YMMV.
+- The Metro Gradle plugin now targets Kotlin `2.2`.
 - `@Assisted.value` is formally deprecated now. See the [docs](https://zacsweers.github.io/metro/latest/injection-types/#assisted-injection) on why in case you missed this! TL;DR, Metro matches by parameter names going forward.
 - Metro's main branch now builds with Kotlin `2.3.20` but still targets Kotlin 2.2 for its runtime artifacts and supports 2.2.20 all to 2.4.0 dev builds in its compiler.
 - Remove deprecated `macosX64`, `tvosX64`, and `watchosX64` targets.
-- Update Kotlin 2.4.0 compat support from `2.4.0-dev-539` to `2.4.0-dev-2124`. This should support the upcoming IntelliJ 2026.1 release as well as Kotlin 2.4.0-Beta1.
-- Test IntelliJ 2026.1 RC.
+- Update Kotlin 2.4 compat support from `2.4.0-dev-539` to `2.4.0-dev-2124`. This should support the upcoming IntelliJ 2026.1 release as well as the upcoming Kotlin `2.4.0-Beta1`.
+- Test IntelliJ `2026.1 RC`.
+- Update shaded Wire dependency to `6.1.0`.
 
 ### Contributors
 
 Special thanks to the following contributors for contributing to this release!
 
-- [@Asapha](https://github.com/Asapha)
-- [@ChristianKatzmann](https://github.com/ChristianKatzmann)
-- [@grandstaish](https://github.com/grandstaish)
-- [@jonamireh](https://github.com/jonamireh)
-- [@kevinguitar](https://github.com/kevinguitar)
-- [@svenjacobs](https://github.com/svenjacobs)
+- @Asapha
+- @ChristianKatzmann
+- @grandstaish
+- @jonamireh
+- @kevinguitar
+- @svenjacobs
+- @vRallev
 
 0.11.4
 ------
