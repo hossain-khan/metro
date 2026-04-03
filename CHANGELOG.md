@@ -14,7 +14,7 @@ Up to now, Metro's aggregation APIs (i.e. `@Contributes*` binding annotations) h
 
 Now, if you enable the new `generateContributionProviders` feature, Metro will instead generate top-level `@Provides` declarations that mirror the injected class's inputs but only return its _bound type_. This means the annotated class can remain `internal`, which both helps encapsulation and incremental compilation.
 
-```
+```kotlin
 interface Base
 
 @ContributesBinding(AppScope::class)
