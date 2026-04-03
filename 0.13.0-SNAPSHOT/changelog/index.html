@@ -5322,17 +5322,17 @@
 <p>This release introduces a new <code>generateContributionProviders</code> API (Kotlin 2.3.20+) to optimize behavior with contributed APIs.</p>
 <p>Up to now, Metro&rsquo;s aggregation APIs (i.e. <code>@Contributes*</code> binding annotations) have worked similar to Anvil, where the ultimately just generate <code>@Binds</code> declarations as simple shorthands for the consuming graphs. This comes with the caveat that the injected class <em>must</em> be publicly visible if it&rsquo;s used outside of that module.</p>
 <p>Now, if you enable the new <code>generateContributionProviders</code> feature, Metro will instead generate top-level <code>@Provides</code> declarations that mirror the injected class&rsquo;s inputs but only return its <em>bound type</em>. This means the annotated class can remain <code>internal</code>, which both helps encapsulation and incremental compilation.</p>
-<div class="highlight"><pre><span></span><code>interface Base
+<div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nc">Base</span>
 
-@ContributesBinding(AppScope::class)
-@Inject
-internal class Impl : Base
+<span class="nd">@ContributesBinding</span><span class="p">(</span><span class="n">AppScope</span><span class="o">::</span><span class="n">class</span><span class="p">)</span>
+<span class="nd">@Inject</span>
+<span class="kd">internal</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Impl</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Base</span>
 
-// Works across modules!
-@DependencyGraph(AppScope::class)
-interface AppGraph {
-  val base: Base
-}
+<span class="c1">// Works across modules!</span>
+<span class="nd">@DependencyGraph</span><span class="p">(</span><span class="n">AppScope</span><span class="o">::</span><span class="n">class</span><span class="p">)</span>
+<span class="kd">interface</span><span class="w"> </span><span class="nc">AppGraph</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="nv">base</span><span class="p">:</span><span class="w"> </span><span class="n">Base</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>The tradeoff is that <code>Impl</code> is no longer available directly on the graph. If you had any explicit code usages of <code>Impl</code>, you would have to remove those too in favor of purely the bound type.</p>
 <h4 id="meep-1776-defaultbinding"><a href="https://github.com/ZacSweers/metro/discussions/1776"><strong>[MEEP-1776]</strong></a> <code>@DefaultBinding</code><a class="headerlink" href="#meep-1776-defaultbinding" title="Permanent link">&para;</a></h4>
@@ -7045,7 +7045,7 @@ Possible fixes:
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 3, 2026 12:23:01 UTC">April 3, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 3, 2026 17:52:32 UTC">April 3, 2026</span>
   </span>
 
     
