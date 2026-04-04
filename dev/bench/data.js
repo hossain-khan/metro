@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1774910656248,
+  "lastUpdate": 1775269251032,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Startup Benchmark": [
@@ -10080,6 +10080,62 @@ window.BENCHMARK_DATA = {
             "value": 0.27832086106084086,
             "unit": "ms/op",
             "extra": "after (HEAD)\ndelta: +1.70%\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "099a10ed~1",
+          "message": "[before] Circuit code gen (#2074)",
+          "timestamp": "2026-04-03T21:36:18-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/099a10ed05bb8200eb34bbad5ddb56fb0f8b3152"
+        },
+        "date": 1775269251032,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.22405795452830618,
+            "unit": "ms/op",
+            "extra": "before (HEAD~1)\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "099a10ed05bb8200eb34bbad5ddb56fb0f8b3152",
+          "message": "[after] Circuit code gen (#2074)",
+          "timestamp": "2026-04-03T21:36:18-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/099a10ed05bb8200eb34bbad5ddb56fb0f8b3152"
+        },
+        "date": 1775269251033,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.22804711648564485,
+            "unit": "ms/op",
+            "extra": "after (HEAD)\ndelta: +1.78%\niterations: 10\nforks: 2\nthreads: 1"
           }
         ]
       }
