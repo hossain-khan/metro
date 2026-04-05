@@ -8,7 +8,9 @@ Changelog
 
 #### Circuit codegen
 
-Metro now includes built-in support for [Circuit](https://slackhq.github.io/circuit/), a Compose-first architecture for building kotlin apps. See the [docs](https://zacsweers.github.io/metro/latest/circuit/) for more details.
+Metro now includes experimental built-in support for [Circuit](https://slackhq.github.io/circuit/), a Compose-first architecture for building kotlin apps. See the [docs](https://zacsweers.github.io/metro/latest/circuit/) for more details.
+
+In the long term, this will eventually move out to a separate plugin that can gracefully participate with Metro's code gen APIs. This is initially implemented within Metro to ease development.
 
 #### `generateContributionProviders`
 
@@ -66,6 +68,14 @@ class HomeFactory(...) : BaseFactory<HomeFactory>
     - `publicProviderSeverity` (use `publicScopedProviderSeverity`)
     - `assistedIdentifierSeverity`
     - `generateThrowsAnnotation`
+
+### Contributors
+
+Special thanks to the following contributors for contributing to this release!
+
+- [@vRallev](https://github.com/vRallev)
+
+### [Consider sponsoring Metro's development](https://www.zacsweers.dev/sponsoring-metro/)
 
 0.12.1
 ------
@@ -164,13 +174,13 @@ annotation class ViewModelKey(val value: KClass<out ViewModel> = Nothing::class)
 
 Special thanks to the following contributors for contributing to this release!
 
-- @Asapha
-- @ChristianKatzmann
-- @grandstaish
-- @jonamireh
-- @kevinguitar
-- @svenjacobs
-- @vRallev
+- [@Asapha](https://github.com/Asapha)
+- [@ChristianKatzmann](https://github.com/ChristianKatzmann)
+- [@grandstaish](https://github.com/grandstaish)
+- [@jonamireh](https://github.com/jonamireh)
+- [@kevinguitar](https://github.com/kevinguitar)
+- [@svenjacobs](https://github.com/svenjacobs)
+- [@vRallev](https://github.com/vRallev)
 
 0.11.4
 ------
