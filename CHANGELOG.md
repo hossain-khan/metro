@@ -4,6 +4,11 @@ Changelog
 **Unreleased**
 --------------
 
+0.13.0
+------
+
+_2026-04-04_
+
 ### New
 
 #### Circuit codegen
