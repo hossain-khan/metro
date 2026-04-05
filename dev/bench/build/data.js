@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775269251201,
+  "lastUpdate": 1775354990865,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -10136,6 +10136,62 @@ window.BENCHMARK_DATA = {
             "value": 21753.8,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: -5.60%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "f3f56e8d~1",
+          "message": "[before] Test 2.4.0-Beta1 (#2075)",
+          "timestamp": "2026-04-05T01:27:54Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/f3f56e8d5836449c8038d5083b2e9fc442b69f37"
+        },
+        "date": 1775354990865,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 21731.32,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "f3f56e8d5836449c8038d5083b2e9fc442b69f37",
+          "message": "[after] Test 2.4.0-Beta1 (#2075)",
+          "timestamp": "2026-04-05T01:27:54Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/f3f56e8d5836449c8038d5083b2e9fc442b69f37"
+        },
+        "date": 1775354990866,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 21904.266,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: +0.80%"
           }
         ]
       }
