@@ -4,6 +4,13 @@ Changelog
 **Unreleased**
 --------------
 
+0.13.1
+------
+
+_2026-04-06_
+
+This is a small bugfix release for some issues with the new experimental Circuit code gen and `generateContributionProviders` features.
+
 ### Enhancements
 
 - Add a `@ExposeImplBinding` annotation to disable `generateContributionProviders` behavior on a per-class basis.
@@ -24,6 +31,8 @@ Changelog
 Special thanks to the following contributors for contributing to this release!
 
 - [@kevinguitar](https://github.com/kevinguitar)
+
+### [Consider sponsoring Metro's development](https://www.zacsweers.dev/sponsoring-metro/)
 
 0.13.0
 ------
