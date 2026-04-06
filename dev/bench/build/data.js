@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775456889101,
+  "lastUpdate": 1775491096111,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -10360,6 +10360,62 @@ window.BENCHMARK_DATA = {
             "value": 21841.612,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: +2.52%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "9907c871~1",
+          "message": "[before] Fix implicit return type handling in Circuit handl",
+          "timestamp": "2026-04-06T15:18:45Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/9907c871e9cf850a85a8b7c053738991c60e6da9"
+        },
+        "date": 1775491096111,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 27370.791999999998,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "9907c871e9cf850a85a8b7c053738991c60e6da9",
+          "message": "[after] Fix implicit return type handling in Circuit handl",
+          "timestamp": "2026-04-06T15:18:45Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/9907c871e9cf850a85a8b7c053738991c60e6da9"
+        },
+        "date": 1775491096112,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 22146.842,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: -19.09%"
           }
         ]
       }

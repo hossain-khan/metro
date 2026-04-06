@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775456888911,
+  "lastUpdate": 1775491095987,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Startup Benchmark": [
@@ -10360,6 +10360,62 @@ window.BENCHMARK_DATA = {
             "value": 0.22894447336633492,
             "unit": "ms/op",
             "extra": "after (HEAD)\ndelta: +2.88%\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "9907c871~1",
+          "message": "[before] Fix implicit return type handling in Circuit handl",
+          "timestamp": "2026-04-06T15:18:45Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/9907c871e9cf850a85a8b7c053738991c60e6da9"
+        },
+        "date": 1775491095987,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.22526017635720597,
+            "unit": "ms/op",
+            "extra": "before (HEAD~1)\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "9907c871e9cf850a85a8b7c053738991c60e6da9",
+          "message": "[after] Fix implicit return type handling in Circuit handl",
+          "timestamp": "2026-04-06T15:18:45Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/9907c871e9cf850a85a8b7c053738991c60e6da9"
+        },
+        "date": 1775491095988,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.2320324779888582,
+            "unit": "ms/op",
+            "extra": "after (HEAD)\ndelta: +3.01%\niterations: 10\nforks: 2\nthreads: 1"
           }
         ]
       }
