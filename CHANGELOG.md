@@ -4,6 +4,13 @@ Changelog
 **Unreleased**
 --------------
 
+0.13.2
+------
+
+_2026-04-06_
+
+This is another small bugfix release for some issues with the new experimental Circuit code gen and `generateContributionProviders` features. Apologies for the churn! This should be the last of it, and is only necessary if you wanted to try out those new features.
+
 ### Fixes
 
 - **[FIR/Circuit]** Add a diagnostic check for explicit return types for `@CircuitInject` presenter functions.
