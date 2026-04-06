@@ -4,9 +4,26 @@ Changelog
 **Unreleased**
 --------------
 
+### Enhancements
+
+- Add a `@ExposeImplBinding` annotation to disable `generateContributionProviders` behavior on a per-class basis.
+- **[FIR]** Warn if injecting an impl type when `generateContributionProviders` and the class isn't annotated `@ExposeImplBinding`.
+
 ### Fixes
 
 - **[FIR]** Fix Circuit code gen not reporting contribution hints for downstream compilations.
+- **[FIR]** Don't generate contribution classes for `@ContributesTo`-annotated classes when `generateContributionProviders` is enabled.
+- **[FIR]** Don't generate contribution classes for `@AssistedFactory`-annotated classes when `generateContributionProviders` is enabled.
+- **[FIR]** Better ensure `enableCircuitCodegen` and `generateContributionProviders` work together when both enabled.
+- **[IR]** Fix default parameter expressions not being copied when `generateContributionProviders` is enabled. This specifically affected scoped or private bindings.
+- **[IR]** Fix qualifier annotations not being copied when `generateContributionProviders` is enabled.
+- **[IR]** Don't link expect/actual declarations if the callee is a synthetic declaration. This avoid some non-obvious IC failures with `generateContributionProviders`.
+
+### Contributors
+
+Special thanks to the following contributors for contributing to this release!
+
+- [@kevinguitar](https://github.com/kevinguitar)
 
 0.13.0
 ------

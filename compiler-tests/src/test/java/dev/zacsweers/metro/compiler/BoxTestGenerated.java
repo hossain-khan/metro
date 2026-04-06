@@ -268,6 +268,24 @@ public class BoxTestGenerated extends AbstractBoxTest {
       }
 
       @Test
+      @TestMetadata("defaultParameters.kt")
+      public void testDefaultParameters() {
+        runTest("compiler-tests/src/test/data/box/aggregation/contributionproviders/defaultParameters.kt");
+      }
+
+      @Test
+      @TestMetadata("exposeImplBinding.kt")
+      public void testExposeImplBinding() {
+        runTest("compiler-tests/src/test/data/box/aggregation/contributionproviders/exposeImplBinding.kt");
+      }
+
+      @Test
+      @TestMetadata("implTypeNotDirectlyAccessible.kt")
+      public void testImplTypeNotDirectlyAccessible() {
+        runTest("compiler-tests/src/test/data/box/aggregation/contributionproviders/implTypeNotDirectlyAccessible.kt");
+      }
+
+      @Test
       @TestMetadata("intoMap.kt")
       public void testIntoMap() {
         runTest("compiler-tests/src/test/data/box/aggregation/contributionproviders/intoMap.kt");
@@ -295,6 +313,12 @@ public class BoxTestGenerated extends AbstractBoxTest {
       @TestMetadata("providerAndLazy.kt")
       public void testProviderAndLazy() {
         runTest("compiler-tests/src/test/data/box/aggregation/contributionproviders/providerAndLazy.kt");
+      }
+
+      @Test
+      @TestMetadata("qualifiedBinding.kt")
+      public void testQualifiedBinding() {
+        runTest("compiler-tests/src/test/data/box/aggregation/contributionproviders/qualifiedBinding.kt");
       }
 
       @Test
@@ -490,6 +514,12 @@ public class BoxTestGenerated extends AbstractBoxTest {
       }
 
       @Test
+      @TestMetadata("PresenterClassWithContributionProviders.kt")
+      public void testPresenterClassWithContributionProviders() {
+        runTest("compiler-tests/src/test/data/box/api/circuit/PresenterClassWithContributionProviders.kt");
+      }
+
+      @Test
       @TestMetadata("PresenterFunctionClassScreen.kt")
       public void testPresenterFunctionClassScreen() {
         runTest("compiler-tests/src/test/data/box/api/circuit/PresenterFunctionClassScreen.kt");
@@ -511,6 +541,12 @@ public class BoxTestGenerated extends AbstractBoxTest {
       @TestMetadata("PresenterFunctionQualifiedInjection.kt")
       public void testPresenterFunctionQualifiedInjection() {
         runTest("compiler-tests/src/test/data/box/api/circuit/PresenterFunctionQualifiedInjection.kt");
+      }
+
+      @Test
+      @TestMetadata("PresenterFunctionWithContributionProviders.kt")
+      public void testPresenterFunctionWithContributionProviders() {
+        runTest("compiler-tests/src/test/data/box/api/circuit/PresenterFunctionWithContributionProviders.kt");
       }
 
       @Test
@@ -1763,6 +1799,12 @@ public class BoxTestGenerated extends AbstractBoxTest {
       @TestMetadata("AssistedFactoryWithContributesAsInject.kt")
       public void testAssistedFactoryWithContributesAsInject() {
         runTest("compiler-tests/src/test/data/box/inject/assisted/AssistedFactoryWithContributesAsInject.kt");
+      }
+
+      @Test
+      @TestMetadata("AssistedFactoryWithContributionProviders.kt")
+      public void testAssistedFactoryWithContributionProviders() {
+        runTest("compiler-tests/src/test/data/box/inject/assisted/AssistedFactoryWithContributionProviders.kt");
       }
 
       @Test
