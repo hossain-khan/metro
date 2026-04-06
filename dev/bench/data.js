@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775491095987,
+  "lastUpdate": 1775502381542,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Startup Benchmark": [
@@ -10416,6 +10416,62 @@ window.BENCHMARK_DATA = {
             "value": 0.2320324779888582,
             "unit": "ms/op",
             "extra": "after (HEAD)\ndelta: +3.01%\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "75cffec2~1",
+          "message": "[before] Fix implicit class keys in contribution providers ",
+          "timestamp": "2026-04-06T18:27:48Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/75cffec243a06e407cf930c4f66cf6a9337a3626"
+        },
+        "date": 1775502381542,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.2743319695452645,
+            "unit": "ms/op",
+            "extra": "before (HEAD~1)\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "75cffec243a06e407cf930c4f66cf6a9337a3626",
+          "message": "[after] Fix implicit class keys in contribution providers ",
+          "timestamp": "2026-04-06T18:27:48Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/75cffec243a06e407cf930c4f66cf6a9337a3626"
+        },
+        "date": 1775502381543,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.2797438197899994,
+            "unit": "ms/op",
+            "extra": "after (HEAD)\ndelta: +1.97%\niterations: 10\nforks: 2\nthreads: 1"
           }
         ]
       }

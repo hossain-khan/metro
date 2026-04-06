@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775491096111,
+  "lastUpdate": 1775502381666,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -10416,6 +10416,62 @@ window.BENCHMARK_DATA = {
             "value": 22146.842,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: -19.09%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "75cffec2~1",
+          "message": "[before] Fix implicit class keys in contribution providers ",
+          "timestamp": "2026-04-06T18:27:48Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/75cffec243a06e407cf930c4f66cf6a9337a3626"
+        },
+        "date": 1775502381666,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 21890.956,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "75cffec243a06e407cf930c4f66cf6a9337a3626",
+          "message": "[after] Fix implicit class keys in contribution providers ",
+          "timestamp": "2026-04-06T18:27:48Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/75cffec243a06e407cf930c4f66cf6a9337a3626"
+        },
+        "date": 1775502381667,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 22377.48,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: +2.22%"
           }
         ]
       }
