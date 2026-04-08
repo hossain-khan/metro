@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775618519493,
+  "lastUpdate": 1775674025439,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -10584,6 +10584,62 @@ window.BENCHMARK_DATA = {
             "value": 21272.45,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: -2.47%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "8c392b25~1",
+          "message": "[before] Fix missing contribution hints for assisted factor",
+          "timestamp": "2026-04-08T14:07:47-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/8c392b258587735a62892d37f552435a5f7385ba"
+        },
+        "date": 1775674025439,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 31253.120000000003,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "8c392b258587735a62892d37f552435a5f7385ba",
+          "message": "[after] Fix missing contribution hints for assisted factor",
+          "timestamp": "2026-04-08T14:07:47-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/8c392b258587735a62892d37f552435a5f7385ba"
+        },
+        "date": 1775674025440,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 31465.273999999998,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: +0.68%"
           }
         ]
       }
