@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775593508116,
+  "lastUpdate": 1775618519367,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Startup Benchmark": [
@@ -10528,6 +10528,62 @@ window.BENCHMARK_DATA = {
             "value": 0.2262196379372691,
             "unit": "ms/op",
             "extra": "after (HEAD)\ndelta: -3.95%\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Sultan Seidalin",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Sultan Seidalin",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "fc80a196~1",
+          "message": "[before] Fix StackOverflowError during IDE indexing with ge",
+          "timestamp": "2026-04-07T22:44:41-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/fc80a19672a25d7808ea0713cc3b188907300498"
+        },
+        "date": 1775618519367,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.22855238925332558,
+            "unit": "ms/op",
+            "extra": "before (HEAD~1)\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Sultan Seidalin",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Sultan Seidalin",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "fc80a19672a25d7808ea0713cc3b188907300498",
+          "message": "[after] Fix StackOverflowError during IDE indexing with ge",
+          "timestamp": "2026-04-07T22:44:41-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/fc80a19672a25d7808ea0713cc3b188907300498"
+        },
+        "date": 1775618519368,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.2301163230835969,
+            "unit": "ms/op",
+            "extra": "after (HEAD)\ndelta: +0.68%\niterations: 10\nforks: 2\nthreads: 1"
           }
         ]
       }

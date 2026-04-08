@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775593508269,
+  "lastUpdate": 1775618519493,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -10528,6 +10528,62 @@ window.BENCHMARK_DATA = {
             "value": 21852.6,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: +4.11%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Sultan Seidalin",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Sultan Seidalin",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "fc80a196~1",
+          "message": "[before] Fix StackOverflowError during IDE indexing with ge",
+          "timestamp": "2026-04-07T22:44:41-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/fc80a19672a25d7808ea0713cc3b188907300498"
+        },
+        "date": 1775618519493,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 21811.595999999998,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Sultan Seidalin",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Sultan Seidalin",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "fc80a19672a25d7808ea0713cc3b188907300498",
+          "message": "[after] Fix StackOverflowError during IDE indexing with ge",
+          "timestamp": "2026-04-07T22:44:41-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/fc80a19672a25d7808ea0713cc3b188907300498"
+        },
+        "date": 1775618519494,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 21272.45,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: -2.47%"
           }
         ]
       }
