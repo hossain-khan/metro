@@ -319,6 +319,12 @@ public class ContributionProvidersBoxTestGenerated extends AbstractContributionP
     }
 
     @Test
+    @TestMetadata("privateConstructorSkipped.kt")
+    public void testPrivateConstructorSkipped() {
+      runTest("compiler-tests/src/test/data/box/aggregation/contributionproviders/privateConstructorSkipped.kt");
+    }
+
+    @Test
     @TestMetadata("providerAndLazy.kt")
     public void testProviderAndLazy() {
       runTest("compiler-tests/src/test/data/box/aggregation/contributionproviders/providerAndLazy.kt");
