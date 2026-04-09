@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775711206613,
+  "lastUpdate": 1775711253091,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Startup Benchmark": [
@@ -10752,6 +10752,62 @@ window.BENCHMARK_DATA = {
             "value": 0.22932671114896533,
             "unit": "ms/op",
             "extra": "after (HEAD)\ndelta: -0.44%\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "d85be3ac~1",
+          "message": "[before] Fix support for mapkeys and qualifiers on explicit",
+          "timestamp": "2026-04-09T04:28:14Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/d85be3ac14f024b73dd2bdb2fa923b97cbd9b0dd"
+        },
+        "date": 1775711253091,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.23312726321994076,
+            "unit": "ms/op",
+            "extra": "before (HEAD~1)\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "d85be3ac14f024b73dd2bdb2fa923b97cbd9b0dd",
+          "message": "[after] Fix support for mapkeys and qualifiers on explicit",
+          "timestamp": "2026-04-09T04:28:14Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/d85be3ac14f024b73dd2bdb2fa923b97cbd9b0dd"
+        },
+        "date": 1775711253092,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.2392483355764709,
+            "unit": "ms/op",
+            "extra": "after (HEAD)\ndelta: +2.63%\niterations: 10\nforks: 2\nthreads: 1"
           }
         ]
       }

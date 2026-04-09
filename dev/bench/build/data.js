@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775711206858,
+  "lastUpdate": 1775711253217,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -10752,6 +10752,62 @@ window.BENCHMARK_DATA = {
             "value": 28388.811999999998,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: -3.37%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "d85be3ac~1",
+          "message": "[before] Fix support for mapkeys and qualifiers on explicit",
+          "timestamp": "2026-04-09T04:28:14Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/d85be3ac14f024b73dd2bdb2fa923b97cbd9b0dd"
+        },
+        "date": 1775711253217,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 23381.564000000002,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "d85be3ac14f024b73dd2bdb2fa923b97cbd9b0dd",
+          "message": "[after] Fix support for mapkeys and qualifiers on explicit",
+          "timestamp": "2026-04-09T04:28:14Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/d85be3ac14f024b73dd2bdb2fa923b97cbd9b0dd"
+        },
+        "date": 1775711253218,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 23458.246,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: +0.33%"
           }
         ]
       }
