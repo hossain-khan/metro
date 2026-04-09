@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775674025439,
+  "lastUpdate": 1775708752025,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -10640,6 +10640,62 @@ window.BENCHMARK_DATA = {
             "value": 31465.273999999998,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: +0.68%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "6f57c83c~1",
+          "message": "[before] Support non-injected targets in circuit code gen (",
+          "timestamp": "2026-04-09T03:42:13Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/6f57c83c5484b113c0a970553de190f1c5ee05bc"
+        },
+        "date": 1775708752025,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 22425.64,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "6f57c83c5484b113c0a970553de190f1c5ee05bc",
+          "message": "[after] Support non-injected targets in circuit code gen (",
+          "timestamp": "2026-04-09T03:42:13Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/6f57c83c5484b113c0a970553de190f1c5ee05bc"
+        },
+        "date": 1775708752026,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 23054.608,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: +2.80%"
           }
         ]
       }
