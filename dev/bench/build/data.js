@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775708752025,
+  "lastUpdate": 1775711206858,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -10696,6 +10696,62 @@ window.BENCHMARK_DATA = {
             "value": 23054.608,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: +2.80%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "4b1838b4~1",
+          "message": "[before] Wrap type resolution in InjectedClassFirGenerator ",
+          "timestamp": "2026-04-09T04:29:31Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/4b1838b496760fb0f5baea61a6af7b8748f8963e"
+        },
+        "date": 1775711206858,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 29379.998,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "4b1838b496760fb0f5baea61a6af7b8748f8963e",
+          "message": "[after] Wrap type resolution in InjectedClassFirGenerator ",
+          "timestamp": "2026-04-09T04:29:31Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/4b1838b496760fb0f5baea61a6af7b8748f8963e"
+        },
+        "date": 1775711206859,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 28388.811999999998,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: -3.37%"
           }
         ]
       }
