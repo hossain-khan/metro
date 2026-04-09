@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775768147369,
+  "lastUpdate": 1775768655355,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -10920,6 +10920,62 @@ window.BENCHMARK_DATA = {
             "value": 27517.04,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: -0.34%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Nikita Kulikov",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Nikita Kulikov",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "0049f8d8~1",
+          "message": "[before] Add macosX64 target (#2117)",
+          "timestamp": "2026-04-09T20:24:57Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/0049f8d895b8f534caafe5afa3696354c27aa0fa"
+        },
+        "date": 1775768655355,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 29482.992,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Nikita Kulikov",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Nikita Kulikov",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "0049f8d895b8f534caafe5afa3696354c27aa0fa",
+          "message": "[after] Add macosX64 target (#2117)",
+          "timestamp": "2026-04-09T20:24:57Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/0049f8d895b8f534caafe5afa3696354c27aa0fa"
+        },
+        "date": 1775768655356,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 27244.052000000003,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: -7.59%"
           }
         ]
       }
