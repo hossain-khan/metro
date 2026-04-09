@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775712448967,
+  "lastUpdate": 1775768147369,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -10864,6 +10864,62 @@ window.BENCHMARK_DATA = {
             "value": 28130.5,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: -11.29%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "abaabd06~1",
+          "message": "[before] Fix cross-module resolution of @DefaultBinding (#2",
+          "timestamp": "2026-04-09T20:19:24Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/abaabd063db34921dc9230d3ddfaaa9facb9d05b"
+        },
+        "date": 1775768147369,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 27611.564000000002,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "abaabd063db34921dc9230d3ddfaaa9facb9d05b",
+          "message": "[after] Fix cross-module resolution of @DefaultBinding (#2",
+          "timestamp": "2026-04-09T20:19:24Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/abaabd063db34921dc9230d3ddfaaa9facb9d05b"
+        },
+        "date": 1775768147370,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 27517.04,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: -0.34%"
           }
         ]
       }
