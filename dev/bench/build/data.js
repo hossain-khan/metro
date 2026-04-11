@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775768655355,
+  "lastUpdate": 1775877110476,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -10976,6 +10976,62 @@ window.BENCHMARK_DATA = {
             "value": 27244.052000000003,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: -7.59%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "159fb152~1",
+          "message": "[before] Refactor allSessions handling to better prevent lo",
+          "timestamp": "2026-04-11T02:32:07Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/159fb152b5ff477315a2d41cfe9d67441096106d"
+        },
+        "date": 1775877110476,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 28748.232,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "159fb152b5ff477315a2d41cfe9d67441096106d",
+          "message": "[after] Refactor allSessions handling to better prevent lo",
+          "timestamp": "2026-04-11T02:32:07Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/159fb152b5ff477315a2d41cfe9d67441096106d"
+        },
+        "date": 1775877110477,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 27340.902000000002,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: -4.90%"
           }
         ]
       }
