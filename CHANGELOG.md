@@ -26,6 +26,7 @@ Changelog
 Special thanks to the following contributors for contributing to this release!
 
 - [@asapha](https://github.com/asapha)
+- [@heorhiipopov](https://github.com/heorhiipopov)
 - [@kevinguitar](https://github.com/kevinguitar)
 - [@LionZXY](https://github.com/LionZXY)
 - [@Sultan1993](https://github.com/Sultan1993)
