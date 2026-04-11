@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775915348037,
+  "lastUpdate": 1775940649432,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Startup Benchmark": [
@@ -11088,6 +11088,62 @@ window.BENCHMARK_DATA = {
             "value": 0.22737072695650373,
             "unit": "ms/op",
             "extra": "after (HEAD)\ndelta: +1.10%\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Asapha",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Asapha",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "954f2110~1",
+          "message": "[before] Fix default values getting overwritten (#2131)",
+          "timestamp": "2026-04-11T20:12:29Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/954f2110aeda2c30a312c53c14990034a88e2483"
+        },
+        "date": 1775940649432,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.27575254325667,
+            "unit": "ms/op",
+            "extra": "before (HEAD~1)\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Asapha",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Asapha",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "954f2110aeda2c30a312c53c14990034a88e2483",
+          "message": "[after] Fix default values getting overwritten (#2131)",
+          "timestamp": "2026-04-11T20:12:29Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/954f2110aeda2c30a312c53c14990034a88e2483"
+        },
+        "date": 1775940649433,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.2733150940670058,
+            "unit": "ms/op",
+            "extra": "after (HEAD)\ndelta: -0.88%\niterations: 10\nforks: 2\nthreads: 1"
           }
         ]
       }

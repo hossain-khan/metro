@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1775915348149,
+  "lastUpdate": 1775940649618,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -11088,6 +11088,62 @@ window.BENCHMARK_DATA = {
             "value": 29618.706,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: -1.68%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Asapha",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Asapha",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "954f2110~1",
+          "message": "[before] Fix default values getting overwritten (#2131)",
+          "timestamp": "2026-04-11T20:12:29Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/954f2110aeda2c30a312c53c14990034a88e2483"
+        },
+        "date": 1775940649618,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 30294.434,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Asapha",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Asapha",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "954f2110aeda2c30a312c53c14990034a88e2483",
+          "message": "[after] Fix default values getting overwritten (#2131)",
+          "timestamp": "2026-04-11T20:12:29Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/954f2110aeda2c30a312c53c14990034a88e2483"
+        },
+        "date": 1775940649619,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 30060.29,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: -0.77%"
           }
         ]
       }
