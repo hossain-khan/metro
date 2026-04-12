@@ -4,7 +4,91 @@ Changelog
 **Unreleased**
 --------------
 
+### Fixes
+
+- **[FIR]** Fix missing contribution hints for assisted factories
+- **[FIR]** Fix not propagating map keys and qualifiers if they're on the bound type arg rather than the class when `generateContributionProviders` is enabled.
+- **[FIR]** Gracefully handle unresolved generic supertype type args.
+- **[FIR]** Disable contribution providers on private constructors.
+- **[FIR]** Fix cross-module resolution of `@DefaultBinding`.
+- **[FIR]** Fix another eager `allSessions` lookup to avoid lockups in the IDE.
+- **[FIR/IR]** Ensure qualifier annotations on explicit binding params are propagated to generated providers when `generateContributionProviders` is enabled.
+- **[FIR/IR/Circuit]** Fix support for `@CircuitInject` on non-`@Inject`-annotated classes.
+- **[IR]** Check for matching parameter's default value first when copying default value expressions. Previously, if multiple parameters with the same type had default values, only one would be used.
+
+### Changes
+
+- Mark generated Circuit factories as `@Deprecated(HIDDEN)` + disable them in IDE as they're not necessary there.
+- Add back deprecated `macosX64()`, `tvosX64()`, and `watchosX64()` targets for now due to [KT-78660 (comment)](https://youtrack.jetbrains.com/issue/KT-78660#focus=Comments-27-13603171.0-0).
+
+### Contributors
+
+Special thanks to the following contributors for contributing to this release!
+
+- [@asapha](https://github.com/asapha)
+- [@heorhiipopov](https://github.com/heorhiipopov)
+- [@kevinguitar](https://github.com/kevinguitar)
+- [@LionZXY](https://github.com/LionZXY)
+- [@Sultan1993](https://github.com/Sultan1993)
+
+0.13.2
+------
+
+_2026-04-06_
+
+This is another small bugfix release for some issues with the new experimental Circuit code gen and `generateContributionProviders` features. Apologies for the churn! This should be the last of it, and is only necessary if you wanted to try out those new features.
+
+### Fixes
+
+- **[FIR/Circuit]** Add a diagnostic check for explicit return types for `@CircuitInject` presenter functions.
+
+### Fixes
+
+- **[FIR]** Fix map key generation for `generateContributionProviders` when the map key uses implicit class keys.
+- **[FIR/Circuit]** Assume implicit return types for `@CircuitInject` functions are UI types.
+
+0.13.1
+------
+
+_2026-04-06_
+
+This is a small bugfix release for some issues with the new experimental Circuit code gen and `generateContributionProviders` features.
+
+### Enhancements
+
+- Add a `@ExposeImplBinding` annotation to disable `generateContributionProviders` behavior on a per-class basis.
+- **[FIR]** Warn if injecting an impl type when `generateContributionProviders` and the class isn't annotated `@ExposeImplBinding`.
+
+### Fixes
+
+- **[FIR]** Fix Circuit code gen not reporting contribution hints for downstream compilations.
+- **[FIR]** Don't generate contribution classes for `@ContributesTo`-annotated classes when `generateContributionProviders` is enabled.
+- **[FIR]** Don't generate contribution classes for `@AssistedFactory`-annotated classes when `generateContributionProviders` is enabled.
+- **[FIR]** Better ensure `enableCircuitCodegen` and `generateContributionProviders` work together when both enabled.
+- **[IR]** Fix default parameter expressions not being copied when `generateContributionProviders` is enabled. This specifically affected scoped or private bindings.
+- **[IR]** Fix qualifier annotations not being copied when `generateContributionProviders` is enabled.
+- **[IR]** Don't link expect/actual declarations if the callee is a synthetic declaration. This avoids some non-obvious IC failures with `generateContributionProviders`.
+
+### Contributors
+
+Special thanks to the following contributors for contributing to this release!
+
+- [@kevinguitar](https://github.com/kevinguitar)
+
+### [Consider sponsoring Metro's development](https://www.zacsweers.dev/sponsoring-metro/)
+
+0.13.0
+------
+
+_2026-04-04_
+
 ### New
+
+#### Circuit codegen
+
+Metro now includes experimental built-in support for [Circuit](https://slackhq.github.io/circuit/), a Compose-first architecture for building kotlin apps. See the [docs](https://zacsweers.github.io/metro/latest/circuit/) for more details.
+
+In the long term, this will eventually move out to a separate plugin that can gracefully participate with Metro's code gen APIs. This is initially implemented within Metro to ease development.
 
 #### `generateContributionProviders`
 
@@ -14,7 +98,7 @@ Up to now, Metro's aggregation APIs (i.e. `@Contributes*` binding annotations) h
 
 Now, if you enable the new `generateContributionProviders` feature, Metro will instead generate top-level `@Provides` declarations that mirror the injected class's inputs but only return its _bound type_. This means the annotated class can remain `internal`, which both helps encapsulation and incremental compilation.
 
-```
+```kotlin
 interface Base
 
 @ContributesBinding(AppScope::class)
@@ -43,12 +127,18 @@ interface BaseFactory<T : BaseFactory<T>>
 class HomeFactory(...) : BaseFactory<HomeFactory>
 ```
 
+### Enhancements
+
+- **[IR]** Use more unique diagnostic names in IR diagnostics (previously just used `METRO_ERROR` for a general catch-all in a lot of places).
+
 ### Fixes
 
 - **[IR]** Consider Anvil's `rank` parameter when processing contributed binding containers.
+- **[IR]** When reporting qualifier mismatches, if a qualifier is absent on one declaration then the message will now say "absent" rather than the vague "null".
 
 ### Changes
 
+- Support Kotlin `2.4.0-Beta1`
 - Removed `@Assisted.value`. See the [docs](https://zacsweers.github.io/metro/latest/injection-types/#assisted-injection) on why in case you missed this! TL;DR, Metro matches by parameter names going forward.
 - Remove deprecated compiler options and Gradle extension properties.
     - `chunkFieldInits`
@@ -56,6 +146,14 @@ class HomeFactory(...) : BaseFactory<HomeFactory>
     - `publicProviderSeverity` (use `publicScopedProviderSeverity`)
     - `assistedIdentifierSeverity`
     - `generateThrowsAnnotation`
+
+### Contributors
+
+Special thanks to the following contributors for contributing to this release!
+
+- [@vRallev](https://github.com/vRallev)
+
+### [Consider sponsoring Metro's development](https://www.zacsweers.dev/sponsoring-metro/)
 
 0.12.1
 ------
@@ -77,6 +175,7 @@ _2026-03-30_
 
 - Update shaded `androidx.tracing` to 2.0.0-alpha04.
 - Update shaded Wire dependency to 6.2.0.
+- Test Kotlin `2.4.0-Beta1`.
 
 ### Contributors
 
@@ -153,13 +252,13 @@ annotation class ViewModelKey(val value: KClass<out ViewModel> = Nothing::class)
 
 Special thanks to the following contributors for contributing to this release!
 
-- @Asapha
-- @ChristianKatzmann
-- @grandstaish
-- @jonamireh
-- @kevinguitar
-- @svenjacobs
-- @vRallev
+- [@Asapha](https://github.com/Asapha)
+- [@ChristianKatzmann](https://github.com/ChristianKatzmann)
+- [@grandstaish](https://github.com/grandstaish)
+- [@jonamireh](https://github.com/jonamireh)
+- [@kevinguitar](https://github.com/kevinguitar)
+- [@svenjacobs](https://github.com/svenjacobs)
+- [@vRallev](https://github.com/vRallev)
 
 0.11.4
 ------

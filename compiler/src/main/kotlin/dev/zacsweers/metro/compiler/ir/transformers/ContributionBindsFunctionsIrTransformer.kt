@@ -13,6 +13,7 @@ import dev.zacsweers.metro.compiler.ir.allSupertypesSequence
 import dev.zacsweers.metro.compiler.ir.annotationClass
 import dev.zacsweers.metro.compiler.ir.annotationsIn
 import dev.zacsweers.metro.compiler.ir.buildAnnotation
+import dev.zacsweers.metro.compiler.ir.copyParameterDefaultValues
 import dev.zacsweers.metro.compiler.ir.createIrBuilder
 import dev.zacsweers.metro.compiler.ir.findAnnotations
 import dev.zacsweers.metro.compiler.ir.irExprBodySafe
@@ -23,8 +24,8 @@ import dev.zacsweers.metro.compiler.ir.isImplicitClassKeySentinel
 import dev.zacsweers.metro.compiler.ir.isKiaIntoMultibinding
 import dev.zacsweers.metro.compiler.ir.mapKeyAnnotation
 import dev.zacsweers.metro.compiler.ir.originClassId
+import dev.zacsweers.metro.compiler.ir.parameters.Parameters
 import dev.zacsweers.metro.compiler.ir.populateImplicitClassKey
-import dev.zacsweers.metro.compiler.ir.qualifierAnnotation
 import dev.zacsweers.metro.compiler.ir.rawType
 import dev.zacsweers.metro.compiler.ir.rawTypeOrNull
 import dev.zacsweers.metro.compiler.ir.regularParameters
@@ -33,6 +34,7 @@ import dev.zacsweers.metro.compiler.ir.requireScope
 import dev.zacsweers.metro.compiler.ir.setDispatchReceiver
 import dev.zacsweers.metro.compiler.joinSimpleNames
 import dev.zacsweers.metro.compiler.memoize
+import dev.zacsweers.metro.compiler.reportCompilerBug
 import dev.zacsweers.metro.compiler.reserveName
 import dev.zacsweers.metro.compiler.symbols.Symbols
 import dev.zacsweers.metro.compiler.tracing.TraceScope
@@ -226,6 +228,15 @@ internal class ContributionTransformer(
             // Object: just reference the singleton instance
             irExprBodySafe(irGetObject(originClass.symbol))
           } else {
+            copyParameterDefaultValues(
+              providerFunction = injectConstructor,
+              sourceMetroParameters = Parameters.empty(),
+              sourceParameters = injectConstructor.regularParameters,
+              targetParameters = function.regularParameters,
+              containerParameter = null,
+              isTopLevelFunction = true,
+            )
+
             // Constructor call (synthetic scoped or direct)
             val constructorCall =
               irCallConstructor(injectConstructor.symbol, emptyList()).apply {
@@ -289,22 +300,18 @@ internal class ContributionTransformer(
         boundTypeResolver: IrBoundTypeResolver,
       ): IrSimpleFunction =
         with(metroContext) {
-          val result =
+          val (bindingTypeKey, explicitBindingType) =
             boundTypeResolver.resolveBoundType(annotatedType, annotation)
-              ?: error(
+              ?: reportCompilerBug(
                 "Could not resolve bound type for ${annotatedType.classIdOrFail}. This should have been caught in FIR."
               )
-          val bindingType = result.type
-          val explicitBindingType = result.explicitBindingType
 
-          val qualifier =
-            if (!result.ignoreQualifier) {
-              explicitBindingType?.qualifierAnnotation() ?: annotatedType.qualifierAnnotation()
-            } else {
-              null
-            }
+          val qualifier = explicitBindingType?.qualifier ?: bindingTypeKey.qualifier
 
-          val mapKey = explicitBindingType?.mapKeyAnnotation() ?: annotatedType.mapKeyAnnotation()
+          // Original type has the original annotations, if any
+          val mapKey =
+            explicitBindingType?.originalType?.mapKeyAnnotation()
+              ?: annotatedType.mapKeyAnnotation()
 
           // For map key hashing, use the effective key value. For implicit class keys
           // (sentinel Nothing::class), incorporate the annotated type's class ID instead
@@ -322,10 +329,10 @@ internal class ContributionTransformer(
 
           val suffix = buildString {
             append("As")
-            if (bindingType.isMarkedNullable()) {
+            if (bindingTypeKey.type.isMarkedNullable()) {
               append("Nullable")
             }
-            bindingType
+            bindingTypeKey.type
               .rawType()
               .classIdOrFail
               .joinSimpleNames(separator = "", camelCase = true)
@@ -340,7 +347,7 @@ internal class ContributionTransformer(
           val name = nameAllocator.newName(callableName + suffix).asName()
           addFunction {
               this.name = name
-              this.returnType = bindingType
+              this.returnType = bindingTypeKey.type
               this.modality = Modality.ABSTRACT
             }
             .apply {

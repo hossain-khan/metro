@@ -427,15 +427,40 @@ constructor(
   /**
    * When enabled, generates top-level contribution provider classes with `@Provides` functions
    * instead of nested `@Binds` interfaces for `@ContributesBinding`, `@ContributesIntoSet`, and
-   * `@ContributesIntoMap`. This allows implementation classes to remain `internal` or `private`
-   * since the generated provider directly constructs them (which in turn allows for finer grained
-   * IC).
+   * `@ContributesIntoMap`. This allows implementation classes to remain `internal` since the
+   * generated provider directly constructs them (which in turn allows for finer grained IC).
    *
    * Disabled by default.
    */
   @ExperimentalMetroGradleApi
   public val generateContributionProviders: Property<Boolean> =
     objects.booleanProperty("metro.generateContributionProviders", false)
+
+  /**
+   * Enable/disable Metro-native Circuit code generation. When enabled, Metro will generate
+   * `Ui.Factory` and `Presenter.Factory` implementations for `@CircuitInject`-annotated classes and
+   * functions.
+   *
+   * Note this will eventually move to a separate plugin.
+   *
+   * Disabled by default.
+   */
+  @ExperimentalMetroGradleApi
+  public val enableCircuitCodegen: Property<Boolean> =
+    objects.booleanProperty("metro.enableCircuitCodegen", false)
+
+  /**
+   * Enable/disable rich diagnostic formatting (ANSI bold, colors, etc.) in error messages. When
+   * enabled, key parts of diagnostic messages (types, qualifiers, declarations) are emphasized
+   * using ANSI formatting codes for better readability in terminal output.
+   *
+   * The `metro.richDiagnostics` system property takes priority over this option if set.
+   *
+   * Disabled by default as it's still a work in progress.
+   */
+  @ExperimentalMetroGradleApi
+  public val richDiagnostics: Property<Boolean> =
+    objects.booleanProperty("metro.richDiagnostics", false)
 
   /**
    * If set, the Metro compiler will dump verbose report diagnostics about resolved dependency

@@ -354,6 +354,12 @@ abstract class MetroCompilerTest {
                   this@toPluginOptions.generateContributionProviders,
                 )
               }
+              ENABLE_CIRCUIT_CODEGEN -> {
+                processor.option(entry.raw.cliOption, enableCircuitCodegen)
+              }
+              RICH_DIAGNOSTICS -> {
+                processor.option(entry.raw.cliOption, richDiagnostics)
+              }
             }
           yield(option)
         }
