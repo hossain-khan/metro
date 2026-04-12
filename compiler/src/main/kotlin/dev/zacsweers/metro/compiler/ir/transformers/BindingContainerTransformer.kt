@@ -352,6 +352,10 @@ internal class BindingContainerTransformer(context: IrMetroContext) :
         sourceParameters
       }
 
+    // Use parameter name as the primary field key to correctly handle multiple parameters
+    // with the same type key (e.g., two String params with different defaults).
+    // The typeKey map is kept as a fallback for dedup cases.
+    val nameToField = mutableMapOf<Name, IrField>()
     val typeKeyToField = mutableMapOf<IrTypeKey, IrField>()
     val ctor: IrConstructor
     if (factoryCls.isObject) {
@@ -382,7 +386,9 @@ internal class BindingContainerTransformer(context: IrMetroContext) :
           stubDefaults = false,
           typeRemapper = { type -> typeRemapper.remapType(type) },
         ) { typeKey, irParam ->
-          typeKeyToField[typeKey] = irParam.addBackingFieldTo(factoryCls)
+          val field = irParam.addBackingFieldTo(factoryCls)
+          nameToField[irParam.name] = field
+          typeKeyToField[typeKey] = field
         }
         body = generateDefaultConstructorBody()
       }
@@ -405,6 +411,7 @@ internal class BindingContainerTransformer(context: IrMetroContext) :
                 parameters = sourceParameters,
                 receiver = invokeFunction.dispatchReceiverParameter!!,
                 fields = typeKeyToField,
+                nameToField = nameToField,
               ),
           )
         )

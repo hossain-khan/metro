@@ -158,6 +158,12 @@ public class DiagnosticTestGenerated extends AbstractDiagnosticTest {
       }
 
       @Test
+      @TestMetadata("PresenterFunctionImplicitReturnType.kt")
+      public void testPresenterFunctionImplicitReturnType() {
+        runTest("compiler-tests/src/test/data/diagnostic/api/circuit/PresenterFunctionImplicitReturnType.kt");
+      }
+
+      @Test
       @TestMetadata("PresenterFunctionInvalidParams.kt")
       public void testPresenterFunctionInvalidParams() {
         runTest("compiler-tests/src/test/data/diagnostic/api/circuit/PresenterFunctionInvalidParams.kt");
