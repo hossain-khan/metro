@@ -24,6 +24,8 @@ Changelog
 
 - Mark generated Circuit factories as `@Deprecated(HIDDEN)` + disable them in IDE as they're not necessary there.
 - Add back deprecated `macosX64()`, `tvosX64()`, and `watchosX64()` targets for now due to [KT-78660 (comment)](https://youtrack.jetbrains.com/issue/KT-78660#focus=Comments-27-13603171.0-0).
+- Test Android Studio Panda 3 stable.
+- Test Android Studio Panda 4 canaries.
 
 ### Contributors
 
@@ -142,7 +144,7 @@ class HomeFactory(...) : BaseFactory<HomeFactory>
 
 ### Changes
 
-- Support Kotlin `2.4.0-Beta1`
+- Support Kotlin `2.4.0-Beta1`.
 - Removed `@Assisted.value`. See the [docs](https://zacsweers.github.io/metro/latest/injection-types/#assisted-injection) on why in case you missed this! TL;DR, Metro matches by parameter names going forward.
 - Remove deprecated compiler options and Gradle extension properties.
     - `chunkFieldInits`
