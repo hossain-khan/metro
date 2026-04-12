@@ -7,6 +7,7 @@ Changelog
 ### Enhancements
 
 - **[FIR]** Detect and report circuit factory class name collisions from overloads of conflicting `@CircuitInject`-annotated functions.
+- **[IR]** Improve readability of Kotlin IR dumps in reporting.
 
 ### Fixes
 
