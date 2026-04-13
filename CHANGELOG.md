@@ -4,6 +4,15 @@ Changelog
 **Unreleased**
 --------------
 
+1.0.0-RC1
+---------
+
+_2026-04-13_
+
+This is the first release candidate for Metro 1.0!
+
+This means that its _runtime_ APIs (`runtime`, `metrox` artifacts, Gradle plugin, etc) will be API stable unless annotated with an experimental annotation.
+
 ### Enhancements
 
 - **[FIR]** Detect and report circuit factory class name collisions from overloads of conflicting `@CircuitInject`-annotated functions.
@@ -36,6 +45,8 @@ Special thanks to the following contributors for contributing to this release!
 - [@kevinguitar](https://github.com/kevinguitar)
 - [@LionZXY](https://github.com/LionZXY)
 - [@Sultan1993](https://github.com/Sultan1993)
+
+### [Consider sponsoring Metro's development](https://www.zacsweers.dev/sponsoring-metro/)
 
 0.13.2
 ------
