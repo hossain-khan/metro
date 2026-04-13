@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776103758084,
+  "lastUpdate": 1776105632401,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Startup Benchmark": [
@@ -11256,6 +11256,62 @@ window.BENCHMARK_DATA = {
             "value": 0.22973296864683443,
             "unit": "ms/op",
             "extra": "after (HEAD)\ndelta: +3.49%\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "67a98e5e~1",
+          "message": "[before] Don't support inject-less circuitinject classes (#",
+          "timestamp": "2026-04-13T18:02:43Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/67a98e5e334da7474b127e4b16fe4af0545f5036"
+        },
+        "date": 1776105632401,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.23265455535694746,
+            "unit": "ms/op",
+            "extra": "before (HEAD~1)\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "67a98e5e334da7474b127e4b16fe4af0545f5036",
+          "message": "[after] Don't support inject-less circuitinject classes (#",
+          "timestamp": "2026-04-13T18:02:43Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/67a98e5e334da7474b127e4b16fe4af0545f5036"
+        },
+        "date": 1776105632402,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.22915041043956103,
+            "unit": "ms/op",
+            "extra": "after (HEAD)\ndelta: -1.51%\niterations: 10\nforks: 2\nthreads: 1"
           }
         ]
       }

@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776103758331,
+  "lastUpdate": 1776105632562,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -11256,6 +11256,62 @@ window.BENCHMARK_DATA = {
             "value": 30516.306,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: +3.69%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "67a98e5e~1",
+          "message": "[before] Don't support inject-less circuitinject classes (#",
+          "timestamp": "2026-04-13T18:02:43Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/67a98e5e334da7474b127e4b16fe4af0545f5036"
+        },
+        "date": 1776105632562,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 29368.02,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "67a98e5e334da7474b127e4b16fe4af0545f5036",
+          "message": "[after] Don't support inject-less circuitinject classes (#",
+          "timestamp": "2026-04-13T18:02:43Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/67a98e5e334da7474b127e4b16fe4af0545f5036"
+        },
+        "date": 1776105632563,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 29881.586,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: +1.75%"
           }
         ]
       }
