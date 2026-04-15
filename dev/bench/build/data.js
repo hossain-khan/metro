@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776204371348,
+  "lastUpdate": 1776229793748,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -11424,6 +11424,62 @@ window.BENCHMARK_DATA = {
             "value": 28000.45,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: -9.76%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "98ae0406~1",
+          "message": "[before] Fix implicit bound type cache collisions (#2145)",
+          "timestamp": "2026-04-15T00:30:59-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/98ae04063ba0d36ddabff18697c25bdb752bc621"
+        },
+        "date": 1776229793748,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 30796.023999999998,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "98ae04063ba0d36ddabff18697c25bdb752bc621",
+          "message": "[after] Fix implicit bound type cache collisions (#2145)",
+          "timestamp": "2026-04-15T00:30:59-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/98ae04063ba0d36ddabff18697c25bdb752bc621"
+        },
+        "date": 1776229793749,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 29545.612,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: -4.06%"
           }
         ]
       }

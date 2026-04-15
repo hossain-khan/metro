@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776204371217,
+  "lastUpdate": 1776229793623,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Startup Benchmark": [
@@ -11424,6 +11424,62 @@ window.BENCHMARK_DATA = {
             "value": 0.22536177658534476,
             "unit": "ms/op",
             "extra": "after (HEAD)\ndelta: -1.58%\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "98ae0406~1",
+          "message": "[before] Fix implicit bound type cache collisions (#2145)",
+          "timestamp": "2026-04-15T00:30:59-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/98ae04063ba0d36ddabff18697c25bdb752bc621"
+        },
+        "date": 1776229793623,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.18202272170572864,
+            "unit": "ms/op",
+            "extra": "before (HEAD~1)\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Ralf Wondratschek",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "98ae04063ba0d36ddabff18697c25bdb752bc621",
+          "message": "[after] Fix implicit bound type cache collisions (#2145)",
+          "timestamp": "2026-04-15T00:30:59-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/98ae04063ba0d36ddabff18697c25bdb752bc621"
+        },
+        "date": 1776229793624,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.1821448564011809,
+            "unit": "ms/op",
+            "extra": "after (HEAD)\ndelta: +0.07%\niterations: 10\nforks: 2\nthreads: 1"
           }
         ]
       }
