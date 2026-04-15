@@ -4,9 +4,30 @@ Changelog
 **Unreleased**
 --------------
 
+1.0.0-RC2
+---------
+
+_2026-04-15_
+
+This is the second release candidate for Metro 1.0!
+
+This means that its _runtime_ APIs (`runtime`, `metrox` artifacts, Gradle plugin, etc) will be API stable unless annotated with an experimental annotation.
+
+_Changes since RC1_
+
 ### Fixes
 
-- **[FIR/IR]** Propagate `@HiddenFromObjC` annotations to more generated Metro classes' member declarations. This a workaround to help avoid some gaps in K/N klib deserialization of generated files.
+- **[FIR/IR]** Propagate `@HiddenFromObjC` annotations to more generated Metro classes' member declarations. This is a workaround to help avoid some gaps in K/N klib deserialization of generated files.
+- **[IR]** Fix implicit bound type cache collisions.
+
+### Contributors
+
+Special thanks to the following contributors for contributing to this release!
+
+- [@Daiji256](https://github.com/Daiji256)
+- [@vRallev](https://github.com/vRallev)
+
+### [Consider sponsoring Metro's development](https://www.zacsweers.dev/sponsoring-metro/)
 
 1.0.0-RC1
 ---------
