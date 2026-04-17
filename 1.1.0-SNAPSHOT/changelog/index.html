@@ -5943,6 +5943,7 @@
 <ul>
 <li><strong>[FIR]</strong> Fix not recognizing <code>FirDeclarationOrigin.Precompiled</code> origins when checking resolved default binding types. Previously we only considered <code>FirDeclarationOrigin.Library</code>, but incremental compilation uses <code>FirDeclarationOrigin.Precompiled</code> to differentiate. This would result in misreads of default binding types in some cases during IC.</li>
 <li><strong>[IR]</strong> Fix secondary inject constructors support when <code>generateContributionProviders</code> is enabled.</li>
+<li><strong>[IR]</strong> Fix implicit class key lookup for map keys on source-declared <code>@Binds</code> declarations.</li>
 <li><strong>[interop]</strong> Fix <code>@ContributesSubcomponent.Factory</code> interop with square/anvil.</li>
 <li><strong>[docs]</strong> Fix source links in Dokka API docs.</li>
 <li><strong>[docs]</strong> Don&rsquo;t publish <code>**.internal.**</code> APIs in Dokka API docs.</li>
