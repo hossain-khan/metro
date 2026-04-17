@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776229793748,
+  "lastUpdate": 1776404012567,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -11480,6 +11480,62 @@ window.BENCHMARK_DATA = {
             "value": 29545.612,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: -4.06%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "6ce24982~1",
+          "message": "[before] Add ambiguous injector constructor check (#2153)",
+          "timestamp": "2026-04-17T00:51:12-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/6ce24982e9d28aa664bea2eb17bd08b8a65d188a"
+        },
+        "date": 1776404012567,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 29998.176,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "6ce24982e9d28aa664bea2eb17bd08b8a65d188a",
+          "message": "[after] Add ambiguous injector constructor check (#2153)",
+          "timestamp": "2026-04-17T00:51:12-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/6ce24982e9d28aa664bea2eb17bd08b8a65d188a"
+        },
+        "date": 1776404012568,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 31894.23,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: +6.32%"
           }
         ]
       }
