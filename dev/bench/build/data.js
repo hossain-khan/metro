@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776406309872,
+  "lastUpdate": 1776408145083,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -11648,6 +11648,62 @@ window.BENCHMARK_DATA = {
             "value": 32388.041999999998,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: +7.94%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "c6e654b3~1",
+          "message": "[before] Fix secondary constructor with contributionprovide",
+          "timestamp": "2026-04-17T02:06:03-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/c6e654b33e0b4d55c2c779645ca45fd9a919b3da"
+        },
+        "date": 1776408145083,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 28541.808,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "c6e654b33e0b4d55c2c779645ca45fd9a919b3da",
+          "message": "[after] Fix secondary constructor with contributionprovide",
+          "timestamp": "2026-04-17T02:06:03-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/c6e654b33e0b4d55c2c779645ca45fd9a919b3da"
+        },
+        "date": 1776408145084,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 28180.152000000002,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: -1.27%"
           }
         ]
       }

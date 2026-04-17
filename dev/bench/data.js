@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776406309761,
+  "lastUpdate": 1776408144880,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Startup Benchmark": [
@@ -11648,6 +11648,62 @@ window.BENCHMARK_DATA = {
             "value": 0.2262888631456521,
             "unit": "ms/op",
             "extra": "after (HEAD)\ndelta: -0.15%\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "c6e654b3~1",
+          "message": "[before] Fix secondary constructor with contributionprovide",
+          "timestamp": "2026-04-17T02:06:03-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/c6e654b33e0b4d55c2c779645ca45fd9a919b3da"
+        },
+        "date": 1776408144880,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.21945209207217303,
+            "unit": "ms/op",
+            "extra": "before (HEAD~1)\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Jon Amireh",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "c6e654b33e0b4d55c2c779645ca45fd9a919b3da",
+          "message": "[after] Fix secondary constructor with contributionprovide",
+          "timestamp": "2026-04-17T02:06:03-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/c6e654b33e0b4d55c2c779645ca45fd9a919b3da"
+        },
+        "date": 1776408144881,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.22468184131456725,
+            "unit": "ms/op",
+            "extra": "after (HEAD)\ndelta: +2.38%\niterations: 10\nforks: 2\nthreads: 1"
           }
         ]
       }
