@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776408144880,
+  "lastUpdate": 1776410054748,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Startup Benchmark": [
@@ -11704,6 +11704,62 @@ window.BENCHMARK_DATA = {
             "value": 0.22468184131456725,
             "unit": "ms/op",
             "extra": "after (HEAD)\ndelta: +2.38%\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "053d9774~1",
+          "message": "[before] Fix missing CSCF interop (#2156)",
+          "timestamp": "2026-04-17T02:35:10-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/053d97748a950378953d605a5f67741dee7a4892"
+        },
+        "date": 1776410054748,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.22409679578644265,
+            "unit": "ms/op",
+            "extra": "before (HEAD~1)\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "053d97748a950378953d605a5f67741dee7a4892",
+          "message": "[after] Fix missing CSCF interop (#2156)",
+          "timestamp": "2026-04-17T02:35:10-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/053d97748a950378953d605a5f67741dee7a4892"
+        },
+        "date": 1776410054749,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.23548317990530884,
+            "unit": "ms/op",
+            "extra": "after (HEAD)\ndelta: +5.08%\niterations: 10\nforks: 2\nthreads: 1"
           }
         ]
       }

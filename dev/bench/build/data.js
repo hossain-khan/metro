@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776408145083,
+  "lastUpdate": 1776410054863,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -11704,6 +11704,62 @@ window.BENCHMARK_DATA = {
             "value": 28180.152000000002,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: -1.27%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "053d9774~1",
+          "message": "[before] Fix missing CSCF interop (#2156)",
+          "timestamp": "2026-04-17T02:35:10-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/053d97748a950378953d605a5f67741dee7a4892"
+        },
+        "date": 1776410054863,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 30913.071999999996,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "053d97748a950378953d605a5f67741dee7a4892",
+          "message": "[after] Fix missing CSCF interop (#2156)",
+          "timestamp": "2026-04-17T02:35:10-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/053d97748a950378953d605a5f67741dee7a4892"
+        },
+        "date": 1776410054864,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 30227.358,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: -2.22%"
           }
         ]
       }
