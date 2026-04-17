@@ -6,6 +6,7 @@ Changelog
 
 ### Enhancements
 
+- **[FIR]** Add a new diagnostic for ambiguous inject constructors. Namely cases where a class is annotated with `@Inject`, defines a secondary constructor, but no primary constructor. This is ambiguous, metro now asks you pick a lane.
 - **[JVM/JS]** Generate `@JvmStatic` and `@JsStatic` annotations onto static-ish functions for better staticization on those platforms.
 - **[docs]** Migrate doc site to Zensical. Works the same, fresh-ish coat of paint!
 
