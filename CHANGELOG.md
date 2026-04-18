@@ -12,6 +12,7 @@ Changelog
 
 - **[FIR]** Add a new diagnostic for ambiguous inject constructors. Namely, cases where a class is annotated with `@Inject`, defines a secondary constructor but no primary constructor. This is ambiguous, metro now asks you to pick a lane.
 - **[FIR]** Add a new diagnostic for check against `private` contributions.
+- **[FIR]** When rendering diagnostics in the IDE, use short names for classes since they are shown in context already.
 - **[JVM/JS]** Generate `@JvmStatic` and `@JsStatic` annotations onto static-ish functions for better staticization on those platforms.
 - **[docs]** Migrate doc site to Zensical. Works the same, fresh-ish coat of paint!
 
