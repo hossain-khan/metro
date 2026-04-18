@@ -5983,7 +5983,8 @@
 </ul>
 <h3 id="enhancements">Enhancements<a class="headerlink" href="#enhancements" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>[FIR]</strong> Add a new diagnostic for ambiguous inject constructors. Namely cases where a class is annotated with <code>@Inject</code>, defines a secondary constructor, but no primary constructor. This is ambiguous, metro now asks you pick a lane.</li>
+<li><strong>[FIR]</strong> Add a new diagnostic for ambiguous inject constructors. Namely, cases where a class is annotated with <code>@Inject</code>, defines a secondary constructor but no primary constructor. This is ambiguous, metro now asks you to pick a lane.</li>
+<li><strong>[FIR]</strong> Add a new diagnostic for check against <code>private</code> contributions.</li>
 <li><strong>[JVM/JS]</strong> Generate <code>@JvmStatic</code> and <code>@JsStatic</code> annotations onto static-ish functions for better staticization on those platforms.</li>
 <li><strong>[docs]</strong> Migrate doc site to Zensical. Works the same, fresh-ish coat of paint!</li>
 </ul>
