@@ -2276,9 +2276,10 @@
 </div>
 <h2 id="common-patterns">Common Patterns<a class="headerlink" href="#common-patterns" title="Permanent link">&para;</a></h2>
 <h3 id="providing-third-party-classes">Providing third-party classes<a class="headerlink" href="#providing-third-party-classes" title="Permanent link">&para;</a></h3>
-<p>For classes you don&rsquo;t control (e.g. OkHttp), use <code>@Provides</code> in a contributed interface:</p>
+<p>For types you don&rsquo;t control (e.g. third party code), use <code>@Provides</code> in a contributed binding container:</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@ContributesTo</span><span class="p">(</span><span class="n">AppScope</span><span class="o">::</span><span class="n">class</span><span class="p">)</span>
-<span class="kd">interface</span><span class="w"> </span><span class="nc">NetworkProviders</span><span class="w"> </span><span class="p">{</span>
+<span class="nd">@BindingContainer</span>
+<span class="kd">object</span><span class="w"> </span><span class="nc">NetworkBindings</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nd">@Provides</span>
 <span class="w">  </span><span class="kd">fun</span><span class="w"> </span><span class="nf">provideCache</span><span class="p">(</span><span class="n">application</span><span class="p">:</span><span class="w"> </span><span class="n">Application</span><span class="p">):</span><span class="w"> </span><span class="n">Cache</span><span class="w"> </span><span class="o">=</span>
 <span class="w">    </span><span class="n">Cache</span><span class="p">(</span><span class="n">application</span><span class="p">.</span><span class="na">cacheDir</span><span class="p">.</span><span class="na">resolve</span><span class="p">(</span><span class="s">&quot;http_cache&quot;</span><span class="p">),</span><span class="w"> </span><span class="m">50L</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">1024</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">1024</span><span class="p">)</span>
@@ -2290,6 +2291,11 @@
 <span class="w">      </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
+<p>A contributed <code>@BindingContainer</code> is the lightest-weight form: its <code>@Provides</code> declarations are pulled into the graph without exposing them as accessors on the graph type. See <a href="../dependency-graphs/#binding-containers">Binding Containers</a> for more, including replacing or excluding them in tests.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>A contributed <code>interface</code> with <code>@Provides</code> works too, and is useful when you want subtypes to override non-provider members of the interface. <code>@Provides</code> declarations themselves cannot be overridden — see <a href="../provides/">Provides</a>.</p>
+</div>
 <h3 id="scoping-singletons">Scoping (singletons)<a class="headerlink" href="#scoping-singletons" title="Permanent link">&para;</a></h3>
 <p>Use <code>@SingleIn</code> to ensure only one instance exists per graph:</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@SingleIn</span><span class="p">(</span><span class="n">AppScope</span><span class="o">::</span><span class="n">class</span><span class="p">)</span>
