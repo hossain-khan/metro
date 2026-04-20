@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776484889141,
+  "lastUpdate": 1776697080979,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -12040,6 +12040,62 @@ window.BENCHMARK_DATA = {
             "value": 29769.248,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: -3.00%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "renovate[bot]",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "renovate[bot]",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "45b70b67~1",
+          "message": "[before] Update plugin com.gradle.develocity to v4.4.1 (#21",
+          "timestamp": "2026-04-20T10:15:20-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/45b70b674cdf9bb06492e681baccd6a4d20cfb97"
+        },
+        "date": 1776697080979,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 28523.397999999997,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "renovate[bot]",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "renovate[bot]",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "45b70b674cdf9bb06492e681baccd6a4d20cfb97",
+          "message": "[after] Update plugin com.gradle.develocity to v4.4.1 (#21",
+          "timestamp": "2026-04-20T10:15:20-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/45b70b674cdf9bb06492e681baccd6a4d20cfb97"
+        },
+        "date": 1776697080980,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 29429.738,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: +3.18%"
           }
         ]
       }
