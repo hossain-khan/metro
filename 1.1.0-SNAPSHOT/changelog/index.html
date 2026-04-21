@@ -5981,6 +5981,7 @@
 <ul>
 <li>Add a new <code>desugaredProviderSeverity</code> option (default: <code>WARN</code>) that reports a diagnostic when <code>Provider&lt;T&gt;</code> is used instead of the preferred <code>() -&gt; T</code> form. Set this to <code>NONE</code> to disable the warning during migration, or <code>ERROR</code> to enforce the new style. Automatically treated as <code>NONE</code> when <code>enableFunctionProviders</code> is disabled.</li>
 <li><strong>[Gradle]</strong> Introduce a new <code>compilerOptions {}</code> DSL for free Metro compiler options and flags.</li>
+<li><strong>[Gradle]</strong> Add <code>IDE_WARN</code> and <code>IDE_ERROR</code> members to <code>DiagnosticSeverity</code> to allow configuring some diagnostics to <em>only</em> run in IDE sessions. Useful for diagnostics you only want to surface to readers in the IDE without emitting compiler warnings in real (CLI) compilations.</li>
 </ul>
 <h3 id="enhancements">Enhancements<a class="headerlink" href="#enhancements" title="Permanent link">&para;</a></h3>
 <ul>
