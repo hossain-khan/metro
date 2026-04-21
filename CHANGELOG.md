@@ -6,6 +6,7 @@ Changelog
 
 ### New
 
+- Add a new `desugaredProviderSeverity` option (default: `WARN`) that reports a diagnostic when `Provider<T>` is used instead of the preferred `() -> T` form. Set this to `NONE` to disable the warning during migration, or `ERROR` to enforce the new style. Automatically treated as `NONE` when `enableFunctionProviders` is disabled.
 - **[Gradle]** Introduce a new `compilerOptions {}` DSL for free Metro compiler options and flags.
 
 ### Enhancements
@@ -21,6 +22,7 @@ Changelog
 - **[FIR]** Fix not recognizing `FirDeclarationOrigin.Precompiled` origins when checking resolved default binding types. Previously we only considered `FirDeclarationOrigin.Library`, but incremental compilation uses `FirDeclarationOrigin.Precompiled` to differentiate. This would result in misreads of default binding types in some cases during IC.
 - **[IR]** Fix secondary inject constructors support when `generateContributionProviders` is enabled.
 - **[IR]** Fix implicit class key lookup for map keys on source-declared `@Binds` declarations.
+- **[IR]** Fix `implementsProviderType()` check in the compiler to only exactly match `Function0` types when `enableFunctionProviders` is enabled
 - **[interop]** Fix `@ContributesSubcomponent.Factory` interop with square/anvil.
 - **[interop]** Fix `@MergeSubcomponent.Factory` interop with zacsweers/anvil (anvil-ksp).
 - **[docs]** Fix source links in Dokka API docs.
@@ -28,12 +30,15 @@ Changelog
 
 ### Changes
 
+- `enableFunctionProviders` (i.e. `() -> T` syntax for providers) is now enabled by default.  Previously this required opting in. The function-syntax form is now the **recommended** way to declare provider dependencies; `Provider<T>` is still supported but treated as a desugared alternative and a **warning** by default, similar to if you were to use `Function0` instead of `() -> T` syntax for functions. See the [metro-intrinsics](docs/metro-intrinsics.md) docs for more details.
 - **[Gradle]** Remove deprecated `useAssistedParamNamesAsIdentifiers` property.
 - **[Gradle]** Remove `deduplicateInjectedParams` property.
 - **[Gradle]** Remove `enableKlibParamsCheck` property, use the new compilerOptions API.
 - **[Gradle]** Remove `enableFullBindingGraphValidation` property, use the new compilerOptions API.
 - **[Gradle]** Remove `enableGraphImplClassAsReturnType` property, use the new compilerOptions API.
 - **[Gradle]** Remove `shrinkUnusedBindings` property, use the new compilerOptions API.
+- **[metrox-android]** Change `MetroAppComponentProviders` accessor multibindings to expose function types instead of `Provider` types.
+- **[metrox-viewmodel]** Change `MetroViewModelFactory` and `MetroViewModelMultibindings` accessor multibindings to expose function types instead of `Provider` types.
 
 ### Contributors
 

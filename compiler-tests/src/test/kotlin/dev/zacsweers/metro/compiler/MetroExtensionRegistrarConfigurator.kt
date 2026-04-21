@@ -128,7 +128,9 @@ class MetroExtensionRegistrarConfigurator(testServices: TestServices) :
         parallelThreads = it
       }
       contributesAsInject = MetroDirectives.CONTRIBUTES_AS_INJECT in module.directives
-      enableFunctionProviders = MetroDirectives.ENABLE_FUNCTION_PROVIDERS in module.directives
+      module.directives.singleOrZeroValue(MetroDirectives.DESUGARED_PROVIDER_SEVERITY)?.let {
+        desugaredProviderSeverity = it
+      }
       enableKClassToClassInterop =
         MetroDirectives.ENABLE_KCLASS_TO_CLASS_INTEROP in module.directives
       generateContributionProviders =
