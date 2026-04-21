@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776697080979,
+  "lastUpdate": 1776750915154,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -12096,6 +12096,62 @@ window.BENCHMARK_DATA = {
             "value": 29429.738,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: +3.18%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "ca9a4518~1",
+          "message": "[before] Flip the switch on function providers (#2172)",
+          "timestamp": "2026-04-21T01:16:41-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/ca9a45189b4e01334989d89dfa812af753be1d86"
+        },
+        "date": 1776750915154,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 27988.844,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "ca9a45189b4e01334989d89dfa812af753be1d86",
+          "message": "[after] Flip the switch on function providers (#2172)",
+          "timestamp": "2026-04-21T01:16:41-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/ca9a45189b4e01334989d89dfa812af753be1d86"
+        },
+        "date": 1776750915155,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 28665.73,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: +2.42%"
           }
         ]
       }
