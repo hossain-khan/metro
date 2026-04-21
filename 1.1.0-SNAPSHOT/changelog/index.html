@@ -6004,7 +6004,8 @@
 </ul>
 <h3 id="changes">Changes<a class="headerlink" href="#changes" title="Permanent link">&para;</a></h3>
 <ul>
-<li><code>enableFunctionProviders</code> (i.e. <code>() -&gt; T</code> syntax for providers) is now enabled by default.  Previously this required opting in. The function-syntax form is now the <strong>recommended</strong> way to declare provider dependencies; <code>Provider&lt;T&gt;</code> is still supported but treated as a desugared alternative and a <strong>warning</strong> by default, similar to if you were to use <code>Function0</code> instead of <code>() -&gt; T</code> syntax for functions. See the <a href="../docs/metro-intrinsics/">metro-intrinsics</a> docs for more details.</li>
+<li><code>enableFunctionProviders</code> (i.e. <code>() -&gt; T</code> syntax for providers) is now enabled by default. Previously this required opting in. The function-syntax form is now the <strong>recommended</strong> way to declare provider dependencies; <code>Provider&lt;T&gt;</code> is still supported but treated as a desugared alternative and a <strong>warning</strong> by default, similar to if you were to use <code>Function0</code> instead of <code>() -&gt; T</code> syntax for functions. See the <a href="../docs/metro-intrinsics/">metro-intrinsics</a> docs for more details.</li>
+<li><strong>[Gradle]</strong> Promote <code>enableFunctionProviders</code> to stable.</li>
 <li><strong>[Gradle]</strong> Remove deprecated <code>useAssistedParamNamesAsIdentifiers</code> property.</li>
 <li><strong>[Gradle]</strong> Remove <code>deduplicateInjectedParams</code> property.</li>
 <li><strong>[Gradle]</strong> Remove <code>enableKlibParamsCheck</code> property, use the new compilerOptions API.</li>
