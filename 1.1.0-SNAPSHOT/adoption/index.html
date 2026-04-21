@@ -2211,6 +2211,10 @@
 </ul>
 </div>
 <div class="tabbed-block">
+<div class="admonition warning">
+<p class="admonition-title">Keep <code>enableFunctionProviders</code> enabled</p>
+<p>kotlin-inject&rsquo;s idiomatic way to request a provider is <code>() -&gt; T</code>, so any non-trivial kotlin-inject codebase has these all over the graph. Metro&rsquo;s <code>enableFunctionProviders</code> option (on by default) is what makes Metro resolve <code>() -&gt; T</code> as a provider of <code>T</code>, which is exactly the semantics kotlin-inject users expect. Disabling it will break almost every migrated class, so leave it at its default during and after the migration.</p>
+</div>
 <h3 id="precursor-steps_1">Precursor steps<a class="headerlink" href="#precursor-steps_1" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Remove the kotlin-inject(-anvil) dependencies (but keep their runtime deps if you use option 1 below!).</li>
