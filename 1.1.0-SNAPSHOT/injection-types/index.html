@@ -2316,7 +2316,7 @@ Metro will automatically generate a default factory as a nested class within the
 <p>To do this, Metro’s FIR plugin will generate a concrete type that acts as a bridge for this function.</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@Inject</span>
 <span class="kd">class</span><span class="w"> </span><span class="nc">App</span><span class="p">(</span>
-<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">message</span><span class="p">:</span><span class="w"> </span><span class="n">Provider</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">message</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">String</span>
 <span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">operator</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">invoke</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">App</span><span class="p">(</span><span class="n">message</span><span class="p">())</span>
@@ -2412,7 +2412,7 @@ Metro will automatically generate a default factory as a nested class within the
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nd">@Inject</span>
-<span class="kd">class</span><span class="w"> </span><span class="nc">ClockWidgetClass</span><span class="p">(</span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">clock</span><span class="p">:</span><span class="w"> </span><span class="n">Provider</span><span class="o">&lt;</span><span class="n">Clock</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">class</span><span class="w"> </span><span class="nc">ClockWidgetClass</span><span class="p">(</span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">clock</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Clock</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nd">@Composable</span>
 <span class="w">  </span><span class="n">context</span><span class="p">(</span><span class="n">sharedTransitionScope</span><span class="p">:</span><span class="w"> </span><span class="n">SharedTransitionScope</span><span class="p">)</span>
 <span class="w">  </span><span class="kd">operator</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">invoke</span><span class="p">(</span><span class="n">modifier</span><span class="p">:</span><span class="w"> </span><span class="n">Modifier</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>

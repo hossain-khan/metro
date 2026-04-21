@@ -2092,7 +2092,7 @@
 <p>Metro generates a <code>Presenter.Factory</code> (or <code>Ui.Factory</code>) that:</p>
 <ul>
 <li>Is annotated with <code>@Inject</code> and <code>@ContributesIntoSet(scope)</code></li>
-<li>Has a constructor that accepts a <code>Provider&lt;HomePresenter&gt;</code></li>
+<li>Has a constructor that accepts a <code>() -&gt; HomePresenter</code> function</li>
 <li>Implements <code>create()</code> with screen matching and delegation to the provider</li>
 </ul>
 <h3 id="function-based-presenters-and-uis">Function-based Presenters and UIs<a class="headerlink" href="#function-based-presenters-and-uis" title="Permanent link">&para;</a></h3>
@@ -2103,12 +2103,12 @@
 <span class="kd">fun</span><span class="w"> </span><span class="nf">HomePresenter</span><span class="p">(</span>
 <span class="w">  </span><span class="n">screen</span><span class="p">:</span><span class="w"> </span><span class="n">HomeScreen</span><span class="p">,</span><span class="w">      </span><span class="c1">// Circuit-provided</span>
 <span class="w">  </span><span class="n">navigator</span><span class="p">:</span><span class="w"> </span><span class="n">Navigator</span><span class="p">,</span><span class="w">    </span><span class="c1">// Circuit-provided</span>
-<span class="w">  </span><span class="n">repository</span><span class="p">:</span><span class="w"> </span><span class="n">UserRepository</span><span class="p">,</span><span class="w">  </span><span class="c1">// Injected as Provider&lt;UserRepository&gt;</span>
+<span class="w">  </span><span class="n">repository</span><span class="p">:</span><span class="w"> </span><span class="n">UserRepository</span><span class="p">,</span><span class="w">  </span><span class="c1">// Injected as () -&gt; UserRepository</span>
 <span class="p">):</span><span class="w"> </span><span class="n">HomeState</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Metro generates a factory class whose constructor accepts <code>Provider</code>-wrapped parameters for injected dependencies. At <code>create()</code> time, providers are invoked <em>once</em> (outside the composition) and passed to the function body along with any Circuit-provided parameters.</p>
+<p>Metro generates a factory class whose constructor accepts provider-wrapped parameters (<code>() -&gt; T</code>) for injected dependencies. At <code>create()</code> time, providers are invoked <em>once</em> (outside the composition) and passed to the function body along with any Circuit-provided parameters.</p>
 <p><strong>UI functions</strong> return <code>Unit</code> and must have a <code>Modifier</code> parameter:</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@CircuitInject</span><span class="p">(</span><span class="n">HomeScreen</span><span class="o">::</span><span class="n">class</span><span class="p">,</span><span class="w"> </span><span class="n">AppScope</span><span class="o">::</span><span class="n">class</span><span class="p">)</span>
 <span class="nd">@Inject</span>
@@ -2174,8 +2174,8 @@
 </tr>
 </tbody>
 </table>
-<p>All other parameter types are treated as injected dependencies and wrapped in <code>Provider&lt;T&gt;</code> on the generated factory&rsquo;s constructor.</p>
-<p>Parameters already wrapped in <code>Provider&lt;T&gt;</code>, <code>Lazy&lt;T&gt;</code>, or function types are passed through as-is without additional wrapping.</p>
+<p>All other parameter types are treated as injected dependencies and wrapped in <code>() -&gt; T</code> on the generated factory&rsquo;s constructor.</p>
+<p>Parameters already wrapped in <code>() -&gt; T</code>, <code>Provider&lt;T&gt;</code>, <code>Lazy&lt;T&gt;</code>, or function types are passed through as-is without additional wrapping.</p>
 <p><strong><code>CircuitContext</code></strong> is intentionally excluded from the circuit-provided set. It is a factory-level concept and should not be accepted by presenters or UIs.</p>
 <h2 id="validation">Validation<a class="headerlink" href="#validation" title="Permanent link">&para;</a></h2>
 <p>The compiler plugin validates <code>@CircuitInject</code> usage for common usage errors.</p>

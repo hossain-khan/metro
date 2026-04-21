@@ -2088,11 +2088,11 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>Multibinding collections are immutable at runtime and cannot be defined as mutable at request sites.</p>
-<p>Map multibindings support injecting <em>map providers</em>, where the value type can be wrapped in <code>Provider</code>.</p>
+<p>Map multibindings support injecting <em>map providers</em>, where the value type can be wrapped in a function (<code>() -&gt; V</code>).</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@DependencyGraph</span>
 <span class="kd">interface</span><span class="w"> </span><span class="nc">MapMultibinding</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nd">@Multibinds</span><span class="p">(</span><span class="n">allowEmpty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
-<span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="nv">ints</span><span class="p">:</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="n">Provider</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;&gt;</span>
+<span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="nv">ints</span><span class="p">:</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Int</span><span class="o">&gt;</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Unlike Dagger, empty multibindings in Metro are a compile error by default. Empty multibindings are allowed but must be opted into via <code>@Multibinds(allowEmpty = true)</code>.</p>

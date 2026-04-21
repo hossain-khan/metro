@@ -2154,7 +2154,7 @@
 <p>This allows some dynamism with keys but has some downsides. A few different reasons Metro doesn&rsquo;t use this approach</p>
 <ul>
 <li>Duplicate key checking becomes a runtime failure rather than compile-time.</li>
-<li>It breaks the ability to expose <code>Map&lt;Key, Provider&lt;Value&gt;&gt;</code> unless you start manually managing <code>Provider</code> types yourself.</li>
+<li>It breaks the ability to expose <code>Map&lt;Key, () -&gt; Value&gt;</code> (or <code>Map&lt;Key, Provider&lt;Value&gt;&gt;</code>) unless you start manually managing function/provider types yourself.</li>
 <li>You allocate and throw away a <code>Pair</code> instance each time it&rsquo;s called.</li>
 </ul>
 <h3 id="will-metro-add-support-for-dagger-android-features-or-dagger-android-interop"><strong>Will Metro add support for dagger-android features or dagger-android interop?</strong><a class="headerlink" href="#will-metro-add-support-for-dagger-android-features-or-dagger-android-interop" title="Permanent link">&para;</a></h3>

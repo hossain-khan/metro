@@ -1458,6 +1458,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#migrating-providert-to-function-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Migrating Provider&lt;T&gt; to function syntax
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Migrating Provider&lt;T&gt; to function syntax">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#controlling-the-diagnostic-severity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controlling the diagnostic severity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automated-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automated migration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-you-previously-used-function-types-as-binding-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If you previously used function types as binding keys
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2021,6 +2071,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#migrating-providert-to-function-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Migrating Provider&lt;T&gt; to function syntax
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Migrating Provider&lt;T&gt; to function syntax">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#controlling-the-diagnostic-severity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controlling the diagnostic severity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automated-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automated migration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-you-previously-used-function-types-as-binding-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If you previously used function types as binding keys
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2107,7 +2207,7 @@
 <li>Remove the Dagger and anvil runtimes.</li>
 <li>Replace all Dagger/anvil annotations with Metro equivalents.</li>
 <li>Update references to generated <code>Dagger*Component</code> calls to use metro&rsquo;s <code>createGraph</code>/<code>createGraphFactory</code> APIs.</li>
-<li>Migrate from javax/jakarta <code>Provider</code> and <code>dagger.Lazy</code> APIs to Metro&rsquo;s <code>Provider</code> and the stdlib&rsquo;s <code>Lazy</code> APIs.</li>
+<li>Migrate from javax/jakarta <code>Provider</code> and <code>dagger.Lazy</code> APIs to the function-syntax <code>() -&gt; T</code> provider form (or Metro&rsquo;s <code>Provider&lt;T&gt;</code>) and the stdlib&rsquo;s <code>Lazy</code> APIs. See <a href="#migrating-providert-to-function-syntax">Migrating <code>Provider&lt;T&gt;</code> to function syntax</a> below.</li>
 </ul>
 </div>
 <div class="tabbed-block">
@@ -2135,7 +2235,7 @@
 <p>You will still possibly need to do some manual migrations, namely providers.</p>
 <ul>
 <li>Any map multibindings need to migrate to use <a href="../bindings/#multibindings">map keys</a>.</li>
-<li>Any higher order function injection will need to switch to using Metro&rsquo;s <code>Provider</code> API.</li>
+<li>Any higher order function injection is directly compatible with Metro&rsquo;s function-syntax providers (<code>() -&gt; T</code>), which are enabled by default. See <a href="#migrating-providert-to-function-syntax">Migrating <code>Provider&lt;T&gt;</code> to function syntax</a> below for details.</li>
 <li>Any higher order <em>assisted</em> function injection will need to switch to using <code>@AssistedFactory</code>-annotated factories.</li>
 <li>If you use <code>@MergeComponent</code> + <code>@Component</code>, it&rsquo;ll be easier if you just migrate those interfaces to <code>@DependencyGraph</code> since they&rsquo;re combined in there now.</li>
 <li>If you use <code>@Component</code> parameters for graph extensions, you&rsquo;ll have to switch to <a href="../dependency-graphs/#graph-extensions">Graph extensions</a>. This will primarily entail annotating the parameter with <code>@Nested</code> and marking the parent graph as extendable.</li>
@@ -2144,7 +2244,7 @@
 <h3 id="option-3-full-migration_1">Option 3: Full migration<a class="headerlink" href="#option-3-full-migration_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Any map multibindings need to migrate to use <a href="../bindings/#multibindings">map keys</a>.</li>
-<li>Any higher order function injection will need to switch to using Metro&rsquo;s <code>Provider</code> API.</li>
+<li>Any higher order function injection is directly compatible with Metro&rsquo;s function-syntax providers (<code>() -&gt; T</code>), which are enabled by default.</li>
 <li>Any higher order <em>assisted</em> function injection will need to switch to using <code>@AssistedFactory</code>-annotated factories.</li>
 <li>Remove the kotlin-inject and kotlin-inject-anvil runtimes.</li>
 <li>Replace all kotlin-inject/kotlin-inject-anvil annotations with Metro equivalents.</li>
@@ -2154,6 +2254,61 @@
 </div>
 </div>
 </div>
+<h2 id="migrating-providert-to-function-syntax">Migrating <code>Provider&lt;T&gt;</code> to function syntax<a class="headerlink" href="#migrating-providert-to-function-syntax" title="Permanent link">&para;</a></h2>
+<p>Metro supports two equivalent provider forms:</p>
+<ul>
+<li><strong>Function syntax</strong> (preferred, default): <code>() -&gt; T</code></li>
+<li><strong>Desugared</strong>: <code>Provider&lt;T&gt;</code></li>
+</ul>
+<p>The function-syntax form is enabled by default (<code>enableFunctionProviders = true</code>) and is the recommended way to declare provider dependencies going forward. The desugared <code>Provider&lt;T&gt;</code> form still works and remains useful for some interop scenarios, but Metro will surface a compiler diagnostic when it encounters it so you can incrementally migrate.</p>
+<h3 id="controlling-the-diagnostic-severity">Controlling the diagnostic severity<a class="headerlink" href="#controlling-the-diagnostic-severity" title="Permanent link">&para;</a></h3>
+<p>Use the <code>desugaredProviderSeverity</code> compiler option to control how Metro reports <code>Provider&lt;T&gt;</code> usages:</p>
+<div class="highlight"><pre><span></span><code><span class="n">metro</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// `WARN` by default. Set to `NONE` while migrating a large codebase, or</span>
+<span class="w">  </span><span class="c1">// `ERROR` to enforce function syntax for new code.</span>
+<span class="w">  </span><span class="n">desugaredProviderSeverity</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">DiagnosticSeverity</span><span class="p">.</span><span class="na">NONE</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Values:</p>
+<ul>
+<li><code>NONE</code> — no diagnostic (also forced when <code>enableFunctionProviders</code> is disabled).</li>
+<li><code>WARN</code> <em>(default)</em> — emit a compiler warning.</li>
+<li><code>ERROR</code> — fail the compilation.</li>
+</ul>
+<p>If a specific declaration intentionally uses <code>Provider&lt;T&gt;</code> (e.g., to interop with an external API), suppress the warning locally:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Suppress</span><span class="p">(</span><span class="s">&quot;DESUGARED_PROVIDER_WARNING&quot;</span><span class="p">)</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">metroProvider</span><span class="p">:</span><span class="w"> </span><span class="n">Provider</span><span class="o">&lt;</span><span class="n">Foo</span><span class="o">&gt;</span>
+</code></pre></div>
+<h3 id="automated-migration">Automated migration<a class="headerlink" href="#automated-migration" title="Permanent link">&para;</a></h3>
+<p>For large codebases, a helper script is available at <a href="https://github.com/ZacSweers/metro/blob/main/scripts/migrate-metro-provider.sh"><code>scripts/migrate-metro-provider.sh</code></a> that mechanically rewrites <code>Provider&lt;T&gt;</code> → <code>() -&gt; T</code> across all <code>.kt</code> files in a directory:</p>
+<div class="highlight"><pre><span></span><code>scripts/migrate-metro-provider.sh<span class="w"> </span>path/to/your/code
+</code></pre></div>
+<p>What it does:</p>
+<ul>
+<li>Only touches files that import <code>dev.zacsweers.metro.Provider</code> (explicit or via a <code>dev.zacsweers.metro.*</code> wildcard).</li>
+<li>Skips files that also import a non-Metro <code>Provider</code> (<code>javax.inject</code>, <code>jakarta.inject</code>, <code>com.google.inject</code>, <code>dagger.internal</code>) to avoid ambiguity.</li>
+<li>Handles nested generics (<code>Provider&lt;Lazy&lt;Foo&gt;&gt;</code>, <code>Map&lt;K, Provider&lt;V&gt;&gt;</code>, etc.) via a recursive regex that loops until stable.</li>
+<li>Preserves <code>Provider&lt;*&gt;</code> (since <code>() -&gt; *</code> is not valid Kotlin) and <code>Provider { ... }</code> factory calls.</li>
+<li>Drops the now-unused <code>dev.zacsweers.metro.Provider</code> import when no <code>Provider</code> identifier remains.</li>
+</ul>
+<p>Review the diff afterwards — the script is deliberately conservative about what it rewrites, but manual spot-checking is always recommended.</p>
+<h3 id="if-you-previously-used-function-types-as-binding-keys">If you previously used function types as binding keys<a class="headerlink" href="#if-you-previously-used-function-types-as-binding-keys" title="Permanent link">&para;</a></h3>
+<p>With <code>enableFunctionProviders</code> enabled (the default), any <code>() -&gt; T</code> (i.e., <code>Function0&lt;T&gt;</code>) on the graph is interpreted as a provider of <code>T</code>. If your existing code uses a bare function type as the binding <em>itself</em> — e.g., a navigation callback or a side-effecting action injected as <code>() -&gt; Unit</code> — Metro will now resolve it as &ldquo;provide me a <code>Unit</code>&rdquo; instead of &ldquo;provide me this particular function&rdquo;.</p>
+<p>The fix is to give that function a concrete type so its binding key is distinct from the generic function shape. A <code>fun interface</code> extending the original function type is the lightest-weight option and keeps SAM conversion at call sites:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Before — ambiguous under function-syntax providers</span>
+<span class="nd">@Inject</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">AppShell</span><span class="p">(</span><span class="kd">val</span><span class="w"> </span><span class="nv">onBackPressed</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Unit</span><span class="p">)</span>
+
+<span class="nd">@Provides</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">provideOnBackPressed</span><span class="p">():</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// After — the binding is keyed by OnBackPressed, not by the function shape</span>
+<span class="kd">fun</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nc">OnBackPressed</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Unit</span>
+
+<span class="nd">@Inject</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">AppShell</span><span class="p">(</span><span class="kd">val</span><span class="w"> </span><span class="nv">onBackPressed</span><span class="p">:</span><span class="w"> </span><span class="n">OnBackPressed</span><span class="p">)</span>
+
+<span class="nd">@Provides</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">provideOnBackPressed</span><span class="p">():</span><span class="w"> </span><span class="n">OnBackPressed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OnBackPressed</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>The same pattern works for any arity (<code>(T) -&gt; R</code>, <code>(T1, T2) -&gt; R</code>, <code>suspend () -&gt; T</code>, etc.) — declare a <code>fun interface</code> that extends the function type you were injecting before. Qualifiers (<code>@Named</code>, custom <code>@Qualifier</code>s) do <em>not</em> disambiguate here — the provider semantics apply to <code>() -&gt; T</code> regardless of qualifier — so a named type is required.</p>
+<p>If you prefer to keep raw function types as bindings (and give up the function-syntax provider form for the whole project), set <code>enableFunctionProviders = false</code> in the Gradle <code>metro { }</code> block. That&rsquo;s the escape hatch, but be aware it&rsquo;s a project-wide decision and the <code>desugaredProviderSeverity</code> diagnostic will be forced to <code>NONE</code> since there is no alternative form to migrate to.</p>
 
 
 
