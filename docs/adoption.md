@@ -166,14 +166,14 @@ With `enableFunctionProviders` enabled (the default), any `() -> T` (i.e., `Func
 The fix is to give that function a concrete type so its binding key is distinct from the generic function shape. A `fun interface` extending the original function type is the lightest-weight option and keeps SAM conversion at call sites:
 
 ```kotlin
-// Before — ambiguous under function-syntax providers
+// Before: ambiguous under function-syntax providers
 @Inject class AppShell(val onBackPressed: () -> Unit)
 
 @Provides fun provideOnBackPressed(): () -> Unit = { /* ... */ }
 ```
 
 ```kotlin
-// After — the binding is keyed by OnBackPressed, not by the function shape
+// After: the binding is keyed by OnBackPressed, not by the function shape
 fun interface OnBackPressed : () -> Unit
 
 @Inject class AppShell(val onBackPressed: OnBackPressed)
@@ -181,6 +181,6 @@ fun interface OnBackPressed : () -> Unit
 @Provides fun provideOnBackPressed(): OnBackPressed = OnBackPressed { /* ... */ }
 ```
 
-The same pattern works for any arity (`(T) -> R`, `(T1, T2) -> R`, `suspend () -> T`, etc.) — declare a `fun interface` that extends the function type you were injecting before. Qualifiers (`@Named`, custom `@Qualifier`s) do *not* disambiguate here — the provider semantics apply to `() -> T` regardless of qualifier — so a named type is required.
+Qualifiers (`@Named`, custom `@Qualifier`s) do *not* disambiguate here — the provider semantics apply to `() -> T` regardless of qualifier — so a named type is required.
 
 If you prefer to keep raw function types as bindings (and give up the function-syntax provider form for the whole project), set `enableFunctionProviders = false` in the Gradle `metro { }` block. That's the escape hatch, but be aware it's a project-wide decision and the `desugaredProviderSeverity` diagnostic will be forced to `NONE` since there is no alternative form to migrate to.
