@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776894692720,
+  "lastUpdate": 1776896250924,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Startup Benchmark": [
@@ -12432,6 +12432,62 @@ window.BENCHMARK_DATA = {
             "value": 0.2312174996688458,
             "unit": "ms/op",
             "extra": "after (HEAD)\ndelta: +1.77%\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "renovate[bot]",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "renovate[bot]",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "b2e73410~1",
+          "message": "[before] Update dependency androidx.tracing:tracing-wire-de",
+          "timestamp": "2026-04-22T21:38:48Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/b2e734106f0ab47cea9c25875c8d206a7c86979c"
+        },
+        "date": 1776896250924,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.23252071667312624,
+            "unit": "ms/op",
+            "extra": "before (HEAD~1)\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "renovate[bot]",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "renovate[bot]",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "b2e734106f0ab47cea9c25875c8d206a7c86979c",
+          "message": "[after] Update dependency androidx.tracing:tracing-wire-de",
+          "timestamp": "2026-04-22T21:38:48Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/b2e734106f0ab47cea9c25875c8d206a7c86979c"
+        },
+        "date": 1776896250925,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.23468870316763427,
+            "unit": "ms/op",
+            "extra": "after (HEAD)\ndelta: +0.93%\niterations: 10\nforks: 2\nthreads: 1"
           }
         ]
       }
