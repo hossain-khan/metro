@@ -5995,6 +5995,7 @@
 <h3 id="fixes">Fixes<a class="headerlink" href="#fixes" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>[FIR]</strong> Fix not recognizing <code>FirDeclarationOrigin.Precompiled</code> origins when checking resolved default binding types. Previously we only considered <code>FirDeclarationOrigin.Library</code>, but incremental compilation uses <code>FirDeclarationOrigin.Precompiled</code> to differentiate. This would result in misreads of default binding types in some cases during IC.</li>
+<li><strong>[FIR]</strong> When merging <code>@ContributesTo</code> types to graph supertypes, add the original interface as well. This ensures they are visible in ObjC exports, as the metro-generated contribution interfaces are normally excluded.</li>
 <li><strong>[IR]</strong> Fix secondary inject constructors support when <code>generateContributionProviders</code> is enabled.</li>
 <li><strong>[IR]</strong> Fix implicit class key lookup for map keys on source-declared <code>@Binds</code> declarations.</li>
 <li><strong>[IR]</strong> Fix <code>implementsProviderType()</code> check in the compiler to only exactly match <code>Function0</code> types when <code>enableFunctionProviders</code> is enabled.</li>
