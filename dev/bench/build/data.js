@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776819992849,
+  "lastUpdate": 1776893493349,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -12320,6 +12320,62 @@ window.BENCHMARK_DATA = {
             "value": 29131.265999999996,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: +5.06%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "5e92d190~1",
+          "message": "[before] Add new diagnostic for providing intrinsic wrapped",
+          "timestamp": "2026-04-22T20:49:45Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/5e92d19079be79c43ca481ba8ebf98654a65ac67"
+        },
+        "date": 1776893493349,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 29288.916000000005,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "5e92d19079be79c43ca481ba8ebf98654a65ac67",
+          "message": "[after] Add new diagnostic for providing intrinsic wrapped",
+          "timestamp": "2026-04-22T20:49:45Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/5e92d19079be79c43ca481ba8ebf98654a65ac67"
+        },
+        "date": 1776893493350,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 28539.276,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: -2.56%"
           }
         ]
       }
