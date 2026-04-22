@@ -1443,18 +1443,24 @@ internal fun StringBuilder.renderType(
     renderType(short, abbreviatedType, includeAbbreviation = false)
     append(" (typealias to ")
   }
-  val renderer =
-    object :
-      ConeTypeRendererForReadability(
-        this,
-        null,
-        { if (short) ConeIdShortRenderer() else ConeIdRendererForDiagnostics() },
-      ) {
-      override fun ConeKotlinType.renderAttributes() {
-        // Do nothing, we don't want annotations
+  if (type.classId == Symbols.ClassIds.function0) {
+    // the native renderer changes this format in later versions, so short-hand it for consistency
+    append("() -> ")
+    renderType(short, type.typeArguments[0].type!!, includeAbbreviation)
+  } else {
+    val renderer =
+      object :
+        ConeTypeRendererForReadability(
+          this,
+          null,
+          { if (short) ConeIdShortRenderer() else ConeIdRendererForDiagnostics() },
+        ) {
+        override fun ConeKotlinType.renderAttributes() {
+          // Do nothing, we don't want annotations
+        }
       }
-    }
-  renderer.render(type)
+    renderer.render(type)
+  }
   if (abbreviatedType != null) {
     append(')')
   }
@@ -1832,5 +1838,15 @@ internal fun ClassId.diagnosticString(session: FirSession): String {
     relativeClassName.asString()
   } else {
     asFqNameString()
+  }
+}
+
+internal fun ClassId?.isIntrinsicType(session: FirSession): Boolean {
+  contract { returns(true) implies (this@isIntrinsicType != null) }
+  val classIds = session.metroFirBuiltIns.classIds
+  return when (this) {
+    in classIds.providerTypes,
+    in classIds.lazyTypes -> true
+    else -> false
   }
 }
