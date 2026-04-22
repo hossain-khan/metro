@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1776896251112,
+  "lastUpdate": 1776898966135,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -12488,6 +12488,62 @@ window.BENCHMARK_DATA = {
             "value": 29252.659999999996,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: -3.09%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "5c78ec94~1",
+          "message": "[before] Merge original ContributesTo supertypes in FIR too",
+          "timestamp": "2026-04-22T22:24:35Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/5c78ec9419d0754a43687ba374221ff729e6786d"
+        },
+        "date": 1776898966135,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 29733.856,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "5c78ec9419d0754a43687ba374221ff729e6786d",
+          "message": "[after] Merge original ContributesTo supertypes in FIR too",
+          "timestamp": "2026-04-22T22:24:35Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/5c78ec9419d0754a43687ba374221ff729e6786d"
+        },
+        "date": 1776898966136,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 31121.01,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: +4.67%"
           }
         ]
       }
