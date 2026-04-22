@@ -6007,6 +6007,7 @@
 <h3 id="changes">Changes<a class="headerlink" href="#changes" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>enableFunctionProviders</code> (i.e. <code>() -&gt; T</code> syntax for providers) is now enabled by default. Previously this required opting in. The function-syntax form is now the <strong>recommended</strong> way to declare provider dependencies; <code>Provider&lt;T&gt;</code> is still supported but treated as a desugared alternative and a <strong>warning</strong> by default, similar to if you were to use <code>Function0</code> instead of <code>() -&gt; T</code> syntax for functions. See the <a href="../docs/metro-intrinsics/">metro-intrinsics</a> docs for more details.</li>
+<li><strong>[IR]</strong> Remove deprecated <code>indexInOldValueParameters</code> use in IR for better <code>2.4.0</code>+ support.</li>
 <li><strong>[Gradle]</strong> Promote <code>enableFunctionProviders</code> to stable.</li>
 <li><strong>[Gradle]</strong> Remove deprecated <code>useAssistedParamNamesAsIdentifiers</code> property.</li>
 <li><strong>[Gradle]</strong> Remove <code>deduplicateInjectedParams</code> property.</li>
@@ -6016,6 +6017,7 @@
 <li><strong>[Gradle]</strong> Remove <code>shrinkUnusedBindings</code> property, use the new compilerOptions API.</li>
 <li><strong>[metrox-android]</strong> Change <code>MetroAppComponentProviders</code> accessor multibindings to expose function types instead of <code>Provider</code> types.</li>
 <li><strong>[metrox-viewmodel]</strong> Change <code>MetroViewModelFactory</code> and <code>MetroViewModelMultibindings</code> accessor multibindings to expose function types instead of <code>Provider</code> types.</li>
+<li>Support Kotlin <code>2.4.0-Beta2</code>.</li>
 </ul>
 <h3 id="contributors">Contributors<a class="headerlink" href="#contributors" title="Permanent link">&para;</a></h3>
 <p>Special thanks to the following contributors for contributing to this release!</p>
