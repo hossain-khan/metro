@@ -1573,10 +1573,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#will-metro-add-support-for-dagger-android-features-or-dagger-android-interop" class="md-nav__link">
+  <a href="#why-doesnt-metro-support-functions-with-parameters-for-assisted-injection" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        <strong>Will Metro add support for dagger-android features or dagger-android interop?</strong>
+        <strong>Why doesn&rsquo;t Metro support functions with parameters for assisted injection?</strong>
       </span>
     </span>
   </a>
@@ -1605,6 +1605,17 @@
   
     <nav class="md-nav" aria-label="Dagger&#x2f;Hilt FAQ">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#will-metro-add-support-for-dagger-android-features-or-dagger-android-interop" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <strong>Will Metro add support for dagger-android features or dagger-android interop?</strong>
+      </span>
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#in-dagger-i-could-make-declarations-internal-and-it-worked-why-doesnt-that-work-in-metro" class="md-nav__link">
@@ -2006,10 +2017,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#will-metro-add-support-for-dagger-android-features-or-dagger-android-interop" class="md-nav__link">
+  <a href="#why-doesnt-metro-support-functions-with-parameters-for-assisted-injection" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        <strong>Will Metro add support for dagger-android features or dagger-android interop?</strong>
+        <strong>Why doesn&rsquo;t Metro support functions with parameters for assisted injection?</strong>
       </span>
     </span>
   </a>
@@ -2038,6 +2049,17 @@
   
     <nav class="md-nav" aria-label="Dagger&#x2f;Hilt FAQ">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#will-metro-add-support-for-dagger-android-features-or-dagger-android-interop" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <strong>Will Metro add support for dagger-android features or dagger-android interop?</strong>
+      </span>
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#in-dagger-i-could-make-declarations-internal-and-it-worked-why-doesnt-that-work-in-metro" class="md-nav__link">
@@ -2157,11 +2179,22 @@
 <li>It breaks the ability to expose <code>Map&lt;Key, () -&gt; Value&gt;</code> (or <code>Map&lt;Key, Provider&lt;Value&gt;&gt;</code>) unless you start manually managing function/provider types yourself.</li>
 <li>You allocate and throw away a <code>Pair</code> instance each time it&rsquo;s called.</li>
 </ul>
-<h3 id="will-metro-add-support-for-dagger-android-features-or-dagger-android-interop"><strong>Will Metro add support for dagger-android features or dagger-android interop?</strong><a class="headerlink" href="#will-metro-add-support-for-dagger-android-features-or-dagger-android-interop" title="Permanent link">&para;</a></h3>
-<p>No.</p>
+<h3 id="why-doesnt-metro-support-functions-with-parameters-for-assisted-injection"><strong>Why doesn&rsquo;t Metro support functions with parameters for assisted injection?</strong><a class="headerlink" href="#why-doesnt-metro-support-functions-with-parameters-for-assisted-injection" title="Permanent link">&para;</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">Some technical context</p>
+<p>Metro supports use of function types like <code>() -&gt; T</code> for deferred initialization of injected dependencies. Another idea in the same vein is to support function syntax for <em>assisted</em> injection, such that <code>(String) -&gt; T</code> could be an implicit assisted factory type for assisted-inject type <code>T</code>.</p>
+</div>
+<p>There&rsquo;s a few reasons! Mainly, this is harder to maintain in codebases.</p>
+<ul>
+<li>It makes injection sites <em>also</em> responsible for declaring all the input parameters to that type, vs. just callers to its SAM function. This means that if you change the parameters, you then either have two compiler errors (one missing binding from metro, another to callsites) or you have to spend time finding them all and doing the prop-drilling that generated DI strives to spare you from.</li>
+<li>They are harder to find (no &ldquo;find usages&rdquo; support from your assisted type).</li>
+<li>They are harder to read (they are nameless).</li>
+</ul>
 <h3 id="im-seeing-a-reservedstackaccess-stack-overflow-warning-from-the-jvm-at-runtime"><strong>I&rsquo;m seeing a <code>ReservedStackAccess</code> stack overflow warning from the JVM at runtime?</strong><a class="headerlink" href="#im-seeing-a-reservedstackaccess-stack-overflow-warning-from-the-jvm-at-runtime" title="Permanent link">&para;</a></h3>
 <p>This is a spurious JVM warning related to <code>ReentrantLock</code> (used internally by Metro&rsquo;s <code>DoubleCheck</code> for scoped bindings). It is not an actual stack overflow and can be safely ignored. You can suppress it by increasing the thread stack size with (i.e., <code>-Xss1m</code>) in your JVM args.</p>
 <h2 id="daggerhilt-faq">Dagger/Hilt FAQ<a class="headerlink" href="#daggerhilt-faq" title="Permanent link">&para;</a></h2>
+<h3 id="will-metro-add-support-for-dagger-android-features-or-dagger-android-interop"><strong>Will Metro add support for dagger-android features or dagger-android interop?</strong><a class="headerlink" href="#will-metro-add-support-for-dagger-android-features-or-dagger-android-interop" title="Permanent link">&para;</a></h3>
+<p>No. Much of this infra can be recreated as needed in codebases that use it but dagger-android is long-deprecated at this point.</p>
 <h3 id="in-dagger-i-could-make-declarations-internal-and-it-worked-why-doesnt-that-work-in-metro"><strong>In Dagger I could make declarations <code>internal</code> and it worked, why doesn&rsquo;t that work in Metro?</strong><a class="headerlink" href="#in-dagger-i-could-make-declarations-internal-and-it-worked-why-doesnt-that-work-in-metro" title="Permanent link">&para;</a></h3>
 <p>In short, it &ldquo;works&rdquo; in Dagger in the same way that any other access of Kotlin internal types &ldquo;works&rdquo; in <strong>Java</strong> sources. These types are always <code>public</code> (albeit sometimes with mangled names). This led to patterns of <code>internal</code> providers, <code>internal</code> Dagger modules, etc. This almost certainly also led to some degree of incremental compilation issues since <code>internal</code> declarations are usually excluded from a given module&rsquo;s ABI unless you use <code>@PublishedApi</code>.</p>
 <p>This pattern doesn&rsquo;t fly in Metro because Metro is an all-Kotlin system, meaning it fully understands the Kotlin language&rsquo;s visibility system and must also abide by it. It&rsquo;s necessary for both correctness and incremental compilation.</p>
