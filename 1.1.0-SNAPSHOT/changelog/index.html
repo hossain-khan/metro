@@ -1749,8 +1749,30 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Unreleased">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#100-rc3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.0.0-RC3
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.0.0-RC3">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enablefunctionproviders-enabled-by-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        enableFunctionProviders enabled by default
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#new" class="md-nav__link">
@@ -3903,8 +3925,30 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Unreleased">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#100-rc3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.0.0-RC3
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.0.0-RC3">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enablefunctionproviders-enabled-by-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        enableFunctionProviders enabled by default
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#new" class="md-nav__link">
@@ -5977,6 +6021,14 @@
 
 <h1 id="changelog">Changelog<a class="headerlink" href="#changelog" title="Permanent link">&para;</a></h1>
 <h2 id="unreleased"><strong>Unreleased</strong><a class="headerlink" href="#unreleased" title="Permanent link">&para;</a></h2>
+<h2 id="100-rc3">1.0.0-RC3<a class="headerlink" href="#100-rc3" title="Permanent link">&para;</a></h2>
+<p><em>2026-04-23</em></p>
+<p>This is the third release candidate for Metro 1.0!</p>
+<p>This means that its <em>runtime</em> APIs (<code>runtime</code>, <code>metrox</code> artifacts, Gradle plugin, etc) will be API stable unless annotated with an experimental annotation.</p>
+<p><em>Changes since RC2</em></p>
+<h3 id="enablefunctionproviders-enabled-by-default"><code>enableFunctionProviders</code> enabled by default<a class="headerlink" href="#enablefunctionproviders-enabled-by-default" title="Permanent link">&para;</a></h3>
+<p>This release promotes <code>enableFunctionProviders</code> (i.e. <code>() -&gt; T</code> syntax for providers) to stable, enables it by default, and marks usage of Metro&rsquo;s native <code>Provider</code> as a warning.</p>
+<p>This may require some migration in existing codebases. To help with this, there&rsquo;s a <a href="https://zacsweers.github.io/metro/latest/adoption/#migrating-providert-to-function-syntax">new section in docs</a> with information as well as a helper script: adoption docs guidance here too.</p>
 <h3 id="new">New<a class="headerlink" href="#new" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Add a new <code>desugaredProviderSeverity</code> option (default: <code>WARN</code>) that reports a diagnostic when <code>Provider&lt;T&gt;</code> is used instead of the preferred <code>() -&gt; T</code> form. Set this to <code>NONE</code> to disable the warning during migration, or <code>ERROR</code> to enforce the new style. Automatically treated as <code>NONE</code> when <code>enableFunctionProviders</code> is disabled.</li>
@@ -6012,10 +6064,10 @@
 <li><strong>[Gradle]</strong> Promote <code>enableFunctionProviders</code> to stable.</li>
 <li><strong>[Gradle]</strong> Remove deprecated <code>useAssistedParamNamesAsIdentifiers</code> property.</li>
 <li><strong>[Gradle]</strong> Remove <code>deduplicateInjectedParams</code> property.</li>
-<li><strong>[Gradle]</strong> Remove <code>enableKlibParamsCheck</code> property, use the new compilerOptions API.</li>
-<li><strong>[Gradle]</strong> Remove <code>enableFullBindingGraphValidation</code> property, use the new compilerOptions API.</li>
-<li><strong>[Gradle]</strong> Remove <code>enableGraphImplClassAsReturnType</code> property, use the new compilerOptions API.</li>
-<li><strong>[Gradle]</strong> Remove <code>shrinkUnusedBindings</code> property, use the new compilerOptions API.</li>
+<li><strong>[Gradle]</strong> Remove <code>enableKlibParamsCheck</code> property, use the new <code>compilerOptions</code> API.</li>
+<li><strong>[Gradle]</strong> Remove <code>enableFullBindingGraphValidation</code> property, use the new <code>compilerOptions</code> API.</li>
+<li><strong>[Gradle]</strong> Remove <code>enableGraphImplClassAsReturnType</code> property, use the new <code>compilerOptions</code> API.</li>
+<li><strong>[Gradle]</strong> Remove <code>shrinkUnusedBindings</code> property, use the new <code>compilerOptions</code> API.</li>
 <li><strong>[metrox-android]</strong> Change <code>MetroAppComponentProviders</code> accessor multibindings to expose function types instead of <code>Provider</code> types.</li>
 <li><strong>[metrox-viewmodel]</strong> Change <code>MetroViewModelFactory</code> and <code>MetroViewModelMultibindings</code> accessor multibindings to expose function types instead of <code>Provider</code> types.</li>
 <li>Support Kotlin <code>2.4.0-Beta2</code>.</li>
