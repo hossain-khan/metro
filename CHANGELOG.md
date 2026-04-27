@@ -4,6 +4,21 @@ Changelog
 **Unreleased**
 --------------
 
+1.0.0
+-----
+
+_2026-04-27_
+
+This is the first stable release of Metro!
+
+This means that its _runtime_ APIs (`runtime`, `metrox` artifacts, Gradle plugin, etc) are now API stable unless annotated with an experimental annotation.
+
+**See the [announcement post](https://www.zacsweers.dev/metro-is-stable/)!**
+
+### [Consider sponsoring Metro's development](https://www.zacsweers.dev/sponsoring-metro/)
+
+_Changes since RC4_
+
 ### New
 
 - **[runtime]** Add an optional `@Origin.context` property, allowing generators to attach extra context to an origin if they want.
@@ -28,6 +43,12 @@ Changelog
 ---------
 
 _2026-04-24_
+
+This is the fourth release candidate for Metro 1.0!
+
+This means that its _runtime_ APIs (`runtime`, `metrox` artifacts, Gradle plugin, etc) will be API stable unless annotated with an experimental annotation.
+
+_Changes since RC3_
 
 ### Fixes
 
