@@ -6201,7 +6201,6 @@
 <h2 id="unreleased"><strong>Unreleased</strong><a class="headerlink" href="#unreleased" title="Permanent link">&para;</a></h2>
 <h3 id="new">New<a class="headerlink" href="#new" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>[FIR]</strong> Report diagnostic errors when an <code>excludes</code> or <code>replaces</code> target contribution class is not annotated <code>@ExposeImplBinding</code> and <code>generateContributionProviders</code> is enabled.</li>
 <li><strong>[runtime]</strong> Add an optional <code>@Origin.context</code> property, allowing generators to attach extra context to an origin if they want.</li>
 </ul>
 <h3 id="enhancements">Enhancements<a class="headerlink" href="#enhancements" title="Permanent link">&para;</a></h3>
@@ -6210,6 +6209,7 @@
 </ul>
 <h3 id="fixes">Fixes<a class="headerlink" href="#fixes" title="Permanent link">&para;</a></h3>
 <ul>
+<li><strong>[FIR]</strong> Fix diagnostic reporting for injection sites referring to contribution classes is not annotated <code>@ExposeImplBinding</code> and <code>generateContributionProviders</code> is enabled. Previously it didn&rsquo;t report on all cases.</li>
 <li><strong>[IR]</strong> When reporting binding errors with <code>generateContributionProviders</code> enabled, if the referenced declaration is a <code>@Contributes*</code> binding then report the original declaration rather than the (source-less) generated declaration.</li>
 </ul>
 <h3 id="changes">Changes<a class="headerlink" href="#changes" title="Permanent link">&para;</a></h3>
