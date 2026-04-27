@@ -1551,17 +1551,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#metro-is-not-a-stable-api-is-metro-safe-to-use" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        <strong>Metro is not a stable API, is Metro safe to use?</strong>
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#why-doesnt-metro-support-kotlin-inject-style-intomap-bindings" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -1588,6 +1577,17 @@
     <span class="md-ellipsis">
       <span class="md-typeset">
         <strong>I&rsquo;m seeing a <code>ReservedStackAccess</code> stack overflow warning from the JVM at runtime?</strong>
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#would-you-consider-putting-metro-into-a-foundation-my-team-has-concerns-about-solo-maintainers" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <strong>Would you consider putting Metro into a foundation? My team has concerns about solo maintainers</strong>
       </span>
     </span>
   </a>
@@ -1995,17 +1995,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#metro-is-not-a-stable-api-is-metro-safe-to-use" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        <strong>Metro is not a stable API, is Metro safe to use?</strong>
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#why-doesnt-metro-support-kotlin-inject-style-intomap-bindings" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -2032,6 +2021,17 @@
     <span class="md-ellipsis">
       <span class="md-typeset">
         <strong>I&rsquo;m seeing a <code>ReservedStackAccess</code> stack overflow warning from the JVM at runtime?</strong>
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#would-you-consider-putting-metro-into-a-foundation-my-team-has-concerns-about-solo-maintainers" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <strong>Would you consider putting Metro into a foundation? My team has concerns about solo maintainers</strong>
       </span>
     </span>
   </a>
@@ -2165,9 +2165,6 @@
 </div>
 <p>You can upgrade your Kotlin version (including across minor updates) or use different IDE versions without needing to wait for a matching Metro release. See the <a href="../compatibility/">compatibility docs</a> for the full support matrix.</p>
 <p>In short — it&rsquo;s a wide, moving window of support that periodically raises the minimum, which isn&rsquo;t terribly dissimilar from any other tool.</p>
-<h3 id="metro-is-not-a-stable-api-is-metro-safe-to-use"><strong>Metro is not a stable API, is Metro safe to use?</strong><a class="headerlink" href="#metro-is-not-a-stable-api-is-metro-safe-to-use" title="Permanent link">&para;</a></h3>
-<p>Yes, Metro is <em>functionally</em> stable and ready for production use. Its runtime and Gradle plugin APIs are not yet <em>stabilized</em>, which is not the same as being unstable for use</p>
-<p>See the <a href="../stability/">stability docs</a> for more details.</p>
 <h3 id="why-doesnt-metro-support-kotlin-inject-style-intomap-bindings"><strong>Why doesn&rsquo;t Metro support kotlin-inject-style <code>@IntoMap</code> bindings?</strong><a class="headerlink" href="#why-doesnt-metro-support-kotlin-inject-style-intomap-bindings" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">Some technical context</p>
@@ -2192,6 +2189,11 @@
 </ul>
 <h3 id="im-seeing-a-reservedstackaccess-stack-overflow-warning-from-the-jvm-at-runtime"><strong>I&rsquo;m seeing a <code>ReservedStackAccess</code> stack overflow warning from the JVM at runtime?</strong><a class="headerlink" href="#im-seeing-a-reservedstackaccess-stack-overflow-warning-from-the-jvm-at-runtime" title="Permanent link">&para;</a></h3>
 <p>This is a spurious JVM warning related to <code>ReentrantLock</code> (used internally by Metro&rsquo;s <code>DoubleCheck</code> for scoped bindings). It is not an actual stack overflow and can be safely ignored. You can suppress it by increasing the thread stack size with (i.e., <code>-Xss1m</code>) in your JVM args.</p>
+<h3 id="would-you-consider-putting-metro-into-a-foundation-my-team-has-concerns-about-solo-maintainers"><strong>Would you consider putting Metro into a foundation? My team has concerns about solo maintainers</strong><a class="headerlink" href="#would-you-consider-putting-metro-into-a-foundation-my-team-has-concerns-about-solo-maintainers" title="Permanent link">&para;</a></h3>
+<p>I would only do this if it makes sense for the project, not for optics. Most open source software is maintained by one person. This probably includes many libraries your team already uses.</p>
+<p>This usually comes up in comparison to Dagger. Dagger is also usually only maintained by one or two people at Google. That level of backing is a luxury, not the standard.</p>
+<p>Moving to a foundation would not change the maintenance story — it would still be me. If your management requires a different GitHub URL to feel secure, they likely misunderstand how their dependencies are built. I prefer to focus on the project and its surrounding community rather than managing a facade :)</p>
+<p><a href="https://www.zacsweers.dev/sponsoring-metro/">The best way to support Metro&rsquo;s continued maintenance is to sponsor it</a>!</p>
 <h2 id="daggerhilt-faq">Dagger/Hilt FAQ<a class="headerlink" href="#daggerhilt-faq" title="Permanent link">&para;</a></h2>
 <h3 id="will-metro-add-support-for-dagger-android-features-or-dagger-android-interop"><strong>Will Metro add support for dagger-android features or dagger-android interop?</strong><a class="headerlink" href="#will-metro-add-support-for-dagger-android-features-or-dagger-android-interop" title="Permanent link">&para;</a></h3>
 <p>No. Much of this infra can be recreated as needed in codebases that use it but dagger-android is long-deprecated at this point.</p>
