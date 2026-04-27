@@ -2020,7 +2020,9 @@ extensions or embedded classes are used.</p>
 <li>Identifying potential issues in your dependency structure</li>
 </ul>
 <h2 id="decompiled-bytecode">Decompiled Bytecode<a class="headerlink" href="#decompiled-bytecode" title="Permanent link">&para;</a></h2>
-<p>Compiled java class files of Metro-generated types are fairly friendly to the IntelliJ &ldquo;decompile to Java&rdquo; action. Simply open the class file in the IDE (usually seen as a Kotlin bytecode class) then run the &ldquo;decompile to Java&rdquo; action. For JVM projects they are under <code>build/classes</code>. For Android projects, it&rsquo;s <code>build/tmp/kotlin-classes</code>.</p>
+<p>Compiled java class files of Metro-generated types are fairly friendly to the IntelliJ &ldquo;decompile to Java&rdquo; action. Simply open the class file in the IDE (usually seen as a Kotlin bytecode class) then run the &ldquo;decompile to Java&rdquo; action.</p>
+<p>For JVM projects they are under <code>build/classes</code>.</p>
+<p>For Android projects, it&rsquo;s <code>build/intermediates/built_in_kotlinc</code> or <code>build/tmp/kotlin-classes</code> (legacy, pre AGP 9).</p>
 
 
 
