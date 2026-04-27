@@ -43,6 +43,12 @@ public class DiagnosticTestGenerated extends AbstractDiagnosticTest {
     }
 
     @Test
+    @TestMetadata("CrossModuleContributionProviderHidesImplHint.kt")
+    public void testCrossModuleContributionProviderHidesImplHint() {
+      runTest("compiler-tests/src/test/data/diagnostic/aggregation/CrossModuleContributionProviderHidesImplHint.kt");
+    }
+
+    @Test
     @TestMetadata("DefaultBinding_Ambiguous.kt")
     public void testDefaultBinding_Ambiguous() {
       runTest("compiler-tests/src/test/data/diagnostic/aggregation/DefaultBinding_Ambiguous.kt");
@@ -79,6 +85,12 @@ public class DiagnosticTestGenerated extends AbstractDiagnosticTest {
     }
 
     @Test
+    @TestMetadata("MissingBindingInContributionProviderRedirectsToOrigin.kt")
+    public void testMissingBindingInContributionProviderRedirectsToOrigin() {
+      runTest("compiler-tests/src/test/data/diagnostic/aggregation/MissingBindingInContributionProviderRedirectsToOrigin.kt");
+    }
+
+    @Test
     @TestMetadata("NonPublicContributionError.kt")
     public void testNonPublicContributionError() {
       runTest("compiler-tests/src/test/data/diagnostic/aggregation/NonPublicContributionError.kt");
@@ -94,6 +106,12 @@ public class DiagnosticTestGenerated extends AbstractDiagnosticTest {
     @TestMetadata("PrivateContributionError.kt")
     public void testPrivateContributionError() {
       runTest("compiler-tests/src/test/data/diagnostic/aggregation/PrivateContributionError.kt");
+    }
+
+    @Test
+    @TestMetadata("ReplacesTargetMustBeExposed.kt")
+    public void testReplacesTargetMustBeExposed() {
+      runTest("compiler-tests/src/test/data/diagnostic/aggregation/ReplacesTargetMustBeExposed.kt");
     }
 
     @Test
@@ -412,6 +430,12 @@ public class DiagnosticTestGenerated extends AbstractDiagnosticTest {
     @TestMetadata("DoNotSuggestSimilarBindingsForMultibindingElements.kt")
     public void testDoNotSuggestSimilarBindingsForMultibindingElements() {
       runTest("compiler-tests/src/test/data/diagnostic/dependencygraph/DoNotSuggestSimilarBindingsForMultibindingElements.kt");
+    }
+
+    @Test
+    @TestMetadata("ExcludesTargetMustBeExposed.kt")
+    public void testExcludesTargetMustBeExposed() {
+      runTest("compiler-tests/src/test/data/diagnostic/dependencygraph/ExcludesTargetMustBeExposed.kt");
     }
 
     @Test
