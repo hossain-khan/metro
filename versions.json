@@ -7,11 +7,16 @@
     ]
   },
   {
-    "version": "1.0.0-RC4",
-    "title": "1.0.0-RC4",
+    "version": "1.0.0",
+    "title": "1.0.0",
     "aliases": [
       "latest"
     ]
+  },
+  {
+    "version": "1.0.0-RC4",
+    "title": "1.0.0-RC4",
+    "aliases": []
   },
   {
     "version": "0.13.2",
