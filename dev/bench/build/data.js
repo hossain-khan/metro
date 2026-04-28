@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1777329239333,
+  "lastUpdate": 1777359489301,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -13048,6 +13048,62 @@ window.BENCHMARK_DATA = {
             "value": 30118.414,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: -0.31%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "034cff51~1",
+          "message": "[before] Resolve copied type refs in FIR (#2220)",
+          "timestamp": "2026-04-28T02:14:56-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/034cff512eaf4d38db0fea038a18a352456a69c6"
+        },
+        "date": 1777359489301,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 31947.118,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Zac Sweers",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "034cff512eaf4d38db0fea038a18a352456a69c6",
+          "message": "[after] Resolve copied type refs in FIR (#2220)",
+          "timestamp": "2026-04-28T02:14:56-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/034cff512eaf4d38db0fea038a18a352456a69c6"
+        },
+        "date": 1777359489302,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 31244.536,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: -2.20%"
           }
         ]
       }
