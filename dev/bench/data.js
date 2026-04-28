@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1777389619740,
+  "lastUpdate": 1777407183683,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Startup Benchmark": [
@@ -13216,6 +13216,62 @@ window.BENCHMARK_DATA = {
             "value": 0.22076358091549947,
             "unit": "ms/op",
             "extra": "after (HEAD)\ndelta: -4.11%\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "renovate[bot]",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "renovate[bot]",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "ebeb3c81~1",
+          "message": "[before] Update Gradle to v9.5.0 (#2224)",
+          "timestamp": "2026-04-28T19:28:41Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/ebeb3c81d09ab9d16a419c55d6158abef5af64e1"
+        },
+        "date": 1777407183683,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.22861404604930002,
+            "unit": "ms/op",
+            "extra": "before (HEAD~1)\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "renovate[bot]",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "renovate[bot]",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "ebeb3c81d09ab9d16a419c55d6158abef5af64e1",
+          "message": "[after] Update Gradle to v9.5.0 (#2224)",
+          "timestamp": "2026-04-28T19:28:41Z",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/ebeb3c81d09ab9d16a419c55d6158abef5af64e1"
+        },
+        "date": 1777407183684,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.2311811580983166,
+            "unit": "ms/op",
+            "extra": "after (HEAD)\ndelta: +1.12%\niterations: 10\nforks: 2\nthreads: 1"
           }
         ]
       }
