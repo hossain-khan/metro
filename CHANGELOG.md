@@ -16,6 +16,10 @@ Changelog
 
 - **[FIR]** Resolve copied typerefs (if necessary) in FIR code gen. This _appears_ to help avoid some IDE FIR issues.
 
+### Changes
+
+- Metro now uses... Metro! The Metro compiler now uses proper DI internally, bootstrapping itself. This isn't really anything library consumers have to think about, I just think it's neat.
+
 1.0.0
 -----
 
