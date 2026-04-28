@@ -6,6 +6,181 @@ Changelog
 
 ### Enhancements
 
+- **[IR]** Do not process platform type supertypes.
+- **[IR]** Make a number of compiler internals lazier and cached.
+- **[IR/graph]** When populating bindings from roots, track a `processedKeys` set so duplicate queue entries don't re-walk dependency lists. This avoids unnecessary extra iterations when doing an initial reachability walk.
+- **[IR/graph]** Merge two annotation walks in supertype collection into a single pass with a per-annotation-class meta-annotation cache, so `@Singleton`/`@Scope`-style annotations appearing across many supertypes are meta-walked once instead of N times.
+- **[IR/tracing]** Add a lot more tracing spans for more granular tracing.
+
+### Enhancements
+
+- **[FIR]** Resolve copied typerefs (if necessary) in FIR code gen. This _appears_ to help avoid some IDE FIR issues.
+
+### Changes
+
+- Metro now uses... Metro! The Metro compiler now uses proper DI internally, bootstrapping itself. This isn't really anything library consumers have to think about, I just think it's neat.
+
+1.0.0
+-----
+
+_2026-04-27_
+
+This is the first stable release of Metro!
+
+This means that its _runtime_ APIs (`runtime`, `metrox` artifacts, Gradle plugin, etc) are now API stable unless annotated with an experimental annotation.
+
+**See the [announcement post](https://www.zacsweers.dev/metro-is-stable/)!**
+
+### [Consider sponsoring Metro's development](https://www.zacsweers.dev/sponsoring-metro/)
+
+_Changes since RC4_
+
+### New
+
+- **[runtime]** Add an optional `@Origin.context` property, allowing generators to attach extra context to an origin if they want.
+
+### Enhancements
+
+- **[IR]** When a missing binding is a generated contribution provider for an unexposed impl class, include a hint about that in the `MissingBinding` error message.
+
+### Fixes
+
+- **[FIR]** Fix diagnostic reporting for injection sites referring to contribution classes is not annotated `@ExposeImplBinding` and `generateContributionProviders` is enabled. Previously it didn't report on all cases.
+- **[IR]** When reporting binding errors with `generateContributionProviders` enabled, if the referenced declaration is a `@Contributes*` binding then report the original declaration rather than the (source-less) generated declaration.
+
+### Changes
+
+- **[compiler]** Test Kotlin `2.3.21`.
+- **[ide]** Test IntelliJ `2026.1.1`.
+- **[ide]** Test Android Studio Panda 4.
+- **[ide]** Test Android Studio Quail canaries.
+
+1.0.0-RC4
+---------
+
+_2026-04-24_
+
+This is the fourth release candidate for Metro 1.0!
+
+This means that its _runtime_ APIs (`runtime`, `metrox` artifacts, Gradle plugin, etc) will be API stable unless annotated with an experimental annotation.
+
+_Changes since RC3_
+
+### Fixes
+
+- **[FIR]** Avoid duplicate contributed graph supertypes when merging contributions by checking against explicitly declared supertypes.
+- **[IR]** Fix default value transformation for function types when `enableFunctionProviders` is enabled.
+
+### Contributors
+
+Special thanks to the following contributors for contributing to this release!
+
+- [@vRallev](https://github.com/vRallev)
+
+1.0.0-RC3
+---------
+
+_2026-04-23_
+
+This is the third release candidate for Metro 1.0!
+
+This means that its _runtime_ APIs (`runtime`, `metrox` artifacts, Gradle plugin, etc) will be API stable unless annotated with an experimental annotation.
+
+_Changes since RC2_
+
+### `enableFunctionProviders` enabled by default
+
+This release promotes `enableFunctionProviders` (i.e. `() -> T` syntax for providers) to stable, enables it by default, and marks usage of Metro's native `Provider` as a warning.
+
+This may require some migration in existing codebases. To help with this, there's a [new section in docs](https://zacsweers.github.io/metro/latest/adoption/#migrating-providert-to-function-syntax) with information as well as a helper script: adoption docs guidance here too.
+
+### New
+
+- Add a new `desugaredProviderSeverity` option (default: `WARN`) that reports a diagnostic when `Provider<T>` is used instead of the preferred `() -> T` form. Set this to `NONE` to disable the warning during migration, or `ERROR` to enforce the new style. Automatically treated as `NONE` when `enableFunctionProviders` is disabled.
+- **[FIR]** Add diagnostic checks against providing intrinsic types (`Provider`, `Lazy`, etc.) from `@Provides` declarations.
+- **[Gradle]** Introduce a new `compilerOptions {}` DSL for free Metro compiler options and flags.
+- **[Gradle]** Add `IDE_WARN` and `IDE_ERROR` members to `DiagnosticSeverity` to allow configuring some diagnostics to _only_ run in IDE sessions. Useful for diagnostics you only want to surface to readers in the IDE without emitting compiler warnings in real (CLI) compilations.
+
+### Enhancements
+
+- **[FIR]** Add a new diagnostic for ambiguous inject constructors. Namely, cases where a class is annotated with `@Inject`, defines a secondary constructor but no primary constructor. This is ambiguous, metro now asks you to pick a lane.
+- **[FIR]** Add a new diagnostic for check against `private` contributions.
+- **[FIR]** When rendering diagnostics in the IDE, use short names for classes since they are shown in context already.
+- **[JVM/JS]** Generate `@JvmStatic` and `@JsStatic` annotations onto static-ish functions for better staticization on those platforms.
+- **[docs]** Migrate doc site to Zensical. Works the same, fresh-ish coat of paint!
+
+### Fixes
+
+- **[FIR]** Fix not recognizing `FirDeclarationOrigin.Precompiled` origins when checking resolved default binding types. Previously we only considered `FirDeclarationOrigin.Library`, but incremental compilation uses `FirDeclarationOrigin.Precompiled` to differentiate. This would result in misreads of default binding types in some cases during IC.
+- **[FIR]** When merging `@ContributesTo` types to graph supertypes, add the original interface as well. This ensures they are visible in ObjC exports, as the metro-generated contribution interfaces are normally excluded.
+- **[IR]** Fix secondary inject constructors support when `generateContributionProviders` is enabled.
+- **[IR]** Fix implicit class key lookup for map keys on source-declared `@Binds` declarations.
+- **[IR]** Fix `implementsProviderType()` check in the compiler to only exactly match `Function0` types when `enableFunctionProviders` is enabled.
+- **[IR]** Set `thisGraphInstance` field types as the graph impl type to avoid a Wasm issue.
+- **[interop]** Fix `@ContributesSubcomponent.Factory` interop with square/anvil.
+- **[interop]** Fix `@MergeSubcomponent.Factory` interop with zacsweers/anvil (anvil-ksp).
+- **[docs]** Fix source links in Dokka API docs.
+- **[docs]** Don't publish `**.internal.**` APIs in Dokka API docs.
+
+### Changes
+
+- `enableFunctionProviders` (i.e. `() -> T` syntax for providers) is now enabled by default. Previously this required opting in. The function-syntax form is now the **recommended** way to declare provider dependencies; `Provider<T>` is still supported but treated as a desugared alternative and a **warning** by default, similar to if you were to use `Function0` instead of `() -> T` syntax for functions. See the [metro-intrinsics](docs/metro-intrinsics.md) docs for more details.
+- **[IR]** Remove deprecated `indexInOldValueParameters` use in IR for better `2.4.0`+ support.
+- **[Gradle]** Promote `enableFunctionProviders` to stable.
+- **[Gradle]** Remove deprecated `useAssistedParamNamesAsIdentifiers` property.
+- **[Gradle]** Remove `deduplicateInjectedParams` property.
+- **[Gradle]** Remove `enableKlibParamsCheck` property, use the new `compilerOptions` API.
+- **[Gradle]** Remove `enableFullBindingGraphValidation` property, use the new `compilerOptions` API.
+- **[Gradle]** Remove `enableGraphImplClassAsReturnType` property, use the new `compilerOptions` API.
+- **[Gradle]** Remove `shrinkUnusedBindings` property, use the new `compilerOptions` API.
+- **[metrox-android]** Change `MetroAppComponentProviders` accessor multibindings to expose function types instead of `Provider` types.
+- **[metrox-viewmodel]** Change `MetroViewModelFactory` and `MetroViewModelMultibindings` accessor multibindings to expose function types instead of `Provider` types.
+- Support Kotlin `2.4.0-Beta2`.
+- Update embedded androidx.tracing to `2.0.0-alpha06`.
+
+### Contributors
+
+Special thanks to the following contributors for contributing to this release!
+
+- [@anddani](https://github.com/anddani)
+- [@jonamireh](https://github.com/jonamireh)
+
+1.0.0-RC2
+---------
+
+_2026-04-15_
+
+This is the second release candidate for Metro 1.0!
+
+This means that its _runtime_ APIs (`runtime`, `metrox` artifacts, Gradle plugin, etc) will be API stable unless annotated with an experimental annotation.
+
+_Changes since RC1_
+
+### Fixes
+
+- **[FIR/IR]** Propagate `@HiddenFromObjC` annotations to more generated Metro classes' member declarations. This is a workaround to help avoid some gaps in K/N klib deserialization of generated files.
+- **[IR]** Fix implicit bound type cache collisions.
+
+### Contributors
+
+Special thanks to the following contributors for contributing to this release!
+
+- [@Daiji256](https://github.com/Daiji256)
+- [@vRallev](https://github.com/vRallev)
+
+### [Consider sponsoring Metro's development](https://www.zacsweers.dev/sponsoring-metro/)
+
+1.0.0-RC1
+---------
+
+_2026-04-13_
+
+This is the first release candidate for Metro 1.0!
+
+This means that its _runtime_ APIs (`runtime`, `metrox` artifacts, Gradle plugin, etc) will be API stable unless annotated with an experimental annotation.
+
+### Enhancements
+
 - **[FIR]** Detect and report circuit factory class name collisions from overloads of conflicting `@CircuitInject`-annotated functions.
 - **[IR]** Improve readability of Kotlin IR dumps in reporting.
 
@@ -18,7 +193,7 @@ Changelog
 - **[FIR]** Fix cross-module resolution of `@DefaultBinding`.
 - **[FIR]** Fix another eager `allSessions` lookup to avoid lockups in the IDE.
 - **[FIR/IR]** Ensure qualifier annotations on explicit binding params are propagated to generated providers when `generateContributionProviders` is enabled.
-- **[FIR/IR/Circuit]** Fix support for `@CircuitInject` on non-`@Inject`-annotated classes.
+- **[FIR/IR/Circuit]** Check for `@CircuitInject` on non-`@Inject`-annotated classes + improve diagnostic messaging.
 - **[IR]** Check for matching parameter's default value first when copying default value expressions. Previously, if multiple parameters with the same type had default values, only one would be used.
 
 ### Changes
@@ -37,6 +212,8 @@ Special thanks to the following contributors for contributing to this release!
 - [@kevinguitar](https://github.com/kevinguitar)
 - [@LionZXY](https://github.com/LionZXY)
 - [@Sultan1993](https://github.com/Sultan1993)
+
+### [Consider sponsoring Metro's development](https://www.zacsweers.dev/sponsoring-metro/)
 
 0.13.2
 ------
