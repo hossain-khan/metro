@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1777359526158,
+  "lastUpdate": 1777389619980,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Build Time Benchmark": [
@@ -13160,6 +13160,62 @@ window.BENCHMARK_DATA = {
             "value": 30635.321999999996,
             "unit": "ms",
             "extra": "after (HEAD)\ndelta: -7.07%"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "00e871ea~1",
+          "message": "[before] Fix BindingContainer doc (#2222)",
+          "timestamp": "2026-04-28T10:35:43-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/00e871eae59291a4463ce4e16ec37768bbd30979"
+        },
+        "date": 1777389619980,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 30312.052000000003,
+            "unit": "ms",
+            "extra": "before (HEAD~1)"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "00e871eae59291a4463ce4e16ec37768bbd30979",
+          "message": "[after] Fix BindingContainer doc (#2222)",
+          "timestamp": "2026-04-28T10:35:43-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/00e871eae59291a4463ce4e16ec37768bbd30979"
+        },
+        "date": 1777389619981,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Build Time",
+            "value": 31260.22,
+            "unit": "ms",
+            "extra": "after (HEAD)\ndelta: +3.13%"
           }
         ]
       }

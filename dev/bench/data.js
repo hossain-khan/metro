@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1777359526023,
+  "lastUpdate": 1777389619740,
   "repoUrl": "https://github.com/ZacSweers/metro",
   "entries": {
     "Startup Benchmark": [
@@ -13160,6 +13160,62 @@ window.BENCHMARK_DATA = {
             "value": 0.23919736831532945,
             "unit": "ms/op",
             "extra": "after (HEAD)\ndelta: +0.35%\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "00e871ea~1",
+          "message": "[before] Fix BindingContainer doc (#2222)",
+          "timestamp": "2026-04-28T10:35:43-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/00e871eae59291a4463ce4e16ec37768bbd30979"
+        },
+        "date": 1777389619740,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.23022016313618918,
+            "unit": "ms/op",
+            "extra": "before (HEAD~1)\niterations: 10\nforks: 2\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "committer": {
+            "name": "Kevin Chiu",
+            "username": "ZacSweers"
+          },
+          "distinct": true,
+          "id": "00e871eae59291a4463ce4e16ec37768bbd30979",
+          "message": "[after] Fix BindingContainer doc (#2222)",
+          "timestamp": "2026-04-28T10:35:43-04:00",
+          "tree_id": "",
+          "url": "https://github.com/ZacSweers/metro/commit/00e871eae59291a4463ce4e16ec37768bbd30979"
+        },
+        "date": 1777389619741,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "Startup",
+            "value": 0.22076358091549947,
+            "unit": "ms/op",
+            "extra": "after (HEAD)\ndelta: -4.11%\niterations: 10\nforks: 2\nthreads: 1"
           }
         ]
       }
