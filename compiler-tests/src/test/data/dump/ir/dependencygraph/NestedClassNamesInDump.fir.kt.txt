@@ -34,6 +34,8 @@ interface ExampleGraph {
     }
 
     @GraphFactoryInvokeFunctionMarker
+    @JvmStatic
+    @JsStatic
     operator fun invoke(): ExampleGraph {
       return Impl()
     }
@@ -68,19 +70,27 @@ interface ExampleGraph {
 
         }
 
+        @HiddenFromObjC
+        @JvmStatic
+        @JsStatic
         fun create(): Factory<String> {
           return ProvideStringMetroFactory
         }
 
+        @HiddenFromObjC
+        @JvmStatic
+        @JsStatic
         fun provideString(): String {
           return Bindings/* companion */.provideString()
         }
 
+        @HiddenFromObjC
         override operator fun invoke(): String {
           return ProvideStringMetroFactory.provideString()
         }
 
         @SingleIn(scope = AppScope::class)
+        @HiddenFromObjC
         fun mirrorFunction(): String {
           return error(message = "Never called")
         }
