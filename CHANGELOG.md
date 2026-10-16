@@ -4,6 +4,11 @@ Changelog
 **Unreleased**
 --------------
 
+### New
+
+- **[FIR]** In `companion-block` and `compatibility` modes, report graph creator conflicts with companion-block functions and companion methods annotated with `@JvmStatic` or `@JsStatic`.
+- **[FIR/IR]** Support companion-block `@Provides` functions and properties on Kotlin `2.5.0-Beta1` and later. Use `companion-mode` to configure generated graph creators, factory helpers, and member-injection helpers. See [companion-block configuration](docs/installation.md#companion-blocks-and-generated-apis).
+
 1.5.2
 -----
 
